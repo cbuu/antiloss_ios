@@ -7,25 +7,59 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3229275011DEEA09FA1CB896 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 380F0CE5BB3787FF4AD34F2B /* libPods.a */; };
+		8909D45A1BFECBDA002149C2 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 8909D4591BFECBDA002149C2 /* libc++.tbd */; };
+		8909D4651BFF0A83002149C2 /* WXApiManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8909D4641BFF0A83002149C2 /* WXApiManager.m */; };
+		8909D4671BFF0E26002149C2 /* Icon-40.png in Resources */ = {isa = PBXBuildFile; fileRef = 8909D4661BFF0E26002149C2 /* Icon-40.png */; };
+		8909D46A1BFF8A15002149C2 /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8909D4691BFF8A15002149C2 /* RegisterViewController.m */; };
+		891994451C041B4D0071FA34 /* BTManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 891994441C041B4D0071FA34 /* BTManager.m */; };
 		893192DE1BF9F3F400FB219E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 893192DD1BF9F3F400FB219E /* main.m */; };
 		893192E11BF9F3F400FB219E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 893192E01BF9F3F400FB219E /* AppDelegate.m */; };
-		893192E41BF9F3F400FB219E /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 893192E31BF9F3F400FB219E /* ViewController.m */; };
-		893192E71BF9F3F400FB219E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 893192E51BF9F3F400FB219E /* Main.storyboard */; };
+		893192E41BF9F3F400FB219E /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 893192E31BF9F3F400FB219E /* LoginViewController.m */; };
 		893192E91BF9F3F400FB219E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 893192E81BF9F3F400FB219E /* Assets.xcassets */; };
-		893192EC1BF9F3F400FB219E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 893192EA1BF9F3F400FB219E /* LaunchScreen.storyboard */; };
+		8938EBCD1BFC70EA00EFA18E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8938EBCC1BFC70EA00EFA18E /* LaunchScreen.storyboard */; };
+		8971D7391C0BED5800270294 /* AntilLossListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8971D7381C0BED5800270294 /* AntilLossListViewController.m */; };
+		8971D73D1C0BF38200270294 /* AntiLossDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = 8971D73C1C0BF38200270294 /* AntiLossDevice.m */; };
+		8971D7401C0BF7AF00270294 /* UIView+EasyGet.m in Sources */ = {isa = PBXBuildFile; fileRef = 8971D73F1C0BF7AF00270294 /* UIView+EasyGet.m */; };
+		89A4B9841BFE106A0009A573 /* NetworkCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 89A4B9831BFE106A0009A573 /* NetworkCenter.m */; };
+		89A4B98D1BFE3E020009A573 /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 89A4B98A1BFE3E020009A573 /* libWeChatSDK.a */; };
+		89DC11C11C0595F1004264C8 /* AntilossViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89DC11C01C0595F1004264C8 /* AntilossViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		380F0CE5BB3787FF4AD34F2B /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		3A3340F0A5492B66AFA5E842 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		5A5EE24B23446D189C9F0CEF /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		8909D4591BFECBDA002149C2 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
+		8909D4631BFF0A83002149C2 /* WXApiManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApiManager.h; sourceTree = "<group>"; };
+		8909D4641BFF0A83002149C2 /* WXApiManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXApiManager.m; sourceTree = "<group>"; };
+		8909D4661BFF0E26002149C2 /* Icon-40.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-40.png"; sourceTree = "<group>"; };
+		8909D4681BFF8A15002149C2 /* RegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
+		8909D4691BFF8A15002149C2 /* RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
+		891994431C041B4D0071FA34 /* BTManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BTManager.h; sourceTree = "<group>"; };
+		891994441C041B4D0071FA34 /* BTManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BTManager.m; sourceTree = "<group>"; };
 		893192D91BF9F3F400FB219E /* AntiLoss.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AntiLoss.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		893192DD1BF9F3F400FB219E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		893192DF1BF9F3F400FB219E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		893192E01BF9F3F400FB219E /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		893192E21BF9F3F400FB219E /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		893192E31BF9F3F400FB219E /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		893192E61BF9F3F400FB219E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		893192E21BF9F3F400FB219E /* LoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		893192E31BF9F3F400FB219E /* LoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		893192E81BF9F3F400FB219E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		893192EB1BF9F3F400FB219E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		893192ED1BF9F3F400FB219E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8938EBCC1BFC70EA00EFA18E /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		8971D7371C0BED5800270294 /* AntilLossListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AntilLossListViewController.h; sourceTree = "<group>"; };
+		8971D7381C0BED5800270294 /* AntilLossListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AntilLossListViewController.m; sourceTree = "<group>"; };
+		8971D73B1C0BF38200270294 /* AntiLossDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AntiLossDevice.h; path = common/AntiLossDevice.h; sourceTree = "<group>"; };
+		8971D73C1C0BF38200270294 /* AntiLossDevice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AntiLossDevice.m; path = common/AntiLossDevice.m; sourceTree = "<group>"; };
+		8971D73E1C0BF7AF00270294 /* UIView+EasyGet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIView+EasyGet.h"; path = "common/UIView+EasyGet.h"; sourceTree = "<group>"; };
+		8971D73F1C0BF7AF00270294 /* UIView+EasyGet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIView+EasyGet.m"; path = "common/UIView+EasyGet.m"; sourceTree = "<group>"; };
+		89A4B9821BFE106A0009A573 /* NetworkCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NetworkCenter.h; path = network/NetworkCenter.h; sourceTree = "<group>"; };
+		89A4B9831BFE106A0009A573 /* NetworkCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NetworkCenter.m; path = network/NetworkCenter.m; sourceTree = "<group>"; };
+		89A4B98A1BFE3E020009A573 /* libWeChatSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWeChatSDK.a; sourceTree = "<group>"; };
+		89A4B98B1BFE3E020009A573 /* WXApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApi.h; sourceTree = "<group>"; };
+		89A4B98C1BFE3E020009A573 /* WXApiObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApiObject.h; sourceTree = "<group>"; };
+		89DC11BF1C0595F1004264C8 /* AntilossViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AntilossViewController.h; sourceTree = "<group>"; };
+		89DC11C01C0595F1004264C8 /* AntilossViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AntilossViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,17 +67,34 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8909D45A1BFECBDA002149C2 /* libc++.tbd in Frameworks */,
+				89A4B98D1BFE3E020009A573 /* libWeChatSDK.a in Frameworks */,
+				3229275011DEEA09FA1CB896 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8909D45F1BFED182002149C2 /* manager */ = {
+			isa = PBXGroup;
+			children = (
+				8909D4631BFF0A83002149C2 /* WXApiManager.h */,
+				8909D4641BFF0A83002149C2 /* WXApiManager.m */,
+				891994431C041B4D0071FA34 /* BTManager.h */,
+				891994441C041B4D0071FA34 /* BTManager.m */,
+			);
+			path = manager;
+			sourceTree = "<group>";
+		};
 		893192D01BF9F3F400FB219E = {
 			isa = PBXGroup;
 			children = (
+				89A4B97E1BFE01DE0009A573 /* Resource */,
 				893192DB1BF9F3F400FB219E /* AntiLoss */,
 				893192DA1BF9F3F400FB219E /* Products */,
+				DFE1CB5A8DC6DBAC48D3FF82 /* Pods */,
+				EEADE195FB60CCD3DB39F756 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -58,15 +109,24 @@
 		893192DB1BF9F3F400FB219E /* AntiLoss */ = {
 			isa = PBXGroup;
 			children = (
+				8971D73A1C0BF33400270294 /* common */,
+				8909D45F1BFED182002149C2 /* manager */,
+				89A4B9891BFE3E020009A573 /* WXAPI */,
+				89A4B9811BFE10090009A573 /* network */,
 				893192DF1BF9F3F400FB219E /* AppDelegate.h */,
 				893192E01BF9F3F400FB219E /* AppDelegate.m */,
-				893192E21BF9F3F400FB219E /* ViewController.h */,
-				893192E31BF9F3F400FB219E /* ViewController.m */,
-				893192E51BF9F3F400FB219E /* Main.storyboard */,
+				893192E21BF9F3F400FB219E /* LoginViewController.h */,
+				893192E31BF9F3F400FB219E /* LoginViewController.m */,
 				893192E81BF9F3F400FB219E /* Assets.xcassets */,
-				893192EA1BF9F3F400FB219E /* LaunchScreen.storyboard */,
+				8938EBCC1BFC70EA00EFA18E /* LaunchScreen.storyboard */,
 				893192ED1BF9F3F400FB219E /* Info.plist */,
 				893192DC1BF9F3F400FB219E /* Supporting Files */,
+				8909D4681BFF8A15002149C2 /* RegisterViewController.h */,
+				8909D4691BFF8A15002149C2 /* RegisterViewController.m */,
+				89DC11BF1C0595F1004264C8 /* AntilossViewController.h */,
+				89DC11C01C0595F1004264C8 /* AntilossViewController.m */,
+				8971D7371C0BED5800270294 /* AntilLossListViewController.h */,
+				8971D7381C0BED5800270294 /* AntilLossListViewController.m */,
 			);
 			path = AntiLoss;
 			sourceTree = "<group>";
@@ -79,6 +139,62 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		8971D73A1C0BF33400270294 /* common */ = {
+			isa = PBXGroup;
+			children = (
+				8971D73B1C0BF38200270294 /* AntiLossDevice.h */,
+				8971D73C1C0BF38200270294 /* AntiLossDevice.m */,
+				8971D73E1C0BF7AF00270294 /* UIView+EasyGet.h */,
+				8971D73F1C0BF7AF00270294 /* UIView+EasyGet.m */,
+			);
+			name = common;
+			sourceTree = "<group>";
+		};
+		89A4B97E1BFE01DE0009A573 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				8909D4661BFF0E26002149C2 /* Icon-40.png */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
+		89A4B9811BFE10090009A573 /* network */ = {
+			isa = PBXGroup;
+			children = (
+				89A4B9821BFE106A0009A573 /* NetworkCenter.h */,
+				89A4B9831BFE106A0009A573 /* NetworkCenter.m */,
+			);
+			name = network;
+			sourceTree = "<group>";
+		};
+		89A4B9891BFE3E020009A573 /* WXAPI */ = {
+			isa = PBXGroup;
+			children = (
+				89A4B98A1BFE3E020009A573 /* libWeChatSDK.a */,
+				89A4B98B1BFE3E020009A573 /* WXApi.h */,
+				89A4B98C1BFE3E020009A573 /* WXApiObject.h */,
+			);
+			path = WXAPI;
+			sourceTree = "<group>";
+		};
+		DFE1CB5A8DC6DBAC48D3FF82 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				5A5EE24B23446D189C9F0CEF /* Pods.debug.xcconfig */,
+				3A3340F0A5492B66AFA5E842 /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		EEADE195FB60CCD3DB39F756 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8909D4591BFECBDA002149C2 /* libc++.tbd */,
+				380F0CE5BB3787FF4AD34F2B /* libPods.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -86,9 +202,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 893192F01BF9F3F400FB219E /* Build configuration list for PBXNativeTarget "AntiLoss" */;
 			buildPhases = (
+				F1241E159BBDDF52B452E256 /* Check Pods Manifest.lock */,
 				893192D51BF9F3F400FB219E /* Sources */,
 				893192D61BF9F3F400FB219E /* Frameworks */,
 				893192D71BF9F3F400FB219E /* Resources */,
+				B7BB07987E7D91FA4641D52C /* Embed Pods Frameworks */,
+				D62561EED5205693BA325D17 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -136,45 +255,82 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				893192EC1BF9F3F400FB219E /* LaunchScreen.storyboard in Resources */,
+				8909D4671BFF0E26002149C2 /* Icon-40.png in Resources */,
 				893192E91BF9F3F400FB219E /* Assets.xcassets in Resources */,
-				893192E71BF9F3F400FB219E /* Main.storyboard in Resources */,
+				8938EBCD1BFC70EA00EFA18E /* LaunchScreen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		B7BB07987E7D91FA4641D52C /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D62561EED5205693BA325D17 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F1241E159BBDDF52B452E256 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		893192D51BF9F3F400FB219E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				893192E41BF9F3F400FB219E /* ViewController.m in Sources */,
+				893192E41BF9F3F400FB219E /* LoginViewController.m in Sources */,
+				8909D46A1BFF8A15002149C2 /* RegisterViewController.m in Sources */,
+				89A4B9841BFE106A0009A573 /* NetworkCenter.m in Sources */,
 				893192E11BF9F3F400FB219E /* AppDelegate.m in Sources */,
+				8971D73D1C0BF38200270294 /* AntiLossDevice.m in Sources */,
+				8909D4651BFF0A83002149C2 /* WXApiManager.m in Sources */,
+				8971D7401C0BF7AF00270294 /* UIView+EasyGet.m in Sources */,
 				893192DE1BF9F3F400FB219E /* main.m in Sources */,
+				8971D7391C0BED5800270294 /* AntilLossListViewController.m in Sources */,
+				891994451C041B4D0071FA34 /* BTManager.m in Sources */,
+				89DC11C11C0595F1004264C8 /* AntilossViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXVariantGroup section */
-		893192E51BF9F3F400FB219E /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				893192E61BF9F3F400FB219E /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		893192EA1BF9F3F400FB219E /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				893192EB1BF9F3F400FB219E /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		893192EE1BF9F3F400FB219E /* Debug */ = {
@@ -261,10 +417,17 @@
 		};
 		893192F11BF9F3F400FB219E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5A5EE24B23446D189C9F0CEF /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = AntiLoss/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/AntiLoss",
+					"$(PROJECT_DIR)/AntiLoss/WXAPI",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.iori.AntiLoss;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -272,10 +435,17 @@
 		};
 		893192F21BF9F3F400FB219E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3A3340F0A5492B66AFA5E842 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = AntiLoss/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/AntiLoss",
+					"$(PROJECT_DIR)/AntiLoss/WXAPI",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.iori.AntiLoss;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -300,6 +470,7 @@
 				893192F21BF9F3F400FB219E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

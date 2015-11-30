@@ -7,7 +7,11 @@
 //
 
 #import "AppDelegate.h"
-
+#import "LoginViewController.h"
+#import "WXAPI/WXApi.h"
+#import <BmobSDK/Bmob.h>
+#import "manager/WXApiManager.h"
+#import "manager/BTManager.h"
 @interface AppDelegate ()
 
 @end
@@ -17,7 +21,25 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    self.window.backgroundColor = [UIColor whiteColor];
+    
+    UIViewController * vc = [LoginViewController new];
+    self.window.rootViewController = [[UINavigationController alloc] initWithRootViewController:vc];
+    
+    [self.window makeKeyAndVisible];
+    
+    [Bmob registerWithAppKey:@"ffaadab477c3600e3cead7cc64d3173f"];
+    [WXApi registerApp:@"wx99c248fdf022077c"];
+    
+    [self setUpBlueTooth];
+    
     return YES;
+}
+
+- (void)setUpBlueTooth
+{
+    [[BTManager getInstance] setUp];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
@@ -40,6 +62,11 @@
 
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+- (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<NSString *,id> *)options
+{
+    return [WXApi handleOpenURL:url delegate:[WXApiManager sharedManager]];
 }
 
 @end
