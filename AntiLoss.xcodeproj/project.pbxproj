@@ -23,6 +23,7 @@
 		8971D7401C0BF7AF00270294 /* UIView+EasyGet.m in Sources */ = {isa = PBXBuildFile; fileRef = 8971D73F1C0BF7AF00270294 /* UIView+EasyGet.m */; };
 		89A4B9841BFE106A0009A573 /* NetworkCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 89A4B9831BFE106A0009A573 /* NetworkCenter.m */; };
 		89A4B98D1BFE3E020009A573 /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 89A4B98A1BFE3E020009A573 /* libWeChatSDK.a */; };
+		89B90CAC1C0DA108005E6631 /* MainScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 89B90CAB1C0DA108005E6631 /* MainScreen.storyboard */; };
 		89DC11C11C0595F1004264C8 /* AntilossViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89DC11C01C0595F1004264C8 /* AntilossViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -58,6 +59,7 @@
 		89A4B98A1BFE3E020009A573 /* libWeChatSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWeChatSDK.a; sourceTree = "<group>"; };
 		89A4B98B1BFE3E020009A573 /* WXApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApi.h; sourceTree = "<group>"; };
 		89A4B98C1BFE3E020009A573 /* WXApiObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApiObject.h; sourceTree = "<group>"; };
+		89B90CAB1C0DA108005E6631 /* MainScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainScreen.storyboard; sourceTree = "<group>"; };
 		89DC11BF1C0595F1004264C8 /* AntilossViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AntilossViewController.h; sourceTree = "<group>"; };
 		89DC11C01C0595F1004264C8 /* AntilossViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AntilossViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -127,6 +129,7 @@
 				89DC11C01C0595F1004264C8 /* AntilossViewController.m */,
 				8971D7371C0BED5800270294 /* AntilLossListViewController.h */,
 				8971D7381C0BED5800270294 /* AntilLossListViewController.m */,
+				89B90CAB1C0DA108005E6631 /* MainScreen.storyboard */,
 			);
 			path = AntiLoss;
 			sourceTree = "<group>";
@@ -256,6 +259,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8909D4671BFF0E26002149C2 /* Icon-40.png in Resources */,
+				89B90CAC1C0DA108005E6631 /* MainScreen.storyboard in Resources */,
 				893192E91BF9F3F400FB219E /* Assets.xcassets in Resources */,
 				8938EBCD1BFC70EA00EFA18E /* LaunchScreen.storyboard in Resources */,
 			);

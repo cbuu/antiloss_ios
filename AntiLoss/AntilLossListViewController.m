@@ -11,7 +11,7 @@
 #import "AntiLossDevice.h"
 #import "BTManager.h"
 
-#define kMyDeviceCellHeight 40
+#define kMyDeviceCellHeight 70
 
 @interface AntilLossListViewController ()<BTSearchDeviceDelegate,UITableViewDataSource,UITableViewDelegate>
 {
@@ -133,6 +133,7 @@
 {
     if (indexPath.row == m_devices.count) {
         [m_tableView deselectRowAtIndexPath:indexPath animated:TRUE];
+        return;
     }
     
     AntiLossDevice * device = m_devices[indexPath.row];

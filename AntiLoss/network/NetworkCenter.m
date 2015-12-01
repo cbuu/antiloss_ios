@@ -10,9 +10,12 @@
 #import <BmobSDK/Bmob.h>
 #import <AFNetworking.h>
 
+//#define NETWORK_PATH @"http://120.25.71.34:3000/"
+#define NETWORK_PATH @"http://localhost:3000/"
+
 @interface NetworkCenter()
 {
-    
+    AFURLSessionManager * manager;
 }
 
 @end
@@ -30,32 +33,86 @@
 }
 
 
+- (instancetype)init
+{
+    if (self = [super init]) {
+        NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
+        manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:configuration];
+    }
+    return self;
+}
+
 - (void)login:(NSString*)username password:(NSString*)password
 {
     
-    AFURLSessionManager * manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
-    NSProgress * l;
+    NSString * queryStr = [NSString stringWithFormat:@"?username=%@&password=%@",username,password];
     
+    NSString * loginPath = [NETWORK_PATH stringByAppendingPathComponent:@"login"];
     
-    [BmobUser loginWithUsernameInBackground:username password:password block:^(BmobUser *user, NSError *error) {
-        if (error == nil) {
-            [self.loginDelegate loginResult:TRUE];
-        }else{
+    NSString * urlStr = [loginPath stringByAppendingString:queryStr];
+    
+    NSURL *URL = [NSURL URLWithString:urlStr];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:URL];
+    [request addValue:@"yes" forHTTPHeaderField:@"ismobile"];
+    
+    NSURLSessionDataTask *dataTask = [manager dataTaskWithRequest:request completionHandler:^(NSURLResponse *response, id responseObject, NSError *error) {
+        if (error) {
+            NSLog(@"Error: %@", error);
             [self.loginDelegate loginResult:FALSE];
+        } else {
+            BOOL isSuccess = [responseObject[@"isSuccess"] boolValue];
+            [self.loginDelegate loginResult:isSuccess];
         }
-        
     }];
+    
+    [dataTask resume];
+    
+//    [BmobUser loginWithUsernameInBackground:username password:password block:^(BmobUser *user, NSError *error) {
+//        if (error == nil) {
+//            [self.loginDelegate loginResult:TRUE];
+//        }else{
+//            [self.loginDelegate loginResult:FALSE];
+//        }
+//        
+//    }];
 }
 
 
 - (void)signUp:(NSString*)username password:(NSString*)password
 {
-    BmobUser *bUser = [[BmobUser alloc] init];
-    bUser.username = username;
-    [bUser setPassword:password];
-    [bUser signUpInBackgroundWithBlock:^ (BOOL isSuccessful, NSError *error){
-        [self.signUpDelegate signUpResult:isSuccessful];
+    
+    NSString * registerPath = [NETWORK_PATH stringByAppendingPathComponent:@"register"];
+    
+    NSURL *URL = [NSURL URLWithString:registerPath];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:URL];
+    request.HTTPMethod = @"POST";
+    
+    NSData * data = [NSJSONSerialization dataWithJSONObject:@{@"username":username
+                                                              ,@"password":password} options:0 error:nil];
+    
+    request.HTTPBody = data;
+    
+    [request addValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    
+    NSURLSessionDataTask *dataTask = [manager dataTaskWithRequest:request completionHandler:^(NSURLResponse *response, id responseObject, NSError *error) {
+        if (error) {
+            NSLog(@"Error: %@", error);
+            
+        } else {
+            BOOL isSuccess = [responseObject[@"isSuccess"] boolValue];
+            NSLog(@"%@", isSuccess?@"y":@"n");
+        }
     }];
+    
+    [dataTask resume];
+    
+    
+//    BmobUser *bUser = [[BmobUser alloc] init];
+//    bUser.username = username;
+//    [bUser setPassword:password];
+//    [bUser signUpInBackgroundWithBlock:^ (BOOL isSuccessful, NSError *error){
+//        [self.signUpDelegate signUpResult:isSuccessful];
+//    }];
 }
 
 @end

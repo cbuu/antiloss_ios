@@ -14,8 +14,7 @@
 {
     CBCentralManager * manager;
     
-    NSMutableArray * devicesPool;
-    NSMutableSet   * devicesMacSet;
+    NSMutableDictionary   * devicesDic;
     
     BOOL state;
 }
@@ -39,8 +38,7 @@
 - (instancetype)init
 {
     if (self = [super init]) {
-        devicesPool = [NSMutableArray array];
-        devicesMacSet = [NSMutableSet set];
+        devicesDic = [NSMutableDictionary dictionary];
     }
     return self;
 }
@@ -102,7 +100,16 @@
         
         if (uuid && [uuid.UUIDString isEqualToString:@"FEE7"]) {
             if (self.searchDeviceDelegate) {
+                if (![peripheral.name isEqualToString:@"aqtracker"]) {
+                    return;
+                }
+                
                 NSString * mac = [self parseMacFromAdvData:advertisementData];
+                CBPeripheral * p = devicesDic[mac];
+                if (nil == p) {
+                    devicesDic[mac] = p;
+                }
+                
                 [self.searchDeviceDelegate deviceFound:mac];
             }
         }

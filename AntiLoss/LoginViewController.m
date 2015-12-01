@@ -84,10 +84,8 @@
 
 - (void)loginClick
 {
-    AntilLossListViewController * vc = [[AntilLossListViewController alloc] init];
     
-    [self.navigationController pushViewController:vc animated:TRUE];
-    
+    [[NetworkCenter getInstance] login:@"admin" password:@"admin"];
     
     //[[BTManager getInstance] scan];
     
@@ -130,10 +128,8 @@
 
 - (void)signUpClick
 {
-    
-    
-    //UIViewController *vc = [RegisterViewController new];
-    //[self.navigationController pushViewController:vc animated:TRUE];
+    UIViewController *vc = [RegisterViewController new];
+    [self.navigationController pushViewController:vc animated:TRUE];
 }
 
 
@@ -144,6 +140,10 @@
 {
     if (isSuccess) {
         NSLog(@"succeed");
+        AntilLossListViewController * vc = [[AntilLossListViewController alloc] init];
+        
+        [self.navigationController pushViewController:vc animated:TRUE];
+
     }
     else{
         NSLog(@"fail");
