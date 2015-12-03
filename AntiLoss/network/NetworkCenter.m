@@ -58,23 +58,14 @@
     NSURLSessionDataTask *dataTask = [manager dataTaskWithRequest:request completionHandler:^(NSURLResponse *response, id responseObject, NSError *error) {
         if (error) {
             NSLog(@"Error: %@", error);
-            [self.loginDelegate loginResult:FALSE];
+            [self.loginDelegate loginResult:FALSE withData:nil];
         } else {
             BOOL isSuccess = [responseObject[@"isSuccess"] boolValue];
-            [self.loginDelegate loginResult:isSuccess];
+            [self.loginDelegate loginResult:isSuccess withData:responseObject[@"user"]];
         }
     }];
     
     [dataTask resume];
-    
-//    [BmobUser loginWithUsernameInBackground:username password:password block:^(BmobUser *user, NSError *error) {
-//        if (error == nil) {
-//            [self.loginDelegate loginResult:TRUE];
-//        }else{
-//            [self.loginDelegate loginResult:FALSE];
-//        }
-//        
-//    }];
 }
 
 
@@ -115,4 +106,8 @@
 //    }];
 }
 
+
+- (void)startToGetDevicesInfo:(NSArray *)devicesMac{
+    
+}
 @end

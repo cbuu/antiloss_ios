@@ -21,18 +21,18 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-    self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
-    self.window.backgroundColor = [UIColor whiteColor];
-    
-    UIViewController * vc = [LoginViewController new];
-    self.window.rootViewController = [[UINavigationController alloc] initWithRootViewController:vc];
-    
-    [self.window makeKeyAndVisible];
+//    self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+//    self.window.backgroundColor = [UIColor whiteColor];
+//    
+//    UIViewController * vc = [LoginViewController new];
+//    self.window.rootViewController = [[UINavigationController alloc] initWithRootViewController:vc];
+//    
+//    [self.window makeKeyAndVisible];
     
     [Bmob registerWithAppKey:@"ffaadab477c3600e3cead7cc64d3173f"];
     [WXApi registerApp:@"wx99c248fdf022077c"];
     
-    [self setUpBlueTooth];
+//    [self setUpBlueTooth];
     
     return YES;
 }

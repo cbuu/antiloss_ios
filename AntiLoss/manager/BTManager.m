@@ -43,6 +43,19 @@
     return self;
 }
 
+- (BOOL)isAntiloss:(NSDictionary*)dic
+{
+    NSArray* array = dic[@"kCBAdvDataServiceUUIDs"];
+    if (array) {
+        CBUUID * uuid = array[0];
+        
+        if (uuid && [uuid.UUIDString isEqualToString:@"FEE7"]){
+            return TRUE;
+        }
+    }
+    return NO;
+}
+
 - (NSString*)parseMacFromAdvData:(NSDictionary*)dic
 {
     id manufacturerData = dic[@"kCBAdvDataManufacturerData"];
@@ -94,15 +107,14 @@
 - (void)centralManager:(CBCentralManager *)central didDiscoverPeripheral:(CBPeripheral *)peripheral advertisementData:(NSDictionary<NSString *,id> *)advertisementData RSSI:(NSNumber *)RSSI
 {
     
-    NSArray* array = advertisementData[@"kCBAdvDataServiceUUIDs"];
-    if (array) {
-        CBUUID * uuid = array[0];
-        
-        if (uuid && [uuid.UUIDString isEqualToString:@"FEE7"]) {
+    if ([self isAntiloss:advertisementData]){
             if (self.searchDeviceDelegate) {
+                
+                //TODO  del
                 if (![peripheral.name isEqualToString:@"aqtracker"]) {
                     return;
                 }
+                //
                 
                 NSString * mac = [self parseMacFromAdvData:advertisementData];
                 CBPeripheral * p = devicesDic[mac];
@@ -113,10 +125,6 @@
                 [self.searchDeviceDelegate deviceFound:mac];
             }
         }
-    }
-    
-    
-    
 }
 
 - (void)centralManager:(CBCentralManager *)central didConnectPeripheral:(CBPeripheral *)peripheral

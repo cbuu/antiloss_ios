@@ -11,7 +11,7 @@
 @protocol LoginDelegate <NSObject>
 
 @optional
-- (void)loginResult:(BOOL)isSuccess;
+- (void)loginResult:(BOOL)isSuccess withData:(NSDictionary*)data;
 
 @end
 
@@ -23,15 +23,24 @@
 
 @end
 
+@protocol GetDevicesInfoDelegate <NSObject>
+
+- (void)getDevicesInfo:(NSDictionary*)infos;
+
+@end
+
 @interface NetworkCenter : NSObject
 
 @property (nonatomic,assign) id<LoginDelegate> loginDelegate;
 @property (nonatomic,assign) id<SignUpDelegate> signUpDelegate;
+@property (nonatomic,assign) id<GetDevicesInfoDelegate> getDevicesInfoDelegate;
 
 + (instancetype)getInstance;
 
 - (void)login:(NSString*)username password:(NSString*)password;
 - (void)signUp:(NSString*)username password:(NSString*)password;
 
+
+- (void)startToGetDevicesInfo:(NSArray*)devicesMac;
 
 @end

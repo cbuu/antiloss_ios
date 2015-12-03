@@ -18,6 +18,10 @@
 		893192E41BF9F3F400FB219E /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 893192E31BF9F3F400FB219E /* LoginViewController.m */; };
 		893192E91BF9F3F400FB219E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 893192E81BF9F3F400FB219E /* Assets.xcassets */; };
 		8938EBCD1BFC70EA00EFA18E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8938EBCC1BFC70EA00EFA18E /* LaunchScreen.storyboard */; };
+		8968BE3C1C0EC6D10061D062 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 8968BE3B1C0EC6D10061D062 /* User.m */; };
+		8968BE3F1C0EC9A80061D062 /* AntilossSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8968BE3E1C0EC9A80061D062 /* AntilossSearchViewController.m */; };
+		8968BE581C0EE58D0061D062 /* DeviceTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8968BE561C0EE58D0061D062 /* DeviceTableViewCell.m */; };
+		8968BE591C0EE58D0061D062 /* DeviceTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8968BE571C0EE58D0061D062 /* DeviceTableViewCell.xib */; };
 		8971D7391C0BED5800270294 /* AntilLossListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8971D7381C0BED5800270294 /* AntilLossListViewController.m */; };
 		8971D73D1C0BF38200270294 /* AntiLossDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = 8971D73C1C0BF38200270294 /* AntiLossDevice.m */; };
 		8971D7401C0BF7AF00270294 /* UIView+EasyGet.m in Sources */ = {isa = PBXBuildFile; fileRef = 8971D73F1C0BF7AF00270294 /* UIView+EasyGet.m */; };
@@ -25,6 +29,8 @@
 		89A4B98D1BFE3E020009A573 /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 89A4B98A1BFE3E020009A573 /* libWeChatSDK.a */; };
 		89B90CAC1C0DA108005E6631 /* MainScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 89B90CAB1C0DA108005E6631 /* MainScreen.storyboard */; };
 		89DC11C11C0595F1004264C8 /* AntilossViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89DC11C01C0595F1004264C8 /* AntilossViewController.m */; };
+		89F927E71C102C3400C53463 /* AntilossTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89F927E61C102C3400C53463 /* AntilossTableViewController.m */; };
+		89F927EA1C102DAF00C53463 /* UserManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 89F927E91C102DAF00C53463 /* UserManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +54,13 @@
 		893192E81BF9F3F400FB219E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		893192ED1BF9F3F400FB219E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8938EBCC1BFC70EA00EFA18E /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		8968BE3A1C0EC6D10061D062 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
+		8968BE3B1C0EC6D10061D062 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
+		8968BE3D1C0EC9A80061D062 /* AntilossSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AntilossSearchViewController.h; sourceTree = "<group>"; };
+		8968BE3E1C0EC9A80061D062 /* AntilossSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AntilossSearchViewController.m; sourceTree = "<group>"; };
+		8968BE551C0EE58D0061D062 /* DeviceTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DeviceTableViewCell.h; path = view/DeviceTableViewCell.h; sourceTree = "<group>"; };
+		8968BE561C0EE58D0061D062 /* DeviceTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DeviceTableViewCell.m; path = view/DeviceTableViewCell.m; sourceTree = "<group>"; };
+		8968BE571C0EE58D0061D062 /* DeviceTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DeviceTableViewCell.xib; path = view/DeviceTableViewCell.xib; sourceTree = "<group>"; };
 		8971D7371C0BED5800270294 /* AntilLossListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AntilLossListViewController.h; sourceTree = "<group>"; };
 		8971D7381C0BED5800270294 /* AntilLossListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AntilLossListViewController.m; sourceTree = "<group>"; };
 		8971D73B1C0BF38200270294 /* AntiLossDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AntiLossDevice.h; path = common/AntiLossDevice.h; sourceTree = "<group>"; };
@@ -62,6 +75,10 @@
 		89B90CAB1C0DA108005E6631 /* MainScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainScreen.storyboard; sourceTree = "<group>"; };
 		89DC11BF1C0595F1004264C8 /* AntilossViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AntilossViewController.h; sourceTree = "<group>"; };
 		89DC11C01C0595F1004264C8 /* AntilossViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AntilossViewController.m; sourceTree = "<group>"; };
+		89F927E51C102C3400C53463 /* AntilossTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AntilossTableViewController.h; sourceTree = "<group>"; };
+		89F927E61C102C3400C53463 /* AntilossTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AntilossTableViewController.m; sourceTree = "<group>"; };
+		89F927E81C102DAF00C53463 /* UserManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserManager.h; sourceTree = "<group>"; };
+		89F927E91C102DAF00C53463 /* UserManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +95,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8905E15E1C0DA36100C7BEF2 /* controller */ = {
+			isa = PBXGroup;
+			children = (
+				893192E21BF9F3F400FB219E /* LoginViewController.h */,
+				893192E31BF9F3F400FB219E /* LoginViewController.m */,
+				8909D4681BFF8A15002149C2 /* RegisterViewController.h */,
+				8909D4691BFF8A15002149C2 /* RegisterViewController.m */,
+				89DC11BF1C0595F1004264C8 /* AntilossViewController.h */,
+				89DC11C01C0595F1004264C8 /* AntilossViewController.m */,
+				8971D7371C0BED5800270294 /* AntilLossListViewController.h */,
+				8971D7381C0BED5800270294 /* AntilLossListViewController.m */,
+				8968BE3D1C0EC9A80061D062 /* AntilossSearchViewController.h */,
+				8968BE3E1C0EC9A80061D062 /* AntilossSearchViewController.m */,
+				89F927E51C102C3400C53463 /* AntilossTableViewController.h */,
+				89F927E61C102C3400C53463 /* AntilossTableViewController.m */,
+			);
+			name = controller;
+			sourceTree = "<group>";
+		};
 		8909D45F1BFED182002149C2 /* manager */ = {
 			isa = PBXGroup;
 			children = (
@@ -85,6 +121,8 @@
 				8909D4641BFF0A83002149C2 /* WXApiManager.m */,
 				891994431C041B4D0071FA34 /* BTManager.h */,
 				891994441C041B4D0071FA34 /* BTManager.m */,
+				89F927E81C102DAF00C53463 /* UserManager.h */,
+				89F927E91C102DAF00C53463 /* UserManager.m */,
 			);
 			path = manager;
 			sourceTree = "<group>";
@@ -111,24 +149,19 @@
 		893192DB1BF9F3F400FB219E /* AntiLoss */ = {
 			isa = PBXGroup;
 			children = (
+				8968BE521C0EE2FC0061D062 /* model */,
+				8968BE511C0EE2E00061D062 /* view */,
+				8905E15E1C0DA36100C7BEF2 /* controller */,
 				8971D73A1C0BF33400270294 /* common */,
 				8909D45F1BFED182002149C2 /* manager */,
 				89A4B9891BFE3E020009A573 /* WXAPI */,
 				89A4B9811BFE10090009A573 /* network */,
 				893192DF1BF9F3F400FB219E /* AppDelegate.h */,
 				893192E01BF9F3F400FB219E /* AppDelegate.m */,
-				893192E21BF9F3F400FB219E /* LoginViewController.h */,
-				893192E31BF9F3F400FB219E /* LoginViewController.m */,
 				893192E81BF9F3F400FB219E /* Assets.xcassets */,
 				8938EBCC1BFC70EA00EFA18E /* LaunchScreen.storyboard */,
 				893192ED1BF9F3F400FB219E /* Info.plist */,
 				893192DC1BF9F3F400FB219E /* Supporting Files */,
-				8909D4681BFF8A15002149C2 /* RegisterViewController.h */,
-				8909D4691BFF8A15002149C2 /* RegisterViewController.m */,
-				89DC11BF1C0595F1004264C8 /* AntilossViewController.h */,
-				89DC11C01C0595F1004264C8 /* AntilossViewController.m */,
-				8971D7371C0BED5800270294 /* AntilLossListViewController.h */,
-				8971D7381C0BED5800270294 /* AntilLossListViewController.m */,
 				89B90CAB1C0DA108005E6631 /* MainScreen.storyboard */,
 			);
 			path = AntiLoss;
@@ -142,6 +175,23 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		8968BE511C0EE2E00061D062 /* view */ = {
+			isa = PBXGroup;
+			children = (
+				8968BE551C0EE58D0061D062 /* DeviceTableViewCell.h */,
+				8968BE561C0EE58D0061D062 /* DeviceTableViewCell.m */,
+				8968BE571C0EE58D0061D062 /* DeviceTableViewCell.xib */,
+			);
+			name = view;
+			sourceTree = "<group>";
+		};
+		8968BE521C0EE2FC0061D062 /* model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = model;
+			sourceTree = "<group>";
+		};
 		8971D73A1C0BF33400270294 /* common */ = {
 			isa = PBXGroup;
 			children = (
@@ -149,6 +199,8 @@
 				8971D73C1C0BF38200270294 /* AntiLossDevice.m */,
 				8971D73E1C0BF7AF00270294 /* UIView+EasyGet.h */,
 				8971D73F1C0BF7AF00270294 /* UIView+EasyGet.m */,
+				8968BE3A1C0EC6D10061D062 /* User.h */,
+				8968BE3B1C0EC6D10061D062 /* User.m */,
 			);
 			name = common;
 			sourceTree = "<group>";
@@ -259,6 +311,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8909D4671BFF0E26002149C2 /* Icon-40.png in Resources */,
+				8968BE591C0EE58D0061D062 /* DeviceTableViewCell.xib in Resources */,
 				89B90CAC1C0DA108005E6631 /* MainScreen.storyboard in Resources */,
 				893192E91BF9F3F400FB219E /* Assets.xcassets in Resources */,
 				8938EBCD1BFC70EA00EFA18E /* LaunchScreen.storyboard in Resources */,
@@ -320,7 +373,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8968BE3F1C0EC9A80061D062 /* AntilossSearchViewController.m in Sources */,
 				893192E41BF9F3F400FB219E /* LoginViewController.m in Sources */,
+				89F927EA1C102DAF00C53463 /* UserManager.m in Sources */,
 				8909D46A1BFF8A15002149C2 /* RegisterViewController.m in Sources */,
 				89A4B9841BFE106A0009A573 /* NetworkCenter.m in Sources */,
 				893192E11BF9F3F400FB219E /* AppDelegate.m in Sources */,
@@ -328,6 +383,9 @@
 				8909D4651BFF0A83002149C2 /* WXApiManager.m in Sources */,
 				8971D7401C0BF7AF00270294 /* UIView+EasyGet.m in Sources */,
 				893192DE1BF9F3F400FB219E /* main.m in Sources */,
+				89F927E71C102C3400C53463 /* AntilossTableViewController.m in Sources */,
+				8968BE581C0EE58D0061D062 /* DeviceTableViewCell.m in Sources */,
+				8968BE3C1C0EC6D10061D062 /* User.m in Sources */,
 				8971D7391C0BED5800270294 /* AntilLossListViewController.m in Sources */,
 				891994451C041B4D0071FA34 /* BTManager.m in Sources */,
 				89DC11C11C0595F1004264C8 /* AntilossViewController.m in Sources */,
