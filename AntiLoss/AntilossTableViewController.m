@@ -8,8 +8,10 @@
 
 #import "AntilossTableViewController.h"
 #import "UserManager.h"
+#import "network/NetworkCenter.h"
+#import "AntiLossDevice.h"
 
-@interface AntilossTableViewController ()
+@interface AntilossTableViewController ()<GetDevicesInfoDelegate>
 {
     NSMutableArray * devices;
 }
@@ -21,18 +23,26 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    devices = [[UserManager getInstance] getDevices];
+    self.navigationItem.hidesBackButton = YES;
     
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
+    devices = [NSMutableArray array];
     
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    NSArray * devicesMac = [[UserManager getInstance] getDevices];
+    
+    [NetworkCenter getInstance].getDevicesInfoDelegate = self;
+    [[NetworkCenter getInstance] batchGetDevicesInfo:devicesMac];
+
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+
+
+- (IBAction)addButtonClick:(id)sender {
+    NSLog(@"begin to search Device");
 }
 
 #pragma mark - Table view data source
@@ -47,15 +57,25 @@
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"deviceInfo" forIndexPath:indexPath];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"deviceInfoCell" forIndexPath:indexPath];
     
     if (nil == cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"deviceInfo"];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"deviceInfoCell"];
     }
     
-    cell.
+    AntiLossDevice * device = devices[indexPath.row];
+    
+    cell.textLabel.text = device.deviceName;
     
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    AntiLossDevice * device = devices[indexPath.row];
+    
+    
+    NSLog(@"select %@",device.deviceName);
 }
 
 
@@ -102,5 +122,15 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+- (void)getDevicesInfo:(NSArray *)infos{
+    if (infos) {
+        [infos enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            NSDictionary * dic = obj;
+            [devices addObject:[[AntiLossDevice alloc] initWithDic:dic]];
+        }];
+    }
+    [self.tableView reloadData];
+}
 
 @end

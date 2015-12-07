@@ -25,7 +25,7 @@
 
 @protocol GetDevicesInfoDelegate <NSObject>
 
-- (void)getDevicesInfo:(NSDictionary*)infos;
+- (void)getDevicesInfo:(NSArray*)infos;
 
 @end
 
@@ -41,6 +41,6 @@
 - (void)signUp:(NSString*)username password:(NSString*)password;
 
 
-- (void)startToGetDevicesInfo:(NSArray*)devicesMac;
+- (void)batchGetDevicesInfo:(NSArray*)devicesMac;
 
 @end

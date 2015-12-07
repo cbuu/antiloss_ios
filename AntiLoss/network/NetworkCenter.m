@@ -9,6 +9,7 @@
 #import "networkCenter.h"
 #import <BmobSDK/Bmob.h>
 #import <AFNetworking.h>
+#import "JSONParseUtil.h"
 
 //#define NETWORK_PATH @"http://120.25.71.34:3000/"
 #define NETWORK_PATH @"http://localhost:3000/"
@@ -107,7 +108,35 @@
 }
 
 
-- (void)startToGetDevicesInfo:(NSArray *)devicesMac{
+- (void)batchGetDevicesInfo:(NSArray *)devicesMac{
+    NSString * getInfoPath = [NETWORK_PATH stringByAppendingPathComponent:@"batchGetDevicesInfo"];
     
+    NSURL *URL = [NSURL URLWithString:getInfoPath];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:URL];
+    request.HTTPMethod = @"POST";
+    
+    NSData * data = [JSONParseUtil devicesMacToJSON:devicesMac];
+    
+    request.HTTPBody = data;
+    
+    [request addValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    
+    NSURLSessionDataTask *dataTask = [manager dataTaskWithRequest:request completionHandler:^(NSURLResponse *response, id responseObject, NSError *error) {
+        if (error) {
+            NSLog(@"Error: %@", error);
+            if (self.getDevicesInfoDelegate) {
+                [self.getDevicesInfoDelegate getDevicesInfo:nil];
+            }
+        } else {
+            if (self.getDevicesInfoDelegate) {
+                [self.getDevicesInfoDelegate getDevicesInfo:responseObject[@"devices"]];
+            }
+        }
+    }];
+    
+    [dataTask resume];
+
 }
+
+
 @end

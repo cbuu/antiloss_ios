@@ -20,5 +20,6 @@
 
 
 + (instancetype)initWithMac:(NSString*)mac name:(NSString*)name;
+- (instancetype)initWithDic:(NSDictionary*)dic;
 
 @end

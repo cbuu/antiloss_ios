@@ -36,7 +36,6 @@
         user.username = data[@"username"];
         user.devices = [self parseJsonWithData:data];
         self.user = user;
-        int a;
     }
 }
 

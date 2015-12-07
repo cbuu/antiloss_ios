@@ -27,4 +27,16 @@
     return device;
 }
 
+- (instancetype)initWithDic:(NSDictionary*)dic
+{
+    if (self = [super init]) {
+        if (dic) {
+            self.deviceMac = dic[@"deviceMac"];
+            self.deviceName = dic[@"deviceName"];
+            self.imageID  =  dic[@"image"];
+        }
+    }
+    return self;
+}
+
 @end
