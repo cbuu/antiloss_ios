@@ -43,4 +43,6 @@
 
 - (void)batchGetDevicesInfo:(NSArray*)devicesMac;
 
+
+
 @end

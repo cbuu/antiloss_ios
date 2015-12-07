@@ -19,4 +19,6 @@
 
 - (NSMutableArray*)getDevices;
 
+- (BOOL)isBounded:(NSString*)mac;
+
 @end

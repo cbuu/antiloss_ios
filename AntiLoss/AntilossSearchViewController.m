@@ -8,8 +8,10 @@
 
 #import "AntilossSearchViewController.h"
 #import "DeviceTableViewCell.h"
+#import "manager/BTManager.h"
+#import "UserManager.h"
 
-@interface AntilossSearchViewController ()
+@interface AntilossSearchViewController ()<BTSearchDeviceDelegate>
 {
     UINib * deviceNib;
     
@@ -32,21 +34,20 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.title = @"搜索设备";
-    
-    self.navigationItem.hidesBackButton = YES;
-    
     self.tableView.tableFooterView = [UIView new];
     
-    //[self.tableView registerClass:[DeviceTableViewCell class] forCellReuseIdentifier:@"deviceCell"];
     
-//    deviceNib = [UINib nibWithNibName:@"DeviceTableViewCell" bundle:nil];
-//    [self.tableView registerNib:deviceNib forCellReuseIdentifier:@"deviceCell"];
+    [BTManager getInstance].searchDeviceDelegate = self;
+    [[BTManager getInstance] scan];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+}
+
+- (void)dealloc{
+    [BTManager getInstance].searchDeviceDelegate = nil;
+    [[BTManager getInstance]stopScan];
 }
 
 #pragma mark - Table view data source
@@ -56,20 +57,43 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 2;
+    return foundDevices.count+1;
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    UITableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:@"deviceCell"];
-
-    UILabel * label = [cell viewWithTag:1];
-    
-    label.text = @"wocaonima";
-    
+    UITableViewCell * cell;
+    if (indexPath.row == foundDevices.count) {
+        cell = [tableView dequeueReusableCellWithIdentifier:@"searchCell"];
+    }else{
+        cell = [tableView dequeueReusableCellWithIdentifier:@"deviceCell"];
+        
+        AntiLossDevice * device = foundDevices[indexPath.row];
+        
+        UILabel * label = (UILabel*)[cell viewWithTag:1];
+        
+        label.text = device.deviceName;
+    }
     
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    if (indexPath.row == foundDevices.count) {
+        return;
+    }
+
+    
+    AntiLossDevice * device = foundDevices[indexPath.row];
+    
+    [BTManager getInstance].searchDeviceDelegate = nil;
+    [[BTManager getInstance]stopScan];
+    
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 
@@ -116,5 +140,16 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+#pragma mark - BTdelegate
+
+- (void)deviceFound:(AntiLossDevice *)device{
+    if (device&&[[UserManager getInstance] isBounded:device.deviceMac]) {
+        
+        [foundDevices addObject:device];
+        
+        [self.tableView reloadData];
+    }
+}
 
 @end

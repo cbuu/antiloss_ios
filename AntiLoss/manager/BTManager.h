@@ -7,11 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "AntiLossDevice.h"
 
 @protocol BTSearchDeviceDelegate <NSObject>
 
 @optional
-- (void)deviceFound:(NSString*)mac;
+- (void)deviceFound:(AntiLossDevice*)device;
 
 @end
 
@@ -25,5 +26,6 @@
 - (void)setUp;
 - (BOOL)getBTState;
 - (void)scan;
+- (void)stopScan;
 
 @end

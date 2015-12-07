@@ -52,4 +52,11 @@
 - (NSMutableArray *)getDevices{
     return self.user.devices;
 }
+
+- (BOOL)isBounded:(NSString *)mac
+{
+    return [self.user isBounded:mac];
+}
+
+
 @end

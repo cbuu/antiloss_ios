@@ -10,8 +10,9 @@
 #import "UserManager.h"
 #import "network/NetworkCenter.h"
 #import "AntiLossDevice.h"
+#import "AntilossSearchViewController.h"
 
-@interface AntilossTableViewController ()<GetDevicesInfoDelegate>
+@interface AntilossTableViewController ()<GetDevicesInfoDelegate,SearchDelegate>
 {
     NSMutableArray * devices;
 }
@@ -23,7 +24,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.navigationItem.hidesBackButton = YES;
+    //self.navigationItem.hidesBackButton = YES;
     
     devices = [NSMutableArray array];
     
@@ -113,15 +114,20 @@
 }
 */
 
-/*
+
 #pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
+
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    if ([segue.identifier isEqualToString:@"toSearchViewController"]) {
+        AntilossSearchViewController * vc = segue.destinationViewController;
+        vc.searchDelegate = self;
+        
+    }
 }
-*/
+
 
 - (void)getDevicesInfo:(NSArray *)infos{
     if (infos) {
@@ -131,6 +137,15 @@
         }];
     }
     [self.tableView reloadData];
+}
+
+#pragma mark - searchDelegate
+
+- (void)succeedToBoundDevice:(AntiLossDevice *)device{
+    if (device) {
+        [devices addObject:device];
+        [self.tableView reloadData];
+    }
 }
 
 @end

@@ -13,4 +13,6 @@
 @property (nonatomic,copy) NSString * username;
 @property (nonatomic,copy) NSMutableArray * devices;
 
+- (BOOL)isBounded:(NSString*)mac;
+
 @end

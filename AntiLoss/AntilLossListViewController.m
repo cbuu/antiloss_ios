@@ -132,7 +132,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.row == m_devices.count) {
-        [m_tableView deselectRowAtIndexPath:indexPath animated:TRUE];
+        [m_tableView deselectRowAtIndexPath:indexPath animated:YES];
         return;
     }
     

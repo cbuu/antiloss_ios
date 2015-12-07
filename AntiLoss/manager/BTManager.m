@@ -50,7 +50,7 @@
         CBUUID * uuid = array[0];
         
         if (uuid && [uuid.UUIDString isEqualToString:@"FEE7"]){
-            return TRUE;
+            return YES;
         }
     }
     return NO;
@@ -93,11 +93,16 @@
     }
 }
 
+- (void)stopScan
+{
+    [manager stopScan];
+}
+
 - (BOOL)getBTState
 {
     if (manager) {
        if(manager.state == CBCentralManagerStatePoweredOn)
-           return true;
+           return YES;
     }
     return false;
 }
@@ -117,12 +122,16 @@
                 //
                 
                 NSString * mac = [self parseMacFromAdvData:advertisementData];
+                
                 CBPeripheral * p = devicesDic[mac];
                 if (nil == p) {
                     devicesDic[mac] = p;
                 }
+                AntiLossDevice * device = [[AntiLossDevice alloc] init];
+                device.deviceName = peripheral.name;
+                device.deviceMac  = mac;
                 
-                [self.searchDeviceDelegate deviceFound:mac];
+                [self.searchDeviceDelegate deviceFound:device];
             }
         }
 }
@@ -175,6 +184,4 @@
 {
     
 }
-
-
 @end

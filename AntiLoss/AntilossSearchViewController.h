@@ -8,6 +8,16 @@
 
 #import <UIKit/UIKit.h>
 
+@class AntiLossDevice;
+
+@protocol SearchDelegate <NSObject>
+
+- (void)succeedToBoundDevice:(AntiLossDevice*)device;
+
+@end
+
 @interface AntilossSearchViewController : UITableViewController
+
+@property (nonatomic,weak) id<SearchDelegate> searchDelegate;
 
 @end
