@@ -123,8 +123,8 @@
     // Pass the selected object to the new view controller.
     if ([segue.identifier isEqualToString:@"toSearchViewController"]) {
         AntilossSearchViewController * vc = segue.destinationViewController;
-        vc.searchDelegate = self;
         
+        vc.searchDelegate = self;
     }
 }
 

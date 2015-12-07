@@ -9,6 +9,7 @@
 #import "networkCenter.h"
 #import <BmobSDK/Bmob.h>
 #import <AFNetworking.h>
+#import "UserManager.h"
 #import "JSONParseUtil.h"
 
 //#define NETWORK_PATH @"http://120.25.71.34:3000/"
@@ -92,7 +93,9 @@
             
         } else {
             BOOL isSuccess = [responseObject[@"isSuccess"] boolValue];
-            NSLog(@"%@", isSuccess?@"y":@"n");
+            if (self.signUpDelegate) {
+                [self.signUpDelegate signUpResult:isSuccess];
+            }
         }
     }];
     
@@ -139,6 +142,40 @@
 }
 
 
+- (void)boundDeviceWithMac:(NSString *)mac
+{
+    if (mac&&mac.length>0) {
+        NSString * boundPath = [NETWORK_PATH stringByAppendingPathComponent:@"boundDevice"];
+        
+        NSURL *URL = [NSURL URLWithString:boundPath];
+        NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:URL];
+        request.HTTPMethod = @"PUT";
+        
+        User * user = [UserManager getInstance].user;
+        NSString * username = user.username;
+        
+        NSDictionary * dic = @{@"username":username,@"deviceMac":mac};
+        
+        NSData * data = [NSJSONSerialization dataWithJSONObject:dic options:0 error:nil];
+        
+        request.HTTPBody = data;
+        
+        [request addValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+        
+        NSURLSessionDataTask *dataTask = [manager dataTaskWithRequest:request completionHandler:^(NSURLResponse *response, id responseObject, NSError *error) {
+            if (self.boundDeviceDelegate) {
+                if (error) {
+                    [self.boundDeviceDelegate boundDeviceResult:false];
+                }else{
+                    [self.boundDeviceDelegate boundDeviceResult: [responseObject[@"isSuccess"] boolValue]];
+                }
+            }
+            
+        }];
+        
+        [dataTask resume];
 
+    }
+}
 
 @end

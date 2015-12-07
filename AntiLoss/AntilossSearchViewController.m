@@ -9,13 +9,14 @@
 #import "AntilossSearchViewController.h"
 #import "DeviceTableViewCell.h"
 #import "manager/BTManager.h"
+#import "NetworkCenter.h"
 #import "UserManager.h"
 
-@interface AntilossSearchViewController ()<BTSearchDeviceDelegate>
+@interface AntilossSearchViewController ()<BTSearchDeviceDelegate,BoundDeviceDelegate>
 {
     UINib * deviceNib;
     
-    
+    AntiLossDevice * deviceToBound;
     NSMutableArray * foundDevices;
 }
 
@@ -36,7 +37,7 @@
     
     self.tableView.tableFooterView = [UIView new];
     
-    
+    [NetworkCenter getInstance].boundDeviceDelegate = self;
     [BTManager getInstance].searchDeviceDelegate = self;
     [[BTManager getInstance] scan];
 }
@@ -66,6 +67,7 @@
     UITableViewCell * cell;
     if (indexPath.row == foundDevices.count) {
         cell = [tableView dequeueReusableCellWithIdentifier:@"searchCell"];
+        //cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }else{
         cell = [tableView dequeueReusableCellWithIdentifier:@"deviceCell"];
         
@@ -84,16 +86,22 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     if (indexPath.row == foundDevices.count) {
+        deviceToBound = [[AntiLossDevice alloc] init];
+        deviceToBound.deviceMac = @"009";
+        deviceToBound.deviceName = @"timo";
+        [[NetworkCenter getInstance] boundDeviceWithMac:deviceToBound.deviceMac];
+        
+        [BTManager getInstance].searchDeviceDelegate = nil;
+        [[BTManager getInstance]stopScan];
         return;
     }
 
     
-    AntiLossDevice * device = foundDevices[indexPath.row];
+    deviceToBound = foundDevices[indexPath.row];
+    [[NetworkCenter getInstance] boundDeviceWithMac:deviceToBound.deviceMac];
     
     [BTManager getInstance].searchDeviceDelegate = nil;
     [[BTManager getInstance]stopScan];
-    
-    [self.navigationController popViewControllerAnimated:YES];
 }
 
 
@@ -141,7 +149,7 @@
 }
 */
 
-#pragma mark - BTdelegate
+#pragma mark - delegate
 
 - (void)deviceFound:(AntiLossDevice *)device{
     if (device&&[[UserManager getInstance] isBounded:device.deviceMac]) {
@@ -150,6 +158,16 @@
         
         [self.tableView reloadData];
     }
+}
+
+- (void)boundDeviceResult:(BOOL)isSuccees{
+    if (isSuccees) {
+        [self.navigationController popViewControllerAnimated:YES];
+        if (self.searchDelegate) {
+            [self.searchDelegate succeedToBoundDevice:deviceToBound];
+        }
+    }
+    
 }
 
 @end

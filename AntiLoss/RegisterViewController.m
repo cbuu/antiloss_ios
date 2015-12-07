@@ -32,18 +32,16 @@
 
 #pragma mark action
 - (IBAction)registerClick:(id)sender {
-//    NSLog(@"register");
-//    
-//    NSString * username = self.usernameTextField.text;
-//    NSString * password = self.passwordTextField.text;
-//    
-//    if (username.length>0&&password.length>0) {
-//        [[NetworkCenter getInstance] signUp:username password:password];
-//    }
+    NSLog(@"register");
     
-    //AntilossSearchViewController * vc = [AntilossSearchViewController new];
-    //[self.navigationController pushViewController:vc animated:TRUE];
-    [self performSegueWithIdentifier:@"toSearchView" sender:self];
+    NSString * username = self.usernameTextField.text;
+    NSString * password = self.passwordTextField.text;
+    
+    if (username.length>0&&password.length>0) {
+        [[NetworkCenter getInstance] signUp:username password:password];
+    }
+    
+    //[self performSegueWithIdentifier:@"toSearchView" sender:self];
 }
 
 #pragma mark delegate

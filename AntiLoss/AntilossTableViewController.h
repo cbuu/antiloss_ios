@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-
-
 @interface AntilossTableViewController : UITableViewController
 
 @end

@@ -29,11 +29,18 @@
 
 @end
 
+@protocol BoundDeviceDelegate <NSObject>
+
+- (void)boundDeviceResult:(BOOL)isSuccees;
+
+@end
+
 @interface NetworkCenter : NSObject
 
-@property (nonatomic,assign) id<LoginDelegate> loginDelegate;
-@property (nonatomic,assign) id<SignUpDelegate> signUpDelegate;
-@property (nonatomic,assign) id<GetDevicesInfoDelegate> getDevicesInfoDelegate;
+@property (nonatomic,weak) id<LoginDelegate> loginDelegate;
+@property (nonatomic,weak) id<SignUpDelegate> signUpDelegate;
+@property (nonatomic,weak) id<GetDevicesInfoDelegate> getDevicesInfoDelegate;
+@property (nonatomic,weak) id<BoundDeviceDelegate> boundDeviceDelegate;
 
 + (instancetype)getInstance;
 
@@ -43,6 +50,6 @@
 
 - (void)batchGetDevicesInfo:(NSArray*)devicesMac;
 
-
+- (void)boundDeviceWithMac:(NSString *)mac;
 
 @end
