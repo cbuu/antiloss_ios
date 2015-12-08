@@ -343,13 +343,94 @@
                         </barButtonItem>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <segue destination="Dqu-fC-Ej9" kind="show" identifier="toMyDeviceView" id="JgC-o7-585"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="waG-Hm-rr7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="997" y="1468"/>
         </scene>
+        <!--Title-->
+        <scene sceneID="vgv-sr-HL5">
+            <objects>
+                <viewController id="Dqu-fC-Ej9" customClass="AntilossViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="a0D-vg-Y7t"/>
+                        <viewControllerLayoutGuide type="bottom" id="SZB-9d-IkG"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="zh7-Hj-l4y">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="Icon-40.png" translatesAutoresizingMaskIntoConstraints="NO" id="Xxu-to-DSE">
+                                <rect key="frame" x="195" y="111" width="200" height="200"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="CST-7V-has"/>
+                                    <constraint firstAttribute="width" constant="200" id="cbS-IE-RQ1"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="deviceName" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nOM-vH-gZ1">
+                                <rect key="frame" x="212" y="357" width="176" height="21"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="state" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g32-IR-ITO">
+                                <rect key="frame" x="248" y="406" width="104" height="21"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9gj-Ad-JW6">
+                                <rect key="frame" x="234" y="487" width="123" height="30"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <state key="normal" title="求助"/>
+                                <connections>
+                                    <action selector="soundButtonClick:" destination="Dqu-fC-Ej9" eventType="touchUpInside" id="a09-zh-jWu"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="nOM-vH-gZ1" firstAttribute="centerX" secondItem="zh7-Hj-l4y" secondAttribute="centerX" id="1gO-4s-zqt"/>
+                            <constraint firstItem="9gj-Ad-JW6" firstAttribute="centerX" secondItem="zh7-Hj-l4y" secondAttribute="centerX" id="2ht-ha-pys"/>
+                            <constraint firstItem="9gj-Ad-JW6" firstAttribute="top" secondItem="nOM-vH-gZ1" secondAttribute="bottom" constant="100" id="Evb-zM-5cU"/>
+                            <constraint firstItem="Xxu-to-DSE" firstAttribute="top" secondItem="a0D-vg-Y7t" secondAttribute="bottom" constant="50" id="Ual-1s-hhs"/>
+                            <constraint firstItem="g32-IR-ITO" firstAttribute="top" secondItem="nOM-vH-gZ1" secondAttribute="bottom" constant="20" id="ewS-Bs-vjd"/>
+                            <constraint firstItem="Xxu-to-DSE" firstAttribute="centerX" secondItem="zh7-Hj-l4y" secondAttribute="centerX" id="hte-41-52g"/>
+                            <constraint firstItem="g32-IR-ITO" firstAttribute="centerX" secondItem="zh7-Hj-l4y" secondAttribute="centerX" id="mc0-DJ-cQ5"/>
+                            <constraint firstItem="nOM-vH-gZ1" firstAttribute="top" secondItem="Xxu-to-DSE" secondAttribute="bottom" constant="40" id="pRc-nW-HMt"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Title" id="Wda-EY-SSy">
+                        <barButtonItem key="rightBarButtonItem" systemItem="compose" id="GZ3-ql-bkx">
+                            <connections>
+                                <action selector="editDeviceInfo:" destination="Dqu-fC-Ej9" id="B9t-0K-wxj"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="deviceImage" destination="Xxu-to-DSE" id="KaC-9T-0zK"/>
+                        <outlet property="deviceNameLabel" destination="nOM-vH-gZ1" id="cgE-WK-zBc"/>
+                        <outlet property="searchStateLabel" destination="g32-IR-ITO" id="vHP-1X-vWN"/>
+                        <outlet property="soundButton" destination="9gj-Ad-JW6" id="LNp-7i-dqV"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="99q-cT-KBz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="997" y="2298"/>
+        </scene>
     </scenes>
+    <resources>
+        <image name="Icon-40.png" width="40" height="40"/>
+    </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="2kd-9F-ng7"/>
+        <segue reference="01Q-Jo-vnX"/>
     </inferredMetricsTieBreakers>
 </document>

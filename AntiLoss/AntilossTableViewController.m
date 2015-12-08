@@ -11,10 +11,13 @@
 #import "network/NetworkCenter.h"
 #import "AntiLossDevice.h"
 #import "AntilossSearchViewController.h"
+#import "AntilossViewController.h"
 
 @interface AntilossTableViewController ()<GetDevicesInfoDelegate,SearchDelegate>
 {
-    NSMutableArray * devices;
+    NSMutableArray * devices;//(antilossDevice)
+    
+    AntiLossDevice * seletedDevice;
 }
 
 @end
@@ -31,7 +34,10 @@
     NSArray * devicesMac = [[UserManager getInstance] getDevices];
     
     [NetworkCenter getInstance].getDevicesInfoDelegate = self;
-    [[NetworkCenter getInstance] batchGetDevicesInfo:devicesMac];
+    
+    if (devicesMac.count > 0) {
+        [[NetworkCenter getInstance] batchGetDevicesInfo:devicesMac];
+    }
 
 }
 
@@ -73,10 +79,12 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    AntiLossDevice * device = devices[indexPath.row];
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
+    seletedDevice = devices[indexPath.row];
     
-    NSLog(@"select %@",device.deviceName);
+    [self performSegueWithIdentifier:@"toMyDeviceView" sender:self];
+    NSLog(@"select %@",seletedDevice.deviceName);
 }
 
 
@@ -125,6 +133,12 @@
         AntilossSearchViewController * vc = segue.destinationViewController;
         
         vc.searchDelegate = self;
+    }
+    
+    if ([segue.identifier isEqualToString:@"toMyDeviceView"]) {
+        AntilossViewController * vc = segue.destinationViewController;
+        vc.device = seletedDevice;
+        vc.title = seletedDevice.deviceName;
     }
 }
 

@@ -15,6 +15,7 @@
     CBCentralManager * manager;
     
     NSMutableDictionary   * devicesDic;
+    NSMutableDictionary * characteristicInfos;
     
     BOOL state;
 }
@@ -39,6 +40,7 @@
 {
     if (self = [super init]) {
         devicesDic = [NSMutableDictionary dictionary];
+        characteristicInfos = [NSMutableDictionary dictionary];
     }
     return self;
 }
@@ -107,13 +109,34 @@
     return false;
 }
 
+- (void)connect:(AntiLossDevice*)device{
+    if (device) {
+        CBPeripheral * peripheral = devicesDic[device.deviceMac];
+        if (peripheral) {
+            [manager connectPeripheral:peripheral options:nil];
+        }
+    }
+}
+
+- (void)makeSound:(AntiLossDevice*)device{
+    if (device) {
+        CBPeripheral * peripheral = devicesDic[device.deviceMac];
+        if (peripheral) {
+            char b[1];
+            b[0] = 1&0xFF;
+            NSData* data = [NSData dataWithBytes:b length:1];
+            [peripheral writeValue:data forCharacteristic:characteristicInfos[peripheral] type:CBCharacteristicWriteWithResponse];
+        }
+    }
+}
+
 #pragma mark - centralManager delegate
 
 - (void)centralManager:(CBCentralManager *)central didDiscoverPeripheral:(CBPeripheral *)peripheral advertisementData:(NSDictionary<NSString *,id> *)advertisementData RSSI:(NSNumber *)RSSI
 {
     
     if ([self isAntiloss:advertisementData]){
-            if (self.searchDeviceDelegate) {
+            if (self.managerDelegate) {
                 
                 //TODO  del
                 if (![peripheral.name isEqualToString:@"aqtracker"]) {
@@ -125,13 +148,13 @@
                 
                 CBPeripheral * p = devicesDic[mac];
                 if (nil == p) {
-                    devicesDic[mac] = p;
+                    devicesDic[mac] = peripheral;
                 }
                 AntiLossDevice * device = [[AntiLossDevice alloc] init];
                 device.deviceName = peripheral.name;
                 device.deviceMac  = mac;
                 
-                [self.searchDeviceDelegate deviceFound:device];
+                [self.managerDelegate deviceFound:device];
             }
         }
 }
@@ -140,8 +163,10 @@
 {
     NSLog(@"Peripheral connected");
     peripheral.delegate = self;
-    
-    [peripheral discoverServices:nil];
+    if (self.managerDelegate) {
+        [self.managerDelegate deviceConnectResult:TRUE];
+        [peripheral discoverServices:nil];
+    }
 }
 
 - (void)centralManager:(CBCentralManager *)central didFailToConnectPeripheral:(CBPeripheral *)peripheral error:(NSError *)error
@@ -170,8 +195,9 @@
 - (void)peripheral:(CBPeripheral *)peripheral didDiscoverCharacteristicsForService:(CBService *)service error:(NSError *)error
 {
     for (CBCharacteristic *characteristic in service.characteristics) {
-        NSLog(@"Discovered characteristic %@", characteristic);
-        [peripheral readValueForCharacteristic:characteristic];
+        if ([characteristic.UUID isEqual:[CBUUID UUIDWithString:@"FE21"]]) {
+            characteristicInfos[peripheral] = characteristic;
+        }
     }
 }
 

@@ -12,8 +12,8 @@
 #import "UserManager.h"
 #import "JSONParseUtil.h"
 
-//#define NETWORK_PATH @"http://120.25.71.34:3000/"
-#define NETWORK_PATH @"http://localhost:3000/"
+#define NETWORK_PATH @"http://120.25.71.34:3000/"
+//#define NETWORK_PATH @"http://localhost:3000/"
 
 @interface NetworkCenter()
 {
@@ -94,7 +94,7 @@
         } else {
             BOOL isSuccess = [responseObject[@"isSuccess"] boolValue];
             if (self.signUpDelegate) {
-                [self.signUpDelegate signUpResult:isSuccess];
+                [self.signUpDelegate signUpResult:isSuccess username:username];
             }
         }
     }];

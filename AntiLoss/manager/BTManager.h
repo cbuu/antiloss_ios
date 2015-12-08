@@ -9,16 +9,16 @@
 #import <Foundation/Foundation.h>
 #import "AntiLossDevice.h"
 
-@protocol BTSearchDeviceDelegate <NSObject>
+@protocol BTManagerDelegate <NSObject>
 
 @optional
 - (void)deviceFound:(AntiLossDevice*)device;
-
+- (void)deviceConnectResult:(BOOL)isSuccess;
 @end
 
 @interface BTManager : NSObject
 
-@property (nonatomic,assign) id<BTSearchDeviceDelegate> searchDeviceDelegate;
+@property (nonatomic,weak) id<BTManagerDelegate> managerDelegate;
 
 
 + (instancetype)getInstance;
@@ -28,4 +28,7 @@
 - (void)scan;
 - (void)stopScan;
 
+- (void)connect:(AntiLossDevice*)device;
+
+- (void)makeSound:(AntiLossDevice*)device;
 @end

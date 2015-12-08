@@ -35,6 +35,8 @@
     
     [WXApiManager sharedManager].delegate = self;
     [NetworkCenter getInstance].loginDelegate = self;
+    
+    [[NetworkCenter getInstance] login:@"cbuu" password:@"123"];
 }
 
 //    UIImage * thumbImage = [UIImage imageNamed:@"Icon-40.png"];

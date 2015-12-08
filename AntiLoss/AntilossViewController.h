@@ -8,6 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
+@class AntiLossDevice;
+
 @interface AntilossViewController : UIViewController
+@property (weak, nonatomic) IBOutlet UIImageView *deviceImage;
+@property (weak, nonatomic) IBOutlet UILabel *deviceNameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *searchStateLabel;
+@property (weak, nonatomic) IBOutlet UIButton *soundButton;
+
+@property (strong,nonatomic) AntiLossDevice* device;
 
 @end

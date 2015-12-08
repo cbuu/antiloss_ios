@@ -11,15 +11,23 @@
 
 @implementation User
 
+- (instancetype)init{
+    if (self=[super init]) {
+        self.devicesMac = [NSMutableArray array];
+    }
+    return self;
+}
+
 - (BOOL)isBounded:(NSString *)mac{
-    if (self.devices) {
-        for (AntiLossDevice * device in self.devices) {
-            if ([mac isEqualToString:device.deviceMac]) {
-                return YES;
+    BOOL isBound = NO;
+    if (self.devicesMac) {
+        for (NSString * deviceMac in self.devicesMac) {
+            if ([mac isEqualToString:deviceMac]) {
+                isBound = YES;
             }
         }
     }
-    return NO;
+    return isBound;
 }
 
 @end

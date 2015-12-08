@@ -15,6 +15,7 @@
 
 + (instancetype)getInstance;
 
+- (void)setUpWithUsername:(NSString*)username;
 - (void)setUpUserWithData:(NSDictionary*)data;
 
 - (NSMutableArray*)getDevices;

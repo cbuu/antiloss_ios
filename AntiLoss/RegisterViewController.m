@@ -8,7 +8,7 @@
 
 #import "RegisterViewController.h"
 #import "network/NetworkCenter.h"
-
+#import "manager/UserManager.h"
 #import "AntilossSearchViewController.h"
 
 @interface RegisterViewController ()<SignUpDelegate>
@@ -41,15 +41,18 @@
         [[NetworkCenter getInstance] signUp:username password:password];
     }
     
-    //[self performSegueWithIdentifier:@"toSearchView" sender:self];
 }
 
 #pragma mark delegate
 
-- (void)signUpResult:(BOOL)isSuccess
+- (void)signUpResult:(BOOL)isSuccess username:(NSString *)username
 {
     if (isSuccess) {
-        NSLog(@"succeed");
+        NSLog(@"register succeed");
+        
+        [[UserManager getInstance] setUpWithUsername:username];
+        
+        [self performSegueWithIdentifier:@"toSearchView" sender:self];
     }
     else{
         NSLog(@"fail");

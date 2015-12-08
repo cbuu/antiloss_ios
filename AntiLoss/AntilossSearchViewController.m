@@ -12,7 +12,7 @@
 #import "NetworkCenter.h"
 #import "UserManager.h"
 
-@interface AntilossSearchViewController ()<BTSearchDeviceDelegate,BoundDeviceDelegate>
+@interface AntilossSearchViewController ()<BTManagerDelegate,BoundDeviceDelegate>
 {
     UINib * deviceNib;
     
@@ -26,7 +26,7 @@
 
 - (instancetype)init{
     if (self = [super init]) {
-        foundDevices = [NSMutableArray array];
+        
     }
     
     return self;
@@ -35,10 +35,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    foundDevices = [NSMutableArray array];
+    
     self.tableView.tableFooterView = [UIView new];
     
     [NetworkCenter getInstance].boundDeviceDelegate = self;
-    [BTManager getInstance].searchDeviceDelegate = self;
+    [BTManager getInstance].managerDelegate = self;
     [[BTManager getInstance] scan];
 }
 
@@ -47,7 +49,7 @@
 }
 
 - (void)dealloc{
-    [BTManager getInstance].searchDeviceDelegate = nil;
+    [BTManager getInstance].managerDelegate = nil;
     [[BTManager getInstance]stopScan];
 }
 
@@ -86,13 +88,13 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     if (indexPath.row == foundDevices.count) {
-        deviceToBound = [[AntiLossDevice alloc] init];
-        deviceToBound.deviceMac = @"009";
-        deviceToBound.deviceName = @"timo";
-        [[NetworkCenter getInstance] boundDeviceWithMac:deviceToBound.deviceMac];
-        
-        [BTManager getInstance].searchDeviceDelegate = nil;
-        [[BTManager getInstance]stopScan];
+//        deviceToBound = [[AntiLossDevice alloc] init];
+//        deviceToBound.deviceMac = @"009";
+//        deviceToBound.deviceName = @"timo";
+//        [[NetworkCenter getInstance] boundDeviceWithMac:deviceToBound.deviceMac];
+//        
+//        [BTManager getInstance].searchDeviceDelegate = nil;
+//        [[BTManager getInstance]stopScan];
         return;
     }
 
@@ -100,7 +102,7 @@
     deviceToBound = foundDevices[indexPath.row];
     [[NetworkCenter getInstance] boundDeviceWithMac:deviceToBound.deviceMac];
     
-    [BTManager getInstance].searchDeviceDelegate = nil;
+    [BTManager getInstance].managerDelegate = nil;
     [[BTManager getInstance]stopScan];
 }
 
@@ -152,7 +154,7 @@
 #pragma mark - delegate
 
 - (void)deviceFound:(AntiLossDevice *)device{
-    if (device&&[[UserManager getInstance] isBounded:device.deviceMac]) {
+    if (device&&![[UserManager getInstance] isBounded:device.deviceMac]) {
         
         [foundDevices addObject:device];
         
@@ -162,6 +164,8 @@
 
 - (void)boundDeviceResult:(BOOL)isSuccees{
     if (isSuccees) {
+        
+        
         [self.navigationController popViewControllerAnimated:YES];
         if (self.searchDelegate) {
             [self.searchDelegate succeedToBoundDevice:deviceToBound];

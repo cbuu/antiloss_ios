@@ -19,7 +19,7 @@
 @protocol SignUpDelegate <NSObject>
 
 @optional
-- (void)signUpResult:(BOOL)isSuccess;
+- (void)signUpResult:(BOOL)isSuccess username:(NSString*)username;
 
 @end
 

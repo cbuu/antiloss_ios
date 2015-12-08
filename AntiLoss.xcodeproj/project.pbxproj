@@ -26,6 +26,7 @@
 		8971D73D1C0BF38200270294 /* AntiLossDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = 8971D73C1C0BF38200270294 /* AntiLossDevice.m */; };
 		8971D7401C0BF7AF00270294 /* UIView+EasyGet.m in Sources */ = {isa = PBXBuildFile; fileRef = 8971D73F1C0BF7AF00270294 /* UIView+EasyGet.m */; };
 		8983029A1C1187F400701198 /* JSONParseUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 898302991C1187F400701198 /* JSONParseUtil.m */; };
+		8983822E1C16BCE8006CE610 /* CBUURotateView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8983822D1C16BCE8006CE610 /* CBUURotateView.m */; };
 		89A4B9841BFE106A0009A573 /* NetworkCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 89A4B9831BFE106A0009A573 /* NetworkCenter.m */; };
 		89A4B98D1BFE3E020009A573 /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 89A4B98A1BFE3E020009A573 /* libWeChatSDK.a */; };
 		89B90CAC1C0DA108005E6631 /* MainScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 89B90CAB1C0DA108005E6631 /* MainScreen.storyboard */; };
@@ -70,6 +71,8 @@
 		8971D73F1C0BF7AF00270294 /* UIView+EasyGet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIView+EasyGet.m"; path = "common/UIView+EasyGet.m"; sourceTree = "<group>"; };
 		898302981C1187F400701198 /* JSONParseUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JSONParseUtil.h; path = common/JSONParseUtil.h; sourceTree = "<group>"; };
 		898302991C1187F400701198 /* JSONParseUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JSONParseUtil.m; path = common/JSONParseUtil.m; sourceTree = "<group>"; };
+		8983822C1C16BCE8006CE610 /* CBUURotateView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CBUURotateView.h; path = view/CBUURotateView.h; sourceTree = "<group>"; };
+		8983822D1C16BCE8006CE610 /* CBUURotateView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CBUURotateView.m; path = view/CBUURotateView.m; sourceTree = "<group>"; };
 		89A4B9821BFE106A0009A573 /* NetworkCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NetworkCenter.h; path = network/NetworkCenter.h; sourceTree = "<group>"; };
 		89A4B9831BFE106A0009A573 /* NetworkCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NetworkCenter.m; path = network/NetworkCenter.m; sourceTree = "<group>"; };
 		89A4B98A1BFE3E020009A573 /* libWeChatSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWeChatSDK.a; sourceTree = "<group>"; };
@@ -181,6 +184,8 @@
 		8968BE511C0EE2E00061D062 /* view */ = {
 			isa = PBXGroup;
 			children = (
+				8983822C1C16BCE8006CE610 /* CBUURotateView.h */,
+				8983822D1C16BCE8006CE610 /* CBUURotateView.m */,
 				8968BE551C0EE58D0061D062 /* DeviceTableViewCell.h */,
 				8968BE561C0EE58D0061D062 /* DeviceTableViewCell.m */,
 				8968BE571C0EE58D0061D062 /* DeviceTableViewCell.xib */,
@@ -386,6 +391,7 @@
 				893192E11BF9F3F400FB219E /* AppDelegate.m in Sources */,
 				8971D73D1C0BF38200270294 /* AntiLossDevice.m in Sources */,
 				8909D4651BFF0A83002149C2 /* WXApiManager.m in Sources */,
+				8983822E1C16BCE8006CE610 /* CBUURotateView.m in Sources */,
 				8971D7401C0BF7AF00270294 /* UIView+EasyGet.m in Sources */,
 				893192DE1BF9F3F400FB219E /* main.m in Sources */,
 				89F927E71C102C3400C53463 /* AntilossTableViewController.m in Sources */,

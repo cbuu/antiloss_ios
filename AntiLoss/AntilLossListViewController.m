@@ -13,7 +13,7 @@
 
 #define kMyDeviceCellHeight 70
 
-@interface AntilLossListViewController ()<BTSearchDeviceDelegate,UITableViewDataSource,UITableViewDelegate>
+@interface AntilLossListViewController ()<BTManagerDelegate,UITableViewDataSource,UITableViewDelegate>
 {
     UITableView * m_tableView;
     
@@ -29,7 +29,7 @@
     if (self = [super init]) {
         m_devices = [NSMutableArray array];
         
-        [BTManager getInstance].searchDeviceDelegate = self;
+        [BTManager getInstance].managerDelegate = self;
     }
     
     return self;
@@ -51,7 +51,7 @@
 
 - (void)dealloc
 {
-    [BTManager getInstance].searchDeviceDelegate = nil;
+    [BTManager getInstance].managerDelegate = nil;
 }
 
 - (void)initView

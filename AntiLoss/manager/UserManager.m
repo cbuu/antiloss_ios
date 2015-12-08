@@ -29,12 +29,21 @@
     return self;
 }
 
+- (void)setUpWithUsername:(NSString*)username
+{
+    if (username) {
+        User * user = [User new];
+        user.username = username;
+        self.user = user;
+    }
+}
+
 - (void)setUpUserWithData:(NSDictionary*)data
 {
     if (data) {
         User * user = [User new];
         user.username = data[@"username"];
-        user.devices = [self parseJsonWithData:data];
+        user.devicesMac = [self parseJsonWithData:data];
         self.user = user;
     }
 }
@@ -42,15 +51,15 @@
 - (NSMutableArray*)parseJsonWithData:(NSDictionary*)data
 {
     NSArray * arr = data[@"devices"];
-    NSMutableArray * devices = [NSMutableArray array];
+    NSMutableArray * devicesMac = [NSMutableArray array];
     for (NSDictionary * d in arr) {
-        [devices addObject:d[@"deviceMac"]];
+        [devicesMac addObject:d[@"deviceMac"]];
     }
-    return devices;
+    return devicesMac;
 }
 
 - (NSMutableArray *)getDevices{
-    return self.user.devices;
+    return self.user.devicesMac;
 }
 
 - (BOOL)isBounded:(NSString *)mac

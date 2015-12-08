@@ -11,7 +11,7 @@
 @interface User : NSObject
 
 @property (nonatomic,copy) NSString * username;
-@property (nonatomic,copy) NSMutableArray * devices;
+@property (nonatomic,copy) NSMutableArray * devicesMac;
 
 - (BOOL)isBounded:(NSString*)mac;
 

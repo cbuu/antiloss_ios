@@ -32,7 +32,7 @@
     [Bmob registerWithAppKey:@"ffaadab477c3600e3cead7cc64d3173f"];
     [WXApi registerApp:@"wx99c248fdf022077c"];
     
-//    [self setUpBlueTooth];
+    [self setUpBlueTooth];
     
     return YES;
 }
