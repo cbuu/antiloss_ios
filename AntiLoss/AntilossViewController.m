@@ -9,11 +9,12 @@
 #import "AntilossViewController.h"
 #import "CBUURotateView.h"
 #import "manager/BTManager.h"
-
-@interface AntilossViewController ()<BTManagerDelegate>
+#import <UIKit/UIKit.h>
+@interface AntilossViewController ()<BTManagerDelegate,UINavigationControllerDelegate,UIImagePickerControllerDelegate>
 {
     CBUURotateView * rotateView;
-    
+    UIImagePickerController * imagePickerController;
+    UIAlertController * alertController;
     BOOL isFound;
 }
 
@@ -38,24 +39,35 @@
     isFound = NO;
     
     [self initView];
-    [self addRotateView];
+    
+    [[BTManager getInstance] scan];
 }
 
 - (void)initView{
-    [self.view setBackgroundColor:[UIColor colorWithRed:0.9f green:0.9f blue:0.9f alpha:1.0f]];
-    
-    [self makeRoundImage:self.deviceImage];
+    [self.view setBackgroundColor:[UIColor colorWithRed:0.8f green:0.8f blue:0.8f alpha:1.0f]];
     
     self.searchStateLabel.text = @"搜索中";
     
     self.deviceNameLabel.text = self.device.deviceName;
     
+    [self makeRoundImage:self.deviceImage];
     
-    [[BTManager getInstance] scan];
+    [self addRotateView];
+    
+    [self initDeviceNameLabel];
+    [self initPickerController];
+}
+
+- (void)initDeviceNameLabel{
+    
+    UITapGestureRecognizer * recognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(editNameClick)];
+    self.deviceNameLabel.userInteractionEnabled = YES;
+    [self.deviceNameLabel addGestureRecognizer:recognizer];
 }
 
 - (void)addRotateView{
     rotateView = [CBUURotateView buildProgressViewWithFrame:self.deviceImage.frame redius:self.deviceImage.frame.size.width/2 width:5 startAngle:0 endAngle:M_PI/2 color:[UIColor greenColor]];
+    rotateView.userInteractionEnabled = NO;
     rotateView.translatesAutoresizingMaskIntoConstraints = NO;
     [self.view addSubview:rotateView];
     
@@ -81,18 +93,24 @@
     imageView.clipsToBounds = YES;
     imageView.layer.borderColor = [UIColor whiteColor].CGColor;
     imageView.layer.borderWidth = 5.0f;
+    
+    UITapGestureRecognizer * recognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(editImageClick)];
+    imageView.userInteractionEnabled = YES;
+    
+    [imageView addGestureRecognizer:recognizer];
+}
+
+- (void)initPickerController
+{
+    imagePickerController = [[UIImagePickerController alloc]init];
+    imagePickerController.delegate = self;
+    imagePickerController.allowsEditing = YES;
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }
-- (IBAction)soundButtonClick:(id)sender {
-    NSLog(@"sound");
-    [[BTManager getInstance] makeSound:self.device];
-}
-- (IBAction)editDeviceInfo:(id)sender {
-    
-}
+
 
 
 - (void)appWillEnterForegroundNotification{
@@ -114,8 +132,79 @@
 {
     isFound = isSuccess;
     if (isSuccess) {
+        self.searchStateLabel.text = @"已找到";
         [self.soundButton setTitle:@"鸣笛" forState:UIControlStateNormal];
     }
+}
+
+#pragma mark - pickerController delegate
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info{
+    NSLog(@"get image %@  ---  %@",info[UIImagePickerControllerMediaURL],info[UIImagePickerControllerReferenceURL]);
+    UIImage * image = info[UIImagePickerControllerEditedImage];
+    self.deviceImage.image = image;
+    [picker dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker{
+    [picker dismissViewControllerAnimated:YES completion:nil];
+}
+
+#pragma mark - click Action
+
+- (void)editNameClick{
+    NSLog(@"editNameClick");
+    alertController = [UIAlertController alertControllerWithTitle:@"修改设备名字" message:nil preferredStyle:UIAlertControllerStyleAlert];
+    [alertController addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
+        textField.placeholder = @"设备名字";
+    }];
+    
+    UIAlertAction * editView = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        UITextField * nameField = alertController.textFields.firstObject;
+        NSLog(@"%@",nameField.text);
+    }];
+    
+    UIAlertAction * cancel  = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        
+    }];
+    
+    [alertController addAction:editView];
+    [alertController addAction:cancel];
+    
+    [self presentViewController:alertController animated:YES completion:nil];
+    
+}
+
+- (void)editImageClick
+{
+    NSLog(@"editImageClick");
+    alertController = [UIAlertController alertControllerWithTitle:@"选择方式" message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+    UIAlertAction * action1 = [UIAlertAction actionWithTitle:@"图片库" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        imagePickerController.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+        [self presentViewController:imagePickerController animated:YES completion:nil];
+        
+    }];
+    UIAlertAction * action2 = [UIAlertAction actionWithTitle:@"拍照" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        imagePickerController.sourceType = UIImagePickerControllerSourceTypeCamera;
+        [self presentViewController:imagePickerController animated:YES completion:nil];
+    }];
+    
+    UIAlertAction * cancle  = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
+    
+    [alertController addAction:action1];
+    [alertController addAction:action2];
+    [alertController addAction:cancle];
+    
+    
+    [self presentViewController:alertController animated:YES completion:nil];
+}
+
+- (IBAction)soundButtonClick:(id)sender {
+    NSLog(@"sound");
+    [[BTManager getInstance] makeSound:self.device];
+}
+- (IBAction)editDeviceInfo:(id)sender {
+    
 }
 
 @end
