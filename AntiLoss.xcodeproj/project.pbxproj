@@ -31,6 +31,7 @@
 		89A4B98D1BFE3E020009A573 /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 89A4B98A1BFE3E020009A573 /* libWeChatSDK.a */; };
 		89B90CAC1C0DA108005E6631 /* MainScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 89B90CAB1C0DA108005E6631 /* MainScreen.storyboard */; };
 		89DC11C11C0595F1004264C8 /* AntilossViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89DC11C01C0595F1004264C8 /* AntilossViewController.m */; };
+		89DF795E1C1823BF007D0504 /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 89DF795D1C1823BF007D0504 /* Utils.m */; };
 		89F927E71C102C3400C53463 /* AntilossTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89F927E61C102C3400C53463 /* AntilossTableViewController.m */; };
 		89F927EA1C102DAF00C53463 /* UserManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 89F927E91C102DAF00C53463 /* UserManager.m */; };
 /* End PBXBuildFile section */
@@ -81,6 +82,8 @@
 		89B90CAB1C0DA108005E6631 /* MainScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainScreen.storyboard; sourceTree = "<group>"; };
 		89DC11BF1C0595F1004264C8 /* AntilossViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AntilossViewController.h; sourceTree = "<group>"; };
 		89DC11C01C0595F1004264C8 /* AntilossViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AntilossViewController.m; sourceTree = "<group>"; };
+		89DF795C1C1823BF007D0504 /* Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Utils.h; path = common/Utils.h; sourceTree = "<group>"; };
+		89DF795D1C1823BF007D0504 /* Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Utils.m; path = common/Utils.m; sourceTree = "<group>"; };
 		89F927E51C102C3400C53463 /* AntilossTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AntilossTableViewController.h; sourceTree = "<group>"; };
 		89F927E61C102C3400C53463 /* AntilossTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AntilossTableViewController.m; sourceTree = "<group>"; };
 		89F927E81C102DAF00C53463 /* UserManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserManager.h; sourceTree = "<group>"; };
@@ -211,6 +214,8 @@
 				8968BE3B1C0EC6D10061D062 /* User.m */,
 				898302981C1187F400701198 /* JSONParseUtil.h */,
 				898302991C1187F400701198 /* JSONParseUtil.m */,
+				89DF795C1C1823BF007D0504 /* Utils.h */,
+				89DF795D1C1823BF007D0504 /* Utils.m */,
 			);
 			name = common;
 			sourceTree = "<group>";
@@ -394,6 +399,7 @@
 				8983822E1C16BCE8006CE610 /* CBUURotateView.m in Sources */,
 				8971D7401C0BF7AF00270294 /* UIView+EasyGet.m in Sources */,
 				893192DE1BF9F3F400FB219E /* main.m in Sources */,
+				89DF795E1C1823BF007D0504 /* Utils.m in Sources */,
 				89F927E71C102C3400C53463 /* AntilossTableViewController.m in Sources */,
 				8968BE581C0EE58D0061D062 /* DeviceTableViewCell.m in Sources */,
 				8968BE3C1C0EC6D10061D062 /* User.m in Sources */,

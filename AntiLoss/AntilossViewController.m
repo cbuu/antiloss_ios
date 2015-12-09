@@ -9,6 +9,7 @@
 #import "AntilossViewController.h"
 #import "CBUURotateView.h"
 #import "manager/BTManager.h"
+#import "Utils.h"
 #import <UIKit/UIKit.h>
 @interface AntilossViewController ()<BTManagerDelegate,UINavigationControllerDelegate,UIImagePickerControllerDelegate>
 {
@@ -24,11 +25,17 @@
 
 - (void)viewWillAppear:(BOOL)animated{
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appWillEnterForegroundNotification) name:UIApplicationWillEnterForegroundNotification object:nil];
+    if (isFound) {
+        [rotateView stopRotate];
+    }else{
+        [rotateView startRotateWithDuration:2.0f];
+    }
 }
 
 - (void)viewWillDisappear:(BOOL)animated
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [rotateView stopRotate];
 }
 
 - (void)viewDidLoad {
@@ -44,7 +51,7 @@
 }
 
 - (void)initView{
-    [self.view setBackgroundColor:[UIColor colorWithRed:0.8f green:0.8f blue:0.8f alpha:1.0f]];
+    [self.view setBackgroundColor:[UIColor colorWithRed:0.95f green:0.95f blue:0.95f alpha:1.0f]];
     
     self.searchStateLabel.text = @"搜索中";
     
@@ -52,10 +59,16 @@
     
     [self makeRoundImage:self.deviceImage];
     
+    [self initButton];
+    
     [self addRotateView];
     
     [self initDeviceNameLabel];
     [self initPickerController];
+}
+
+- (void)initButton{
+    [Utils makeRoundButton:self.soundButton];
 }
 
 - (void)initDeviceNameLabel{
@@ -161,7 +174,9 @@
     
     UIAlertAction * editView = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         UITextField * nameField = alertController.textFields.firstObject;
-        NSLog(@"%@",nameField.text);
+        if (nameField.text.length>0) {
+            self.deviceNameLabel.text = nameField.text;
+        }
     }];
     
     UIAlertAction * cancel  = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {

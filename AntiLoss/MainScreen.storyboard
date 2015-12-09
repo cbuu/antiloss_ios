@@ -374,22 +374,29 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="deviceName" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nOM-vH-gZ1">
                                 <rect key="frame" x="212" y="357" width="176" height="21"/>
                                 <animations/>
-                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="state" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g32-IR-ITO">
                                 <rect key="frame" x="248" y="406" width="104" height="21"/>
                                 <animations/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9gj-Ad-JW6">
                                 <rect key="frame" x="234" y="487" width="123" height="30"/>
                                 <animations/>
-                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                <state key="normal" title="求助"/>
+                                <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="k1g-bL-rUf"/>
+                                    <constraint firstAttribute="width" constant="123" id="zRf-gc-49J"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <state key="normal" title="求助">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
                                 <connections>
                                     <action selector="soundButtonClick:" destination="Dqu-fC-Ej9" eventType="touchUpInside" id="a09-zh-jWu"/>
                                 </connections>
@@ -400,12 +407,12 @@
                         <constraints>
                             <constraint firstItem="nOM-vH-gZ1" firstAttribute="centerX" secondItem="zh7-Hj-l4y" secondAttribute="centerX" id="1gO-4s-zqt"/>
                             <constraint firstItem="9gj-Ad-JW6" firstAttribute="centerX" secondItem="zh7-Hj-l4y" secondAttribute="centerX" id="2ht-ha-pys"/>
-                            <constraint firstItem="9gj-Ad-JW6" firstAttribute="top" secondItem="nOM-vH-gZ1" secondAttribute="bottom" constant="100" id="Evb-zM-5cU"/>
+                            <constraint firstItem="9gj-Ad-JW6" firstAttribute="top" secondItem="nOM-vH-gZ1" secondAttribute="bottom" constant="200" id="Evb-zM-5cU"/>
                             <constraint firstItem="Xxu-to-DSE" firstAttribute="top" secondItem="a0D-vg-Y7t" secondAttribute="bottom" constant="50" id="Ual-1s-hhs"/>
-                            <constraint firstItem="g32-IR-ITO" firstAttribute="top" secondItem="nOM-vH-gZ1" secondAttribute="bottom" constant="20" id="ewS-Bs-vjd"/>
+                            <constraint firstItem="g32-IR-ITO" firstAttribute="top" secondItem="nOM-vH-gZ1" secondAttribute="bottom" constant="50" id="ewS-Bs-vjd"/>
                             <constraint firstItem="Xxu-to-DSE" firstAttribute="centerX" secondItem="zh7-Hj-l4y" secondAttribute="centerX" id="hte-41-52g"/>
                             <constraint firstItem="g32-IR-ITO" firstAttribute="centerX" secondItem="zh7-Hj-l4y" secondAttribute="centerX" id="mc0-DJ-cQ5"/>
-                            <constraint firstItem="nOM-vH-gZ1" firstAttribute="top" secondItem="Xxu-to-DSE" secondAttribute="bottom" constant="40" id="pRc-nW-HMt"/>
+                            <constraint firstItem="nOM-vH-gZ1" firstAttribute="top" secondItem="Xxu-to-DSE" secondAttribute="bottom" constant="20" id="pRc-nW-HMt"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Title" id="Wda-EY-SSy">
