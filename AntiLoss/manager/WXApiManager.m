@@ -7,6 +7,12 @@
 //
 
 #import "WXApiManager.h"
+#import "Utils.h"
+#import "UserManager.h"
+
+@implementation OpenCache
+
+@end
 
 @implementation WXApiManager
 
@@ -63,6 +69,35 @@
             [_delegate managerDidRecvLaunchFromWXReq:launchReq];
         }
     }
+}
+
+- (BOOL)sendMessageWithTitle:(NSString*)title device:(AntiLossDevice*)device deviceImage:(UIImage*)image andDesciption:(NSString*)description{
+    UIImage * thumbImage = nil;
+    if (image) {
+        thumbImage = [Utils getThumbImage:image size:CGSizeMake(50.0f, 50.0f)];
+    }else{
+        thumbImage = [Utils getThumbImage:[UIImage imageNamed:@"Icon-40.png"] size:CGSizeMake(50.0f, 50.0f)];
+    }
+    
+    WXAppExtendObject * obj = [WXAppExtendObject object];
+    obj.extInfo = device.deviceMac;
+    //obj.fileData = UIImageJPEGRepresentation(thumbImage, 1.0);
+    
+    WXMediaMessage *message = [WXMediaMessage message];
+    message.title = title;
+    message.mediaObject = obj;
+    message.description = description;
+    message.messageExt = device.deviceName;
+    
+    [message setThumbImage:thumbImage];
+    
+    SendMessageToWXReq* req = [[SendMessageToWXReq alloc] init];
+    
+    req.message = message;
+    req.scene = WXSceneSession;
+    req.bText = NO;
+    
+    return [WXApi sendReq:req];
 }
 
 

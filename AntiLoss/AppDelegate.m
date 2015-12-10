@@ -9,10 +9,10 @@
 #import "AppDelegate.h"
 #import "LoginViewController.h"
 #import "WXAPI/WXApi.h"
-#import <BmobSDK/Bmob.h>
 #import "manager/WXApiManager.h"
 #import "manager/BTManager.h"
-@interface AppDelegate ()
+#import "manager/UserManager.h"
+@interface AppDelegate ()<WXApiManagerDelegate>
 
 @end
 
@@ -29,11 +29,12 @@
 //    
 //    [self.window makeKeyAndVisible];
     
-    [Bmob registerWithAppKey:@"ffaadab477c3600e3cead7cc64d3173f"];
+    //[Bmob registerWithAppKey:@"ffaadab477c3600e3cead7cc64d3173f"];
     [WXApi registerApp:@"wx99c248fdf022077c"];
+    [WXApiManager sharedManager].delegate = self;
+    [UserManager getInstance].mode = USER_MODE;
     
     [self setUpBlueTooth];
-    
     return YES;
 }
 
@@ -68,5 +69,21 @@
 {
     return [WXApi handleOpenURL:url delegate:[WXApiManager sharedManager]];
 }
+
+
+- (void)managerDidRecvShowMessageReq:(ShowMessageFromWXReq *)request
+{
+    WXMediaMessage * message = request.message;
+    WXAppExtendObject * obj = message.mediaObject;
+    NSString * username = message.messageExt;
+    NSString * deviceMac = obj.extInfo;
+    OpenCache * cache = [[OpenCache alloc]init];
+    cache.username = username;
+    cache.deviceMac = deviceMac;
+    [WXApiManager sharedManager].cache = cache;
+    [UserManager getInstance].mode = HELP_MODE;
+}
+
+
 
 @end

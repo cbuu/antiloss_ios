@@ -9,9 +9,14 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 #import "WXApi.h"
+#import "AntiLossDevice.h"
 
-#import <Foundation/Foundation.h>
-#import "WXApi.h"
+@interface OpenCache : NSObject
+
+@property (nonatomic,copy) NSString * deviceMac;
+@property (nonatomic,copy) NSString * username;
+
+@end
 
 @protocol WXApiManagerDelegate <NSObject>
 
@@ -34,8 +39,11 @@
 @interface WXApiManager : NSObject<WXApiDelegate>
 
 @property (nonatomic, assign) id<WXApiManagerDelegate> delegate;
+@property (nonatomic, strong) OpenCache* cache;
 
 + (instancetype)sharedManager;
+
+- (BOOL)sendMessageWithTitle:(NSString*)title device:(AntiLossDevice*)device deviceImage:(UIImage*)image andDesciption:(NSString*)description;
 
 @end
 

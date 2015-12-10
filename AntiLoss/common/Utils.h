@@ -11,5 +11,5 @@
 @interface Utils : NSObject
 
 + (void) makeRoundButton:(UIButton *)button;
-
++ (UIImage*) getThumbImage:(UIImage*)oImage size:(CGSize)size;
 @end

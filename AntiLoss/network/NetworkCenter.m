@@ -178,4 +178,37 @@
     }
 }
 
+- (void)unBoundDeviceWithMac:(NSString*)mac{
+    if (mac&&mac.length>0) {
+        NSString * unBoundPath = [NETWORK_PATH stringByAppendingPathComponent:@"unBoundDevice"];
+        
+        NSURL *URL = [NSURL URLWithString:unBoundPath];
+        NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:URL];
+        request.HTTPMethod = @"DELETE";
+        
+        User * user = [UserManager getInstance].user;
+        NSString * username = user.username;
+        
+        NSDictionary * dic = @{@"username":username,@"deviceMac":mac};
+        
+        NSData * data = [NSJSONSerialization dataWithJSONObject:dic options:0 error:nil];
+        
+        request.HTTPBody = data;
+        
+        [request addValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+        
+        NSURLSessionDataTask *dataTask = [manager dataTaskWithRequest:request completionHandler:^(NSURLResponse *response, id responseObject, NSError *error) {
+            if (self.unBoundDeviceDelegate) {
+                if (error) {
+                    [self.unBoundDeviceDelegate unBoundDeviceResult:false];
+                }else{
+                    [self.unBoundDeviceDelegate unBoundDeviceResult: [responseObject[@"isSuccess"] boolValue]];
+                }
+            }
+            
+        }];
+        [dataTask resume];
+    }
+}
+
 @end

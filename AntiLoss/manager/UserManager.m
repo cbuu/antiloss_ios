@@ -24,7 +24,7 @@
 
 -(instancetype)init{
     if (self = [super init]) {
-        
+        self.mode = USER_MODE;
     }
     return self;
 }

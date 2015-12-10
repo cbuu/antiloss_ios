@@ -48,6 +48,7 @@
 		8909D4691BFF8A15002149C2 /* RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
 		891994431C041B4D0071FA34 /* BTManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BTManager.h; sourceTree = "<group>"; };
 		891994441C041B4D0071FA34 /* BTManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BTManager.m; sourceTree = "<group>"; };
+		891F05541C1921BB00A4CDA1 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		893192D91BF9F3F400FB219E /* AntiLoss.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AntiLoss.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		893192DD1BF9F3F400FB219E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		893192DF1BF9F3F400FB219E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -259,6 +260,7 @@
 		EEADE195FB60CCD3DB39F756 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				891F05541C1921BB00A4CDA1 /* SystemConfiguration.framework */,
 				8909D4591BFECBDA002149C2 /* libc++.tbd */,
 				380F0CE5BB3787FF4AD34F2B /* libPods.a */,
 			);

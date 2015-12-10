@@ -9,9 +9,15 @@
 #import <Foundation/Foundation.h>
 #import "User.h"
 
+typedef enum : NSUInteger {
+    USER_MODE,
+    HELP_MODE,
+} ENTER_MODE;
+
 @interface UserManager : NSObject
 
 @property (nonatomic,strong) User* user;
+@property (nonatomic,assign) ENTER_MODE mode;
 
 + (instancetype)getInstance;
 

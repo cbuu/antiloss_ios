@@ -35,12 +35,20 @@
 
 @end
 
+@protocol UnBoundDeviceDelegate <NSObject>
+
+- (void)unBoundDeviceResult:(BOOL)isSuccees;
+
+@end
+
 @interface NetworkCenter : NSObject
 
 @property (nonatomic,weak) id<LoginDelegate> loginDelegate;
 @property (nonatomic,weak) id<SignUpDelegate> signUpDelegate;
 @property (nonatomic,weak) id<GetDevicesInfoDelegate> getDevicesInfoDelegate;
 @property (nonatomic,weak) id<BoundDeviceDelegate> boundDeviceDelegate;
+@property (nonatomic,weak) id<UnBoundDeviceDelegate> unBoundDeviceDelegate;
+
 
 + (instancetype)getInstance;
 
@@ -51,5 +59,6 @@
 - (void)batchGetDevicesInfo:(NSArray*)devicesMac;
 
 - (void)boundDeviceWithMac:(NSString *)mac;
+- (void)unBoundDeviceWithMac:(NSString*)mac;
 
 @end

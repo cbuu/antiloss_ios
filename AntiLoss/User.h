@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+
+
 @interface User : NSObject
 
 @property (nonatomic,copy) NSString * username;

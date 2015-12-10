@@ -132,6 +132,7 @@
                         <outlet property="usernameTextField" destination="ftG-4H-bAK" id="uSe-jz-54m"/>
                         <segue destination="l66-1W-qkn" kind="push" identifier="logintoregister" id="h6t-JR-B1a"/>
                         <segue destination="sdd-Yc-LF8" kind="show" identifier="toAntilossTableViewController" id="2kd-9F-ng7"/>
+                        <segue destination="Dqu-fC-Ej9" kind="show" identifier="toHelpViewController" id="xNl-IK-XWe"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vya-oH-OsM" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -394,11 +395,11 @@
                                     <constraint firstAttribute="width" constant="123" id="zRf-gc-49J"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                <state key="normal" title="求助">
+                                <state key="normal" title="朋友圈求助">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="soundButtonClick:" destination="Dqu-fC-Ej9" eventType="touchUpInside" id="a09-zh-jWu"/>
+                                    <action selector="soundOrHelpButtonClick:" destination="Dqu-fC-Ej9" eventType="touchUpInside" id="GH3-mg-1UA"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -431,13 +432,14 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="99q-cT-KBz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="997" y="2298"/>
+            <point key="canvasLocation" x="387" y="2382"/>
         </scene>
     </scenes>
     <resources>
         <image name="Icon-40.png" width="40" height="40"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="01Q-Jo-vnX"/>
+        <segue reference="2kd-9F-ng7"/>
+        <segue reference="xNl-IK-XWe"/>
     </inferredMetricsTieBreakers>
 </document>

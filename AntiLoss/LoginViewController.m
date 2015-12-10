@@ -8,6 +8,8 @@
 
 #import "LoginViewController.h"
 #import "network/networkCenter.h"
+
+#import "AntilossViewController.h"
 #import "RegisterViewController.h"
 #import <BmobSDK/Bmob.h>
 #import "manager/WXApiManager.h"
@@ -31,75 +33,20 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    
-    [WXApiManager sharedManager].delegate = self;
     [NetworkCenter getInstance].loginDelegate = self;
-    
-    [[NetworkCenter getInstance] login:@"cbuu" password:@"123"];
+    //[[NetworkCenter getInstance] login:@"cbuu" password:@"123"];
+    if ([UserManager getInstance].mode == USER_MODE) {
+        [WXApiManager sharedManager].delegate = self;
+    }
 }
 
-//    UIImage * thumbImage = [UIImage imageNamed:@"Icon-40.png"];
-//    
-//    WXAppExtendObject * obj = [WXAppExtendObject object];
-//    obj.extInfo = @"mac";
-//    obj.fileData = UIImageJPEGRepresentation(thumbImage, 1.0);
-//    
-//    WXMediaMessage *message = [WXMediaMessage message];
-//    message.title = @"title";
-//    message.mediaObject = obj;
-//    message.description = @"antiloss";
-//    
-//    [message setThumbImage:thumbImage];
-//    
-//    SendMessageToWXReq* req = [[SendMessageToWXReq alloc] init];
-//    
-//    req.message = message;
-//    req.scene = WXSceneSession;
-//    req.bText = NO;
-//    
-//    BOOL s = [WXApi sendReq:req];
-//    if (s) {
-//        NSLog(@"yes");
-//    }else{
-//        NSLog(@"no");
-//    }
 
 
 
 
 
-#pragma mark -- wxapimanager delegate
 
-- (void)managerDidRecvShowMessageReq:(ShowMessageFromWXReq *)req {
-    WXMediaMessage *msg = req.message;
-    
-    //显示微信传过来的内容
-    WXAppExtendObject *obj = msg.mediaObject;
-    
-    NSString *strTitle = [NSString stringWithFormat:@"微信请求App显示内容"];
-    NSString *strMsg = [NSString stringWithFormat:@"openID: %@, 标题：%@ \n内容：%@ \n附带信息：%@ \n缩略图:%lu bytes\n附加消息:%@\n", req.openID, msg.title, msg.description, obj.extInfo, (unsigned long)msg.thumbData.length, msg.messageExt];
-    
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:strTitle
-                                                    message:strMsg
-                                                   delegate:self
-                                          cancelButtonTitle:@"OK"
-                                          otherButtonTitles:nil, nil];
-    [alert show];
-    
-}
 
-- (void)managerDidRecvMessageResponse:(SendMessageToWXResp *)response {
-    NSString *strTitle = [NSString stringWithFormat:@"发送媒体消息结果"];
-    NSString *strMsg = [NSString stringWithFormat:@"errcode:%d", response.errCode];
-    
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:strTitle
-                                                    message:strMsg
-                                                   delegate:self
-                                          cancelButtonTitle:@"OK"
-                                          otherButtonTitles:nil, nil];
-    [alert show];
-}
 
 #pragma mark action
 
@@ -126,15 +73,49 @@
 - (void)loginResult:(BOOL)isSuccess withData:(NSDictionary *)data
 {
     if (isSuccess) {
-        NSLog(@"succeed");
-        
         [[UserManager getInstance] setUpUserWithData:data];
         
-        [self performSegueWithIdentifier:@"toAntilossTableViewController" sender:self];
+        if ([UserManager getInstance].mode == HELP_MODE) {
+            if (nil != [WXApiManager sharedManager].cache) {
+                [self performSegueWithIdentifier:@"toHelpViewController" sender:self];
+            }
+        }else{
+            [self performSegueWithIdentifier:@"toAntilossTableViewController" sender:self];
+        }
     }
     else{
         NSLog(@"fail");
     }
 }
+
+#pragma mark -- wxapimanager delegate
+
+- (void)managerDidRecvShowMessageReq:(ShowMessageFromWXReq *)request {
+    
+    WXMediaMessage * message = request.message;
+    WXAppExtendObject * obj = message.mediaObject;
+    NSString * username = message.messageExt;
+    NSString * deviceMac = obj.extInfo;
+    OpenCache * cache = [OpenCache new];
+    cache.username = username;
+    cache.deviceMac = deviceMac;
+    [WXApiManager sharedManager].cache = cache;
+    [UserManager getInstance].mode = HELP_MODE;
+
+    [self performSegueWithIdentifier:@"toHelpView" sender:self];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"toHelpViewController"]) {
+        OpenCache * cache = [WXApiManager sharedManager].cache;
+        AntilossViewController * avc = segue.destinationViewController;
+        AntiLossDevice * device = [[AntiLossDevice alloc] init];
+        device.deviceMac = cache.deviceMac;
+        avc.device = device;
+    }
+}
+
+
 
 @end

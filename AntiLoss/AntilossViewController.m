@@ -9,9 +9,11 @@
 #import "AntilossViewController.h"
 #import "CBUURotateView.h"
 #import "manager/BTManager.h"
+#import "WXApiManager.h"
 #import "Utils.h"
+#import "manager/UserManager.h"
 #import <UIKit/UIKit.h>
-@interface AntilossViewController ()<BTManagerDelegate,UINavigationControllerDelegate,UIImagePickerControllerDelegate>
+@interface AntilossViewController ()<BTManagerDelegate,UINavigationControllerDelegate,UIImagePickerControllerDelegate,WXApiManagerDelegate>
 {
     CBUURotateView * rotateView;
     UIImagePickerController * imagePickerController;
@@ -43,6 +45,7 @@
     
     [BTManager getInstance].managerDelegate = self;
     
+    //[WXApiManager sharedManager].delegate = self;
     isFound = NO;
     
     [self initView];
@@ -214,11 +217,45 @@
     [self presentViewController:alertController animated:YES completion:nil];
 }
 
-- (IBAction)soundButtonClick:(id)sender {
-    NSLog(@"sound");
-    [[BTManager getInstance] makeSound:self.device];
+- (IBAction)soundOrHelpButtonClick:(id)sender {
+    if (isFound) {
+        NSLog(@"sound");
+        [[BTManager getInstance] makeSound:self.device];
+    }else{
+        alertController = [UIAlertController alertControllerWithTitle:@"求助描述" message:nil preferredStyle:UIAlertControllerStyleAlert];
+        [alertController addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
+            textField.placeholder = @"请输入寻物启事描述";
+        }];
+        
+        UIAlertAction * editView = [UIAlertAction actionWithTitle:@"发送" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            UITextField * nameField = alertController.textFields.firstObject;
+            if (nameField.text.length>0) {
+                [[WXApiManager sharedManager] sendMessageWithTitle:@"帮人家找找嘛～" device:self.device deviceImage:self.deviceImage.image andDesciption:nameField.text];
+            }
+        }];
+                                    
+        
+        UIAlertAction * cancel  = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+            
+        }];
+        
+        [alertController addAction:editView];
+        [alertController addAction:cancel];
+        
+        [self presentViewController:alertController animated:YES completion:nil];
+    }
+    
+    
 }
 - (IBAction)editDeviceInfo:(id)sender {
+    NSLog(@"editNameClick");
+    
+}
+
+#pragma mark -wxapi delegate
+
+- (void)managerDidRecvShowMessageReq:(ShowMessageFromWXReq *)request
+{
     
 }
 
