@@ -9,6 +9,7 @@
 #import "RegisterViewController.h"
 #import "network/NetworkCenter.h"
 #import "manager/UserManager.h"
+#import "WXApiManager.h"
 #import "AntilossSearchViewController.h"
 
 @interface RegisterViewController ()<SignUpDelegate>
@@ -52,7 +53,22 @@
         
         [[UserManager getInstance] setUpWithUsername:username];
         
-        [self performSegueWithIdentifier:@"toSearchView" sender:self];
+        
+        UIAlertController * alertController = [UIAlertController alertControllerWithTitle:@"登陆成功" message:nil preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction * alertAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            if ([UserManager getInstance].mode == HELP_MODE) {
+                if (nil != [WXApiManager sharedManager].cache) {
+                    [self performSegueWithIdentifier:@"toHelpViewController" sender:self];
+                }
+            }else{
+                [self performSegueWithIdentifier:@"toSearchView" sender:self];
+            }
+        }];
+        
+        [alertController addAction:alertAction];
+        
+        [self.navigationController presentViewController:alertController animated:YES completion:nil];
+
     }
     else{
         NSLog(@"fail");

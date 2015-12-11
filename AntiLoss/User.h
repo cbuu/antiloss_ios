@@ -16,5 +16,5 @@
 @property (nonatomic,copy) NSMutableArray * devicesMac;
 
 - (BOOL)isBounded:(NSString*)mac;
-
+- (BOOL)unBoundDevice:(NSString*)mac;
 @end

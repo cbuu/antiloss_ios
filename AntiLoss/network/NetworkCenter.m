@@ -11,9 +11,8 @@
 #import <AFNetworking.h>
 #import "UserManager.h"
 #import "JSONParseUtil.h"
+#import "Constants.h"
 
-#define NETWORK_PATH @"http://120.25.71.34:3000/"
-//#define NETWORK_PATH @"http://localhost:3000/"
 
 @interface NetworkCenter()
 {
@@ -40,6 +39,7 @@
     if (self = [super init]) {
         NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
         manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:configuration];
+        self.imageLoader = [[ImageLoader alloc] initWithSessionManager:manager];
     }
     return self;
 }
@@ -209,6 +209,11 @@
         }];
         [dataTask resume];
     }
+}
+
+- (void)uploadDeviceInfoWithMac:(NSString*)mac deviceName:(NSString*)name andImage:(UIImage*)image
+{
+    
 }
 
 @end

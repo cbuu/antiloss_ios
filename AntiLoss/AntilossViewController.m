@@ -11,13 +11,20 @@
 #import "manager/BTManager.h"
 #import "WXApiManager.h"
 #import "Utils.h"
+#import "NetworkCenter.h"
 #import "manager/UserManager.h"
 #import <UIKit/UIKit.h>
-@interface AntilossViewController ()<BTManagerDelegate,UINavigationControllerDelegate,UIImagePickerControllerDelegate,WXApiManagerDelegate>
+@interface AntilossViewController ()<
+BTManagerDelegate,
+UINavigationControllerDelegate,
+UIImagePickerControllerDelegate,
+ImageLoaderDelegate,
+WXApiManagerDelegate>
 {
     CBUURotateView * rotateView;
     UIImagePickerController * imagePickerController;
     UIAlertController * alertController;
+    UIActivityIndicatorView * indicatorView;
     BOOL isFound;
 }
 
@@ -44,13 +51,17 @@
     [super viewDidLoad];
     
     [BTManager getInstance].managerDelegate = self;
+    [NetworkCenter getInstance].imageLoader.delegate = self;
     
-    //[WXApiManager sharedManager].delegate = self;
     isFound = NO;
     
     [self initView];
     
     [[BTManager getInstance] scan];
+}
+
+-(void)dealloc{
+    [[BTManager getInstance] disconnectAllDevices];
 }
 
 - (void)initView{
@@ -153,6 +164,27 @@
     }
 }
 
+- (void)deviceDisconnectResult:(BOOL)isSuccess
+{
+    if (isSuccess) {
+        isFound = NO;
+        [indicatorView stopAnimating];
+        [self.navigationController popViewControllerAnimated:YES];
+    }
+}
+
+#pragma mark - imageLoader delegate
+
+- (void)onUploadImage:(NSString *)urlStr
+{
+    
+}
+
+- (void)onDownloadImage:(UIImage *)image
+{
+    
+}
+
 #pragma mark - pickerController delegate
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info{
@@ -247,16 +279,27 @@
     
     
 }
-- (IBAction)editDeviceInfo:(id)sender {
-    NSLog(@"editNameClick");
+- (IBAction)saveDeviceInfoButtonClick:(id)sender {
+    indicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+    indicatorView.color = [UIColor blueColor];
+    indicatorView.hidesWhenStopped = YES;
+    indicatorView.center = self.view.center;
+    [self.view addSubview:indicatorView];
+    [indicatorView startAnimating];
+}
+
+- (IBAction)backButtonClick:(id)sender {
+    [[BTManager getInstance] disconnectAllDevices];
+    
+    
+    indicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+    indicatorView.color = [UIColor blueColor];
+    indicatorView.hidesWhenStopped = YES;
+    indicatorView.center = self.view.center;
+    [self.view addSubview:indicatorView];
+    [indicatorView startAnimating];
     
 }
 
-#pragma mark -wxapi delegate
-
-- (void)managerDidRecvShowMessageReq:(ShowMessageFromWXReq *)request
-{
-    
-}
 
 @end

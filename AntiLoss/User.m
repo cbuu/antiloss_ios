@@ -30,4 +30,23 @@
     return isBound;
 }
 
+- (BOOL)unBoundDevice:(NSString*)mac{
+    BOOL isUnBound = NO;
+    int index = -1;
+    int l = (int)self.devicesMac.count;
+    if (self.devicesMac) {
+        for (int i = 0 ;i<l;i++) {
+            if ([mac isEqualToString:self.devicesMac[i]]) {
+                isUnBound = YES;
+                index = i;
+                break;
+            }
+        }
+    }
+    if (isUnBound) {
+        [self.devicesMac removeObjectAtIndex:index];
+    }
+    return isUnBound;
+}
+
 @end

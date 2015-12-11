@@ -25,6 +25,8 @@
 		8971D7391C0BED5800270294 /* AntilLossListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8971D7381C0BED5800270294 /* AntilLossListViewController.m */; };
 		8971D73D1C0BF38200270294 /* AntiLossDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = 8971D73C1C0BF38200270294 /* AntiLossDevice.m */; };
 		8971D7401C0BF7AF00270294 /* UIView+EasyGet.m in Sources */ = {isa = PBXBuildFile; fileRef = 8971D73F1C0BF7AF00270294 /* UIView+EasyGet.m */; };
+		89772A2D1C1ABA9500BCE442 /* ImageLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 89772A2C1C1ABA9500BCE442 /* ImageLoader.m */; };
+		89772A301C1AC3E800BCE442 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 89772A2F1C1AC3E800BCE442 /* Constants.m */; };
 		8983029A1C1187F400701198 /* JSONParseUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 898302991C1187F400701198 /* JSONParseUtil.m */; };
 		8983822E1C16BCE8006CE610 /* CBUURotateView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8983822D1C16BCE8006CE610 /* CBUURotateView.m */; };
 		89A4B9841BFE106A0009A573 /* NetworkCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 89A4B9831BFE106A0009A573 /* NetworkCenter.m */; };
@@ -71,6 +73,10 @@
 		8971D73C1C0BF38200270294 /* AntiLossDevice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AntiLossDevice.m; path = common/AntiLossDevice.m; sourceTree = "<group>"; };
 		8971D73E1C0BF7AF00270294 /* UIView+EasyGet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIView+EasyGet.h"; path = "common/UIView+EasyGet.h"; sourceTree = "<group>"; };
 		8971D73F1C0BF7AF00270294 /* UIView+EasyGet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIView+EasyGet.m"; path = "common/UIView+EasyGet.m"; sourceTree = "<group>"; };
+		89772A2B1C1ABA9500BCE442 /* ImageLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ImageLoader.h; path = common/ImageLoader.h; sourceTree = "<group>"; };
+		89772A2C1C1ABA9500BCE442 /* ImageLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ImageLoader.m; path = common/ImageLoader.m; sourceTree = "<group>"; };
+		89772A2E1C1AC3E800BCE442 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Constants.h; path = common/Constants.h; sourceTree = "<group>"; };
+		89772A2F1C1AC3E800BCE442 /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Constants.m; path = common/Constants.m; sourceTree = "<group>"; };
 		898302981C1187F400701198 /* JSONParseUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JSONParseUtil.h; path = common/JSONParseUtil.h; sourceTree = "<group>"; };
 		898302991C1187F400701198 /* JSONParseUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JSONParseUtil.m; path = common/JSONParseUtil.m; sourceTree = "<group>"; };
 		8983822C1C16BCE8006CE610 /* CBUURotateView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CBUURotateView.h; path = view/CBUURotateView.h; sourceTree = "<group>"; };
@@ -207,6 +213,8 @@
 		8971D73A1C0BF33400270294 /* common */ = {
 			isa = PBXGroup;
 			children = (
+				89772A2B1C1ABA9500BCE442 /* ImageLoader.h */,
+				89772A2C1C1ABA9500BCE442 /* ImageLoader.m */,
 				8971D73B1C0BF38200270294 /* AntiLossDevice.h */,
 				8971D73C1C0BF38200270294 /* AntiLossDevice.m */,
 				8971D73E1C0BF7AF00270294 /* UIView+EasyGet.h */,
@@ -217,6 +225,8 @@
 				898302991C1187F400701198 /* JSONParseUtil.m */,
 				89DF795C1C1823BF007D0504 /* Utils.h */,
 				89DF795D1C1823BF007D0504 /* Utils.m */,
+				89772A2E1C1AC3E800BCE442 /* Constants.h */,
+				89772A2F1C1AC3E800BCE442 /* Constants.m */,
 			);
 			name = common;
 			sourceTree = "<group>";
@@ -395,7 +405,9 @@
 				89F927EA1C102DAF00C53463 /* UserManager.m in Sources */,
 				8909D46A1BFF8A15002149C2 /* RegisterViewController.m in Sources */,
 				89A4B9841BFE106A0009A573 /* NetworkCenter.m in Sources */,
+				89772A301C1AC3E800BCE442 /* Constants.m in Sources */,
 				893192E11BF9F3F400FB219E /* AppDelegate.m in Sources */,
+				89772A2D1C1ABA9500BCE442 /* ImageLoader.m in Sources */,
 				8971D73D1C0BF38200270294 /* AntiLossDevice.m in Sources */,
 				8909D4651BFF0A83002149C2 /* WXApiManager.m in Sources */,
 				8983822E1C16BCE8006CE610 /* CBUURotateView.m in Sources */,

@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "ImageLoader.h"
 
 @protocol LoginDelegate <NSObject>
 
@@ -49,6 +50,7 @@
 @property (nonatomic,weak) id<BoundDeviceDelegate> boundDeviceDelegate;
 @property (nonatomic,weak) id<UnBoundDeviceDelegate> unBoundDeviceDelegate;
 
+@property (nonatomic,strong) ImageLoader* imageLoader;
 
 + (instancetype)getInstance;
 
@@ -60,5 +62,9 @@
 
 - (void)boundDeviceWithMac:(NSString *)mac;
 - (void)unBoundDeviceWithMac:(NSString*)mac;
+
+- (void)uploadDeviceInfoWithMac:(NSString*)mac deviceName:(NSString*)name andImage:(UIImage*)image;
+
+
 
 @end

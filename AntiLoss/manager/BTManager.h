@@ -14,12 +14,13 @@
 @optional
 - (void)deviceFound:(AntiLossDevice*)device;
 - (void)deviceConnectResult:(BOOL)isSuccess;
+- (void)deviceDisconnectResult:(BOOL)isSuccess;
 @end
 
 @interface BTManager : NSObject
 
 @property (nonatomic,weak) id<BTManagerDelegate> managerDelegate;
-
+@property (nonatomic,assign) BOOL isConnect;
 
 + (instancetype)getInstance;
 
@@ -29,6 +30,7 @@
 - (void)stopScan;
 
 - (void)connect:(AntiLossDevice*)device;
+- (void)disconnectAllDevices;
 
 - (void)makeSound:(AntiLossDevice*)device;
 @end

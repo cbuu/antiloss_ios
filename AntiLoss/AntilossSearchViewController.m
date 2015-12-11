@@ -50,7 +50,6 @@
 
 - (void)dealloc{
     [BTManager getInstance].managerDelegate = nil;
-    [[BTManager getInstance]stopScan];
 }
 
 #pragma mark - Table view data source
@@ -63,6 +62,10 @@
     return foundDevices.count+1;
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 70.0f;
+}
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     

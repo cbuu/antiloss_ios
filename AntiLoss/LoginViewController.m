@@ -34,19 +34,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [NetworkCenter getInstance].loginDelegate = self;
-    //[[NetworkCenter getInstance] login:@"cbuu" password:@"123"];
+    [[NetworkCenter getInstance] login:@"cbuu" password:@"123"];
     if ([UserManager getInstance].mode == USER_MODE) {
         [WXApiManager sharedManager].delegate = self;
     }
 }
-
-
-
-
-
-
-
-
 
 #pragma mark action
 
@@ -75,13 +67,19 @@
     if (isSuccess) {
         [[UserManager getInstance] setUpUserWithData:data];
         
-        if ([UserManager getInstance].mode == HELP_MODE) {
-            if (nil != [WXApiManager sharedManager].cache) {
-                [self performSegueWithIdentifier:@"toHelpViewController" sender:self];
+        UIAlertController * alertController = [UIAlertController alertControllerWithTitle:@"登陆成功" message:nil preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction * alertAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            if ([UserManager getInstance].mode == HELP_MODE) {
+                if (nil != [WXApiManager sharedManager].cache) {
+                    [self performSegueWithIdentifier:@"toHelpViewController" sender:self];
+                }
+            }else{
+                [self performSegueWithIdentifier:@"toAntilossTableViewController" sender:self];
             }
-        }else{
-            [self performSegueWithIdentifier:@"toAntilossTableViewController" sender:self];
-        }
+        }];
+        [alertController addAction:alertAction];
+        
+        [self.navigationController presentViewController:alertController animated:YES completion:nil];
     }
     else{
         NSLog(@"fail");
@@ -102,7 +100,7 @@
     [WXApiManager sharedManager].cache = cache;
     [UserManager getInstance].mode = HELP_MODE;
 
-    [self performSegueWithIdentifier:@"toHelpView" sender:self];
+    [self performSegueWithIdentifier:@"toHelpViewController" sender:self];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender

@@ -31,6 +31,7 @@
     
     dispatch_once(&token, ^{
         instance = [[BTManager alloc] init];
+        
     });
     
     return instance;
@@ -41,6 +42,7 @@
     if (self = [super init]) {
         devicesDic = [NSMutableDictionary dictionary];
         characteristicInfos = [NSMutableDictionary dictionary];
+        self.isConnect = NO;
     }
     return self;
 }
@@ -118,6 +120,20 @@
     }
 }
 
+- (void)disconnectAllDevices{
+    if (manager.isScanning) {
+        [manager stopScan];
+    }
+    [characteristicInfos removeAllObjects];
+    
+    [devicesDic enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
+        CBPeripheral * p = obj;
+        if (p.state == CBPeripheralStateConnected) {
+            [manager cancelPeripheralConnection:obj];
+        }
+    }];
+}
+
 - (void)makeSound:(AntiLossDevice*)device{
     if (device) {
         CBPeripheral * peripheral = devicesDic[device.deviceMac];
@@ -162,10 +178,22 @@
 - (void)centralManager:(CBCentralManager *)central didConnectPeripheral:(CBPeripheral *)peripheral
 {
     NSLog(@"Peripheral connected");
+    self.isConnect = YES;
     peripheral.delegate = self;
     if (self.managerDelegate) {
         [self.managerDelegate deviceConnectResult:TRUE];
         [peripheral discoverServices:nil];
+    }
+}
+
+- (void)centralManager:(CBCentralManager *)central didDisconnectPeripheral:(CBPeripheral *)peripheral error:(NSError *)error
+{
+    self.isConnect = NO;
+    if (error) {
+        return;
+    }
+    if (self.managerDelegate) {
+        [self.managerDelegate deviceDisconnectResult:YES];
     }
 }
 

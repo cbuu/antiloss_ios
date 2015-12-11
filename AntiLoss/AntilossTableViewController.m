@@ -13,7 +13,7 @@
 #import "AntilossSearchViewController.h"
 #import "AntilossViewController.h"
 
-@interface AntilossTableViewController ()<GetDevicesInfoDelegate,SearchDelegate>
+@interface AntilossTableViewController ()<GetDevicesInfoDelegate,SearchDelegate,UnBoundDeviceDelegate>
 {
     NSMutableArray * devices;//(antilossDevice)
     
@@ -34,6 +34,8 @@
     NSArray * devicesMac = [[UserManager getInstance] getDevices];
     
     [NetworkCenter getInstance].getDevicesInfoDelegate = self;
+    [NetworkCenter getInstance].unBoundDeviceDelegate = self;
+    
     
     if (devicesMac.count > 0) {
         [[NetworkCenter getInstance] batchGetDevicesInfo:devicesMac];
@@ -60,6 +62,11 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return devices.count;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 70.0f;
 }
 
 
@@ -100,11 +107,8 @@
 // Override to support editing the table view.
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView beginUpdates];
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-        [devices removeObjectAtIndex:indexPath.row];
-        [tableView endUpdates];
+        seletedDevice = devices[indexPath.row];
+        [[NetworkCenter getInstance] unBoundDeviceWithMac:seletedDevice.deviceMac];
     } else if (editingStyle == UITableViewCellEditingStyleInsert) {
         // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
     }   
@@ -112,8 +116,6 @@
 
 - (NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
-    
     return @"解绑";
 }
 
@@ -168,6 +170,20 @@
     if (device) {
         [devices addObject:device];
         [self.tableView reloadData];
+    }
+}
+
+- (void)unBoundDeviceResult:(BOOL)isSuccees{
+    if (isSuccees) {
+        UIAlertController * alertController = [UIAlertController alertControllerWithTitle:@"解绑成功" message:nil preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction * alertAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            [[UserManager getInstance].user unBoundDevice:seletedDevice.deviceMac];
+            [devices removeObject:seletedDevice];
+            [self.tableView reloadData];
+        }];
+        [alertController addAction:alertAction];
+        
+        [self.navigationController presentViewController:alertController animated:YES completion:nil];
     }
 }
 
