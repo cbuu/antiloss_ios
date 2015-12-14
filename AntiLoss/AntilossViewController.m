@@ -18,6 +18,7 @@
 BTManagerDelegate,
 UINavigationControllerDelegate,
 UIImagePickerControllerDelegate,
+UpdateDeviceDelegate,
 ImageLoaderDelegate,
 WXApiManagerDelegate>
 {
@@ -26,6 +27,7 @@ WXApiManagerDelegate>
     UIAlertController * alertController;
     UIActivityIndicatorView * indicatorView;
     BOOL isFound;
+    NSString * imageNetPath;
 }
 
 @end
@@ -52,12 +54,14 @@ WXApiManagerDelegate>
     
     [BTManager getInstance].managerDelegate = self;
     [NetworkCenter getInstance].imageLoader.delegate = self;
-    
+    [NetworkCenter getInstance].updateDeviceDelegate = self;
     isFound = NO;
     
     [self initView];
     
     [[BTManager getInstance] scan];
+    [[NetworkCenter getInstance].imageLoader downloadImage:self.device.imageID];
+    
 }
 
 -(void)dealloc{
@@ -177,12 +181,40 @@ WXApiManagerDelegate>
 
 - (void)onUploadImage:(NSString *)urlStr
 {
+    if (nil == urlStr) {
+        return ;
+    }
+    NSLog(@"%@",urlStr);
     
+    imageNetPath= urlStr;
+    
+    [[NetworkCenter getInstance] uploadDeviceInfoWithMac:self.device.deviceMac deviceName:self.deviceNameLabel.text andImagePath:urlStr];
 }
 
 - (void)onDownloadImage:(UIImage *)image
 {
-    
+    if (image) {
+        self.deviceImage.image = image;
+        self.device.image = image;
+    }
+}
+
+- (void)updateDeviceResult:(BOOL)isSuccees
+{
+    if (isSuccees) {
+        [indicatorView stopAnimating];
+        
+        self.device.deviceName = self.deviceNameLabel.text;
+        self.device.image = self.deviceImage.image;
+        self.device.imageID = imageNetPath;
+        
+        alertController = [UIAlertController alertControllerWithTitle:@"上传成功" message:nil preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction * alertAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:nil];
+        [alertController addAction:alertAction];
+        
+        [self.navigationController presentViewController:alertController animated:YES completion:nil];
+
+    }
 }
 
 #pragma mark - pickerController delegate
@@ -286,18 +318,23 @@ WXApiManagerDelegate>
     indicatorView.center = self.view.center;
     [self.view addSubview:indicatorView];
     [indicatorView startAnimating];
+    
+    [[NetworkCenter getInstance].imageLoader uploadImage:self.deviceImage.image];
 }
 
 - (IBAction)backButtonClick:(id)sender {
-    [[BTManager getInstance] disconnectAllDevices];
-    
-    
-    indicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
-    indicatorView.color = [UIColor blueColor];
-    indicatorView.hidesWhenStopped = YES;
-    indicatorView.center = self.view.center;
-    [self.view addSubview:indicatorView];
-    [indicatorView startAnimating];
+    if (isFound) {
+        [[BTManager getInstance] disconnectAllDevices];
+        
+        indicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+        indicatorView.color = [UIColor blueColor];
+        indicatorView.hidesWhenStopped = YES;
+        indicatorView.center = self.view.center;
+        [self.view addSubview:indicatorView];
+        [indicatorView startAnimating];
+    }else{
+        [self.navigationController popViewControllerAnimated:YES];
+    }
     
 }
 

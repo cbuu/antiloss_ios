@@ -353,12 +353,12 @@
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9gj-Ad-JW6">
                                 <rect key="frame" x="234" y="487" width="123" height="30"/>
-                                <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.066425700789549333" green="0.86630808246073299" blue="0.21335610804333488" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="k1g-bL-rUf"/>
                                     <constraint firstAttribute="width" constant="123" id="zRf-gc-49J"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <state key="normal" title="朋友圈求助">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -371,7 +371,7 @@
                         <constraints>
                             <constraint firstItem="nOM-vH-gZ1" firstAttribute="centerX" secondItem="zh7-Hj-l4y" secondAttribute="centerX" id="1gO-4s-zqt"/>
                             <constraint firstItem="9gj-Ad-JW6" firstAttribute="centerX" secondItem="zh7-Hj-l4y" secondAttribute="centerX" id="2ht-ha-pys"/>
-                            <constraint firstItem="9gj-Ad-JW6" firstAttribute="top" secondItem="nOM-vH-gZ1" secondAttribute="bottom" constant="200" id="Evb-zM-5cU"/>
+                            <constraint firstItem="SZB-9d-IkG" firstAttribute="top" secondItem="9gj-Ad-JW6" secondAttribute="bottom" constant="50" id="LIy-fe-h9a"/>
                             <constraint firstItem="Xxu-to-DSE" firstAttribute="top" secondItem="a0D-vg-Y7t" secondAttribute="bottom" constant="50" id="Ual-1s-hhs"/>
                             <constraint firstItem="g32-IR-ITO" firstAttribute="top" secondItem="nOM-vH-gZ1" secondAttribute="bottom" constant="50" id="ewS-Bs-vjd"/>
                             <constraint firstItem="Xxu-to-DSE" firstAttribute="centerX" secondItem="zh7-Hj-l4y" secondAttribute="centerX" id="hte-41-52g"/>

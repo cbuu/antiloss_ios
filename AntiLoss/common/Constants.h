@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-//#define NETWORK_PATH @"http://120.25.71.34:3000/"
+//#define NETWORK_PATH @"http://121.42.177.240:3000/"
 #define NETWORK_PATH @"http://localhost:3000/"
 
 @interface Constants : NSObject

@@ -211,9 +211,35 @@
     }
 }
 
-- (void)uploadDeviceInfoWithMac:(NSString*)mac deviceName:(NSString*)name andImage:(UIImage*)image
+- (void)uploadDeviceInfoWithMac:(NSString*)mac deviceName:(NSString*)name andImagePath:(NSString*)imagePath
 {
-    
+    if (mac&&mac.length>0) {
+        NSString * updateDevicePath = [NETWORK_PATH stringByAppendingPathComponent:@"updateDevice"];
+        
+        NSURL *URL = [NSURL URLWithString:updateDevicePath];
+        NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:URL];
+        request.HTTPMethod = @"PUT";
+        
+        NSDictionary * dic = @{@"deviceMac":mac,@"deviceName":name,@"imagePath":imagePath};
+        
+        NSData * data = [NSJSONSerialization dataWithJSONObject:dic options:0 error:nil];
+        
+        request.HTTPBody = data;
+        
+        [request addValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+        
+        NSURLSessionDataTask *dataTask = [manager dataTaskWithRequest:request completionHandler:^(NSURLResponse *response, id responseObject, NSError *error) {
+            if (self.updateDeviceDelegate) {
+                if (error) {
+                    [self.updateDeviceDelegate updateDeviceResult:false];
+                }else{
+                    [self.updateDeviceDelegate updateDeviceResult: [responseObject[@"isSuccess"] boolValue]];
+                }
+            }
+            
+        }];
+        [dataTask resume];
+    }
 }
 
 @end

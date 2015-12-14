@@ -12,7 +12,7 @@
 
 +(void)makeRoundButton:(UIButton *)button{
     button.layer.cornerRadius = 5.0f;
-    button.backgroundColor = [UIColor greenColor];
+    //button.backgroundColor = [UIColor greenColor];
     button.clipsToBounds = YES;
 }
 

@@ -19,6 +19,8 @@
 
 @implementation ImageLoader
 
+
+
 - (instancetype)initWithSessionManager:(AFURLSessionManager *)aManager
 {
     if (self=[super init]) {
@@ -58,7 +60,30 @@
 
 - (void)downloadImage:(NSString *)urlStr
 {
+    NSString * downloadPath = [NETWORK_PATH stringByAppendingPathComponent:@"download"];
     
+    downloadPath = [downloadPath stringByAppendingPathComponent:[NSString stringWithFormat:@"?imagePath=%@",urlStr]];
+    
+    NSURL *URL = [NSURL URLWithString:downloadPath];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:URL];
+    
+    NSURLSessionDownloadTask * downloadTask = [manager downloadTaskWithRequest:request progress:nil destination:^NSURL * _Nonnull(NSURL * _Nonnull targetPath, NSURLResponse * _Nonnull response) {
+        NSURL *documentsDirectoryURL = [[NSFileManager defaultManager] URLForDirectory:NSDocumentDirectory inDomain:NSUserDomainMask appropriateForURL:nil create:NO error:nil];
+        return [documentsDirectoryURL URLByAppendingPathComponent:[response suggestedFilename]];
+    } completionHandler:^(NSURLResponse * _Nonnull response, NSURL * _Nonnull filePath, NSError * _Nonnull error) {
+        if (!error) {
+            NSData* imageData = [NSData dataWithContentsOfURL:filePath]; //3
+            UIImage* image = [UIImage imageWithData:imageData];
+            if (!image) {
+                NSLog(@"unable to build image");
+            }
+            if (self.delegate) {
+                [self.delegate onDownloadImage:image];
+            }
+        }
+    }];
+    
+    [downloadTask resume];
 }
 
 @end

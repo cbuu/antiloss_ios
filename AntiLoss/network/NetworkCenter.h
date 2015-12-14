@@ -42,6 +42,12 @@
 
 @end
 
+@protocol UpdateDeviceDelegate <NSObject>
+
+- (void) updateDeviceResult:(BOOL)isSuccees;
+
+@end
+
 @interface NetworkCenter : NSObject
 
 @property (nonatomic,weak) id<LoginDelegate> loginDelegate;
@@ -49,6 +55,7 @@
 @property (nonatomic,weak) id<GetDevicesInfoDelegate> getDevicesInfoDelegate;
 @property (nonatomic,weak) id<BoundDeviceDelegate> boundDeviceDelegate;
 @property (nonatomic,weak) id<UnBoundDeviceDelegate> unBoundDeviceDelegate;
+@property (nonatomic,weak) id<UpdateDeviceDelegate> updateDeviceDelegate;
 
 @property (nonatomic,strong) ImageLoader* imageLoader;
 
@@ -63,7 +70,7 @@
 - (void)boundDeviceWithMac:(NSString *)mac;
 - (void)unBoundDeviceWithMac:(NSString*)mac;
 
-- (void)uploadDeviceInfoWithMac:(NSString*)mac deviceName:(NSString*)name andImage:(UIImage*)image;
+- (void)uploadDeviceInfoWithMac:(NSString*)mac deviceName:(NSString*)name andImagePath:(NSString*)imagePath;
 
 
 

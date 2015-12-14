@@ -23,6 +23,8 @@
 
 - (instancetype)initWithSessionManager:(AFURLSessionManager*)manager;
 
+//- (void)uploadImage:(UIImage*)image withDeviceMac:(NSString*)mac;
+
 - (void)uploadImage:(UIImage*)image;
 - (void)downloadImage:(NSString*)urlStr;
 
