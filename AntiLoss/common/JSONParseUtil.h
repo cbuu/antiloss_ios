@@ -11,5 +11,6 @@
 @interface JSONParseUtil : NSObject
 
 + (NSData*)devicesMacToJSON:(NSArray*)devices;
++ (NSDictionary*)deviceFromJson:(NSString*)json;
 
 @end

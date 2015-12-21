@@ -22,6 +22,71 @@
             </objects>
             <point key="canvasLocation" x="-585" y="257"/>
         </scene>
+        <!--帮助寻找-->
+        <scene sceneID="DcY-8X-ei3">
+            <objects>
+                <viewController id="xUu-aY-t8Q" customClass="AntilossHelpViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="4mR-Zy-nME"/>
+                        <viewControllerLayoutGuide type="bottom" id="hW6-f8-Nbb"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8rX-6E-731">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="74E-rd-g37">
+                                <rect key="frame" x="236" y="79" width="128" height="128"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="HXo-ZN-Pbo"/>
+                                    <constraint firstAttribute="height" constant="200" id="kqZ-JY-jsw"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="devicename" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U31-4L-ZeL">
+                                <rect key="frame" x="243" y="271" width="114" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="114" id="1kQ-fT-Cx2"/>
+                                    <constraint firstAttribute="height" constant="21" id="jJp-3H-NiB"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RIH-G0-u9m">
+                                <rect key="frame" x="277" y="446" width="46" height="30"/>
+                                <color key="backgroundColor" red="0.06642570079" green="0.86630808250000002" blue="0.21335610799999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <state key="normal" title="鸣笛">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="state" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mdN-42-bWh">
+                                <rect key="frame" x="279" y="362" width="42" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="qPi-7X-eZY"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="U31-4L-ZeL" firstAttribute="centerX" secondItem="mdN-42-bWh" secondAttribute="centerX" id="AjM-Eg-ORO"/>
+                            <constraint firstItem="RIH-G0-u9m" firstAttribute="top" secondItem="mdN-42-bWh" secondAttribute="bottom" constant="63" id="CZh-un-Nqy"/>
+                            <constraint firstItem="mdN-42-bWh" firstAttribute="centerX" secondItem="8rX-6E-731" secondAttribute="centerX" id="G9l-0R-6zz"/>
+                            <constraint firstItem="mdN-42-bWh" firstAttribute="top" secondItem="U31-4L-ZeL" secondAttribute="bottom" constant="68" id="Ycm-cX-PTe"/>
+                            <constraint firstItem="U31-4L-ZeL" firstAttribute="top" secondItem="74E-rd-g37" secondAttribute="bottom" constant="20" id="gf3-R5-goI"/>
+                            <constraint firstItem="RIH-G0-u9m" firstAttribute="centerX" secondItem="8rX-6E-731" secondAttribute="centerX" id="tCF-5p-nRU"/>
+                            <constraint firstItem="74E-rd-g37" firstAttribute="centerX" secondItem="8rX-6E-731" secondAttribute="centerX" id="vJW-NM-Ce7"/>
+                            <constraint firstItem="74E-rd-g37" firstAttribute="top" secondItem="4mR-Zy-nME" secondAttribute="bottom" constant="59" id="zEy-mq-79L"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="帮助寻找" id="eiH-d2-rad"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bCl-0c-sy5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="387" y="-562"/>
+        </scene>
         <!--登陆-->
         <scene sceneID="qXE-7C-VWx">
             <objects>

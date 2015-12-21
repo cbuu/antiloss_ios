@@ -39,4 +39,21 @@
     return self;
 }
 
+- (NSString*)toJson
+{
+    NSMutableDictionary * dic = [NSMutableDictionary dictionary];
+    if (_deviceMac&&_deviceMac.length>0) {
+        dic[@"deviceMac"] = _deviceMac;
+    }
+    if (_deviceName&&_deviceName.length>0) {
+        dic[@"deviceName"] = _deviceName;
+    }
+    if (_imageID&&_imageID.length>0) {
+        dic[@"image"] = _imageID;
+    }
+    NSData * data = [NSJSONSerialization dataWithJSONObject:dic options:0 error:nil];
+    
+    return [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+}
+
 @end

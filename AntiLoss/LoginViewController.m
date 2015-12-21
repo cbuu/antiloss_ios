@@ -15,6 +15,7 @@
 #import "manager/WXApiManager.h"
 #import "AntilLossListViewController.h"
 #import "WXApiObject.h"
+#import "JSONParseUtil.h"
 #import "UserManager.h"
 
 #import "BTManager.h"
@@ -92,11 +93,12 @@
     
     WXMediaMessage * message = request.message;
     WXAppExtendObject * obj = message.mediaObject;
-    NSString * username = message.messageExt;
-    NSString * deviceMac = obj.extInfo;
-    OpenCache * cache = [OpenCache new];
-    cache.username = username;
-    cache.deviceMac = deviceMac;
+    NSString * deviceJson = obj.extInfo;
+    NSDictionary * deviceInfo = [JSONParseUtil deviceFromJson:deviceJson];
+    OpenCache * cache = [[OpenCache alloc]init];
+    cache.username = deviceInfo[@"deviceName"];
+    cache.deviceMac = deviceInfo[@"deviceMac"];
+    cache.imageID = deviceInfo[@"image"];
     [WXApiManager sharedManager].cache = cache;
     [UserManager getInstance].mode = HELP_MODE;
 

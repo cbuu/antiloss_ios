@@ -80,14 +80,12 @@
     }
     
     WXAppExtendObject * obj = [WXAppExtendObject object];
-    obj.extInfo = device.deviceMac;
-    //obj.fileData = UIImageJPEGRepresentation(thumbImage, 1.0);
+    obj.extInfo = [device toJson];
     
     WXMediaMessage *message = [WXMediaMessage message];
     message.title = title;
     message.mediaObject = obj;
     message.description = description;
-    message.messageExt = device.deviceName;
     
     [message setThumbImage:thumbImage];
     

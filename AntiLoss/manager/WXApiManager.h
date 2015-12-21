@@ -14,6 +14,8 @@
 @interface OpenCache : NSObject
 
 @property (nonatomic,copy) NSString * deviceMac;
+@property (nonatomic,copy) NSString * imageID;
+@property (nonatomic,copy) NSString * deviceName;
 @property (nonatomic,copy) NSString * username;
 
 @end

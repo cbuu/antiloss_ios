@@ -19,4 +19,26 @@
     return [NSJSONSerialization dataWithJSONObject:dic options:0 error:nil];
 }
 
++ (NSDictionary*)deviceFromJson:(NSString*)json
+{
+    if (json == nil) {
+        return nil;
+    }
+    
+    
+    
+    NSData *jsonData = [json dataUsingEncoding:NSUTF8StringEncoding];
+    
+    NSError *err;
+    
+    NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:jsonData
+                                                        options:NSJSONReadingMutableContainers
+                                                          error:&err];
+    if(err) {
+        NSLog(@"json解析失败：%@",err);
+        return nil;
+    }
+    return dic;
+}
+
 @end

@@ -28,4 +28,5 @@
 - (void)uploadImage:(UIImage*)image;
 - (void)downloadImage:(NSString*)urlStr;
 
+- (void)downloadThumbs:(NSString *)urlStr;
 @end

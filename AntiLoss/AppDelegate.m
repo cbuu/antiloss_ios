@@ -12,6 +12,7 @@
 #import "manager/WXApiManager.h"
 #import "manager/BTManager.h"
 #import "manager/UserManager.h"
+#import "JSONParseUtil.h"
 @interface AppDelegate ()<WXApiManagerDelegate>
 
 @end
@@ -75,11 +76,12 @@
 {
     WXMediaMessage * message = request.message;
     WXAppExtendObject * obj = message.mediaObject;
-    NSString * username = message.messageExt;
-    NSString * deviceMac = obj.extInfo;
+    NSString * deviceJson = obj.extInfo;
+    NSDictionary * deviceInfo = [JSONParseUtil deviceFromJson:deviceJson];
     OpenCache * cache = [[OpenCache alloc]init];
-    cache.username = username;
-    cache.deviceMac = deviceMac;
+    cache.username = deviceInfo[@"deviceName"];
+    cache.deviceMac = deviceInfo[@"deviceMac"];
+    cache.imageID = deviceInfo[@"image"];
     [WXApiManager sharedManager].cache = cache;
     [UserManager getInstance].mode = HELP_MODE;
 }

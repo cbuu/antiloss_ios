@@ -22,4 +22,6 @@
 + (instancetype)initWithMac:(NSString*)mac name:(NSString*)name;
 - (instancetype)initWithDic:(NSDictionary*)dic;
 
+- (NSString*)toJson;
+
 @end

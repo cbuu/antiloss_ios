@@ -189,9 +189,7 @@
 - (void)centralManager:(CBCentralManager *)central didDisconnectPeripheral:(CBPeripheral *)peripheral error:(NSError *)error
 {
     self.isConnect = NO;
-    if (error) {
-        return;
-    }
+    
     if (self.managerDelegate) {
         [self.managerDelegate deviceDisconnectResult:YES];
     }
@@ -238,4 +236,5 @@
 {
     
 }
+
 @end
