@@ -69,7 +69,11 @@
     
     NSURLSessionDownloadTask * downloadTask = [manager downloadTaskWithRequest:request progress:nil destination:^NSURL * _Nonnull(NSURL * _Nonnull targetPath, NSURLResponse * _Nonnull response) {
         NSURL *documentsDirectoryURL = [[NSFileManager defaultManager] URLForDirectory:NSDocumentDirectory inDomain:NSUserDomainMask appropriateForURL:nil create:NO error:nil];
-        return [documentsDirectoryURL URLByAppendingPathComponent:[response suggestedFilename]];
+        
+        NSURL * path = [documentsDirectoryURL URLByAppendingPathComponent:@"imagecache"];
+        [[NSFileManager defaultManager] removeItemAtURL:path error:nil];
+        
+        return path;
     } completionHandler:^(NSURLResponse * _Nonnull response, NSURL * _Nonnull filePath, NSError * _Nonnull error) {
         if (!error) {
             NSData* imageData = [NSData dataWithContentsOfURL:filePath]; //3

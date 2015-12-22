@@ -58,7 +58,7 @@
         UIAlertAction * alertAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
             if ([UserManager getInstance].mode == HELP_MODE) {
                 if (nil != [WXApiManager sharedManager].cache) {
-                    [self performSegueWithIdentifier:@"toHelpViewController" sender:self];
+                    [self performSegueWithIdentifier:@"toHelpController" sender:self];
                 }
             }else{
                 [self performSegueWithIdentifier:@"toSearchView" sender:self];

@@ -34,37 +34,43 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="74E-rd-g37">
-                                <rect key="frame" x="236" y="79" width="128" height="128"/>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RIH-G0-u9m">
+                                <rect key="frame" x="260" y="445" width="80" height="30"/>
+                                <color key="backgroundColor" red="0.06642570079" green="0.86630808250000002" blue="0.21335610799999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="80" id="qpW-zK-Kii"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <state key="normal" title="鸣笛">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="soundButtonClick:" destination="xUu-aY-t8Q" eventType="touchUpInside" id="4e4-8H-Ndc"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="搜索中" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mdN-42-bWh">
+                                <rect key="frame" x="192" y="369" width="217" height="47"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="qPi-7X-eZY"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="Icon-40.png" translatesAutoresizingMaskIntoConstraints="NO" id="74E-rd-g37">
+                                <rect key="frame" x="200" y="97" width="200" height="200"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="200" id="HXo-ZN-Pbo"/>
                                     <constraint firstAttribute="height" constant="200" id="kqZ-JY-jsw"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="devicename" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U31-4L-ZeL">
-                                <rect key="frame" x="243" y="271" width="114" height="21"/>
+                                <rect key="frame" x="200" y="316" width="200" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="114" id="1kQ-fT-Cx2"/>
                                     <constraint firstAttribute="height" constant="21" id="jJp-3H-NiB"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RIH-G0-u9m">
-                                <rect key="frame" x="277" y="446" width="46" height="30"/>
-                                <color key="backgroundColor" red="0.06642570079" green="0.86630808250000002" blue="0.21335610799999999" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <state key="normal" title="鸣笛">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="state" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mdN-42-bWh">
-                                <rect key="frame" x="279" y="362" width="42" height="21"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="21" id="qPi-7X-eZY"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -72,16 +78,28 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="U31-4L-ZeL" firstAttribute="centerX" secondItem="mdN-42-bWh" secondAttribute="centerX" id="AjM-Eg-ORO"/>
-                            <constraint firstItem="RIH-G0-u9m" firstAttribute="top" secondItem="mdN-42-bWh" secondAttribute="bottom" constant="63" id="CZh-un-Nqy"/>
                             <constraint firstItem="mdN-42-bWh" firstAttribute="centerX" secondItem="8rX-6E-731" secondAttribute="centerX" id="G9l-0R-6zz"/>
-                            <constraint firstItem="mdN-42-bWh" firstAttribute="top" secondItem="U31-4L-ZeL" secondAttribute="bottom" constant="68" id="Ycm-cX-PTe"/>
+                            <constraint firstItem="hW6-f8-Nbb" firstAttribute="top" secondItem="RIH-G0-u9m" secondAttribute="bottom" constant="50" id="WAx-ys-46h"/>
+                            <constraint firstItem="mdN-42-bWh" firstAttribute="top" secondItem="U31-4L-ZeL" secondAttribute="bottom" constant="50" id="Ycm-cX-PTe"/>
                             <constraint firstItem="U31-4L-ZeL" firstAttribute="top" secondItem="74E-rd-g37" secondAttribute="bottom" constant="20" id="gf3-R5-goI"/>
                             <constraint firstItem="RIH-G0-u9m" firstAttribute="centerX" secondItem="8rX-6E-731" secondAttribute="centerX" id="tCF-5p-nRU"/>
                             <constraint firstItem="74E-rd-g37" firstAttribute="centerX" secondItem="8rX-6E-731" secondAttribute="centerX" id="vJW-NM-Ce7"/>
-                            <constraint firstItem="74E-rd-g37" firstAttribute="top" secondItem="4mR-Zy-nME" secondAttribute="bottom" constant="59" id="zEy-mq-79L"/>
+                            <constraint firstItem="74E-rd-g37" firstAttribute="top" secondItem="4mR-Zy-nME" secondAttribute="bottom" constant="50" id="zEy-mq-79L"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="帮助寻找" id="eiH-d2-rad"/>
+                    <navigationItem key="navigationItem" title="帮助寻找" id="eiH-d2-rad">
+                        <barButtonItem key="leftBarButtonItem" title="Item" id="chM-Aq-xvA">
+                            <connections>
+                                <action selector="backButtonClick:" destination="xUu-aY-t8Q" id="32s-km-GFq"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="deviceImageView" destination="74E-rd-g37" id="tMv-Yf-Ydg"/>
+                        <outlet property="deviceNameLabel" destination="U31-4L-ZeL" id="JNc-Cs-bEN"/>
+                        <outlet property="soundButton" destination="RIH-G0-u9m" id="NRg-Oo-45r"/>
+                        <outlet property="stateLabel" destination="mdN-42-bWh" id="6pc-aT-Fih"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bCl-0c-sy5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -185,7 +203,7 @@
                         <outlet property="usernameTextField" destination="ftG-4H-bAK" id="uSe-jz-54m"/>
                         <segue destination="l66-1W-qkn" kind="push" identifier="logintoregister" id="h6t-JR-B1a"/>
                         <segue destination="sdd-Yc-LF8" kind="show" identifier="toAntilossTableViewController" id="2kd-9F-ng7"/>
-                        <segue destination="Dqu-fC-Ej9" kind="show" identifier="toHelpViewController" id="xNl-IK-XWe"/>
+                        <segue destination="xUu-aY-t8Q" kind="show" identifier="toHelpController" id="45b-2u-7Sh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vya-oH-OsM" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -473,6 +491,5 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="2kd-9F-ng7"/>
-        <segue reference="JgC-o7-585"/>
     </inferredMetricsTieBreakers>
 </document>

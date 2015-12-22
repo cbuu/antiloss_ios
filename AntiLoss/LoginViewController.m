@@ -11,13 +11,13 @@
 
 #import "AntilossViewController.h"
 #import "RegisterViewController.h"
+#import "AntilossHelpViewController.h"
 #import <BmobSDK/Bmob.h>
 #import "manager/WXApiManager.h"
 #import "AntilLossListViewController.h"
 #import "WXApiObject.h"
 #import "JSONParseUtil.h"
 #import "UserManager.h"
-
 #import "BTManager.h"
 
 @interface LoginViewController ()<LoginDelegate,WXApiManagerDelegate>{
@@ -72,7 +72,7 @@
         UIAlertAction * alertAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
             if ([UserManager getInstance].mode == HELP_MODE) {
                 if (nil != [WXApiManager sharedManager].cache) {
-                    [self performSegueWithIdentifier:@"toHelpViewController" sender:self];
+                    [self performSegueWithIdentifier:@"toHelpController" sender:self];
                 }
             }else{
                 [self performSegueWithIdentifier:@"toAntilossTableViewController" sender:self];
@@ -96,22 +96,24 @@
     NSString * deviceJson = obj.extInfo;
     NSDictionary * deviceInfo = [JSONParseUtil deviceFromJson:deviceJson];
     OpenCache * cache = [[OpenCache alloc]init];
-    cache.username = deviceInfo[@"deviceName"];
+    cache.deviceName = deviceInfo[@"deviceName"];
     cache.deviceMac = deviceInfo[@"deviceMac"];
     cache.imageID = deviceInfo[@"image"];
     [WXApiManager sharedManager].cache = cache;
     [UserManager getInstance].mode = HELP_MODE;
 
-    [self performSegueWithIdentifier:@"toHelpViewController" sender:self];
+    [self performSegueWithIdentifier:@"toHelpController" sender:self];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    if ([segue.identifier isEqualToString:@"toHelpViewController"]) {
+    if ([segue.identifier isEqualToString:@"toHelpController"]) {
         OpenCache * cache = [WXApiManager sharedManager].cache;
-        AntilossViewController * avc = segue.destinationViewController;
+        AntilossHelpViewController * avc = segue.destinationViewController;
         AntiLossDevice * device = [[AntiLossDevice alloc] init];
         device.deviceMac = cache.deviceMac;
+        device.imageID = cache.imageID;
+        device.deviceName = cache.deviceName;
         avc.device = device;
     }
 }

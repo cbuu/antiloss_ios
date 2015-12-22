@@ -14,6 +14,7 @@
 #import "NetworkCenter.h"
 #import "manager/UserManager.h"
 #import <UIKit/UIKit.h>
+#import "IOIndicatorView.h"
 @interface AntilossViewController ()<
 BTManagerDelegate,
 UINavigationControllerDelegate,
@@ -25,7 +26,8 @@ WXApiManagerDelegate>
     CBUURotateView * rotateView;
     UIImagePickerController * imagePickerController;
     UIAlertController * alertController;
-    UIActivityIndicatorView * indicatorView;
+    //UIActivityIndicatorView * indicatorView;
+    IOIndicatorView * indicatorView;
     BOOL isFound;
     NSString * imageNetPath;
 }
@@ -75,6 +77,8 @@ WXApiManagerDelegate>
     
     self.deviceNameLabel.text = self.device.deviceName;
     
+    self.title = @"寻找设备";
+    
     [self makeRoundImage:self.deviceImage];
     
     [self initButton];
@@ -82,6 +86,7 @@ WXApiManagerDelegate>
     [self addRotateView];
     
     [self initDeviceNameLabel];
+    
     [self initPickerController];
 }
 
@@ -165,6 +170,7 @@ WXApiManagerDelegate>
     if (isSuccess) {
         self.searchStateLabel.text = @"已找到";
         [self.soundButton setTitle:@"鸣笛" forState:UIControlStateNormal];
+        [rotateView stopRotate];
     }
 }
 
@@ -172,7 +178,7 @@ WXApiManagerDelegate>
 {
     if (isSuccess) {
         isFound = NO;
-        [indicatorView stopAnimating];
+        [indicatorView hide];
         [self.navigationController popViewControllerAnimated:YES];
     }
 }
@@ -202,7 +208,7 @@ WXApiManagerDelegate>
 - (void)updateDeviceResult:(BOOL)isSuccees
 {
     if (isSuccees) {
-        [indicatorView stopAnimating];
+        [indicatorView hide];
         
         self.device.deviceName = self.deviceNameLabel.text;
         self.device.image = self.deviceImage.image;
@@ -312,12 +318,8 @@ WXApiManagerDelegate>
     
 }
 - (IBAction)saveDeviceInfoButtonClick:(id)sender {
-    indicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
-    indicatorView.color = [UIColor blueColor];
-    indicatorView.hidesWhenStopped = YES;
-    indicatorView.center = self.view.center;
-    [self.view addSubview:indicatorView];
-    [indicatorView startAnimating];
+    indicatorView = [[IOIndicatorView alloc] init];
+    [indicatorView show];
     
     [[NetworkCenter getInstance].imageLoader uploadImage:self.deviceImage.image];
 }
@@ -326,12 +328,8 @@ WXApiManagerDelegate>
     if (isFound) {
         [[BTManager getInstance] disconnectAllDevices];
         
-        indicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
-        indicatorView.color = [UIColor blueColor];
-        indicatorView.hidesWhenStopped = YES;
-        indicatorView.center = self.view.center;
-        [self.view addSubview:indicatorView];
-        [indicatorView startAnimating];
+        indicatorView = [[IOIndicatorView alloc] init];
+        [indicatorView show];
     }else{
         [self.navigationController popViewControllerAnimated:YES];
     }

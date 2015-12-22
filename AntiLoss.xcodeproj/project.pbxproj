@@ -38,6 +38,12 @@
 		89DF795E1C1823BF007D0504 /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 89DF795D1C1823BF007D0504 /* Utils.m */; };
 		89F927E71C102C3400C53463 /* AntilossTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89F927E61C102C3400C53463 /* AntilossTableViewController.m */; };
 		89F927EA1C102DAF00C53463 /* UserManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 89F927E91C102DAF00C53463 /* UserManager.m */; };
+		89FB50C31C28F4EF006E675D /* QMapKit.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 89FB50C21C28F4EF006E675D /* QMapKit.bundle */; };
+		89FB50C61C28F519006E675D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89FB50C51C28F519006E675D /* QuartzCore.framework */; };
+		89FB50C81C28F521006E675D /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89FB50C71C28F521006E675D /* CoreLocation.framework */; };
+		89FB50C91C28F52D006E675D /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 891F05541C1921BB00A4CDA1 /* SystemConfiguration.framework */; };
+		89FB50CF1C28F884006E675D /* QMapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89FB50CE1C28F884006E675D /* QMapKit.framework */; };
+		89FB50E41C28FAE6006E675D /* IOIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 89FB50E31C28FAE6006E675D /* IOIndicatorView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -101,6 +107,12 @@
 		89F927E61C102C3400C53463 /* AntilossTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AntilossTableViewController.m; sourceTree = "<group>"; };
 		89F927E81C102DAF00C53463 /* UserManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserManager.h; sourceTree = "<group>"; };
 		89F927E91C102DAF00C53463 /* UserManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserManager.m; sourceTree = "<group>"; };
+		89FB50C21C28F4EF006E675D /* QMapKit.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = QMapKit.bundle; sourceTree = "<group>"; };
+		89FB50C51C28F519006E675D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		89FB50C71C28F521006E675D /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		89FB50CE1C28F884006E675D /* QMapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QMapKit.framework; path = AntiLoss/frameworks/QMapKit.framework; sourceTree = "<group>"; };
+		89FB50E21C28FAE6006E675D /* IOIndicatorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IOIndicatorView.h; path = view/IOIndicatorView.h; sourceTree = "<group>"; };
+		89FB50E31C28FAE6006E675D /* IOIndicatorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IOIndicatorView.m; path = view/IOIndicatorView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,6 +120,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				89FB50C91C28F52D006E675D /* SystemConfiguration.framework in Frameworks */,
+				89FB50C81C28F521006E675D /* CoreLocation.framework in Frameworks */,
+				89FB50C61C28F519006E675D /* QuartzCore.framework in Frameworks */,
+				89FB50CF1C28F884006E675D /* QMapKit.framework in Frameworks */,
 				8909D45A1BFECBDA002149C2 /* libc++.tbd in Frameworks */,
 				89A4B98D1BFE3E020009A573 /* libWeChatSDK.a in Frameworks */,
 				3229275011DEEA09FA1CB896 /* libPods.a in Frameworks */,
@@ -156,6 +172,7 @@
 		893192D01BF9F3F400FB219E = {
 			isa = PBXGroup;
 			children = (
+				89FB50CD1C28F86B006E675D /* frameworks */,
 				89A4B97E1BFE01DE0009A573 /* Resource */,
 				893192DB1BF9F3F400FB219E /* AntiLoss */,
 				893192DA1BF9F3F400FB219E /* Products */,
@@ -209,6 +226,8 @@
 				8968BE551C0EE58D0061D062 /* DeviceTableViewCell.h */,
 				8968BE561C0EE58D0061D062 /* DeviceTableViewCell.m */,
 				8968BE571C0EE58D0061D062 /* DeviceTableViewCell.xib */,
+				89FB50E21C28FAE6006E675D /* IOIndicatorView.h */,
+				89FB50E31C28FAE6006E675D /* IOIndicatorView.m */,
 			);
 			name = view;
 			sourceTree = "<group>";
@@ -244,6 +263,7 @@
 		89A4B97E1BFE01DE0009A573 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				89FB50C21C28F4EF006E675D /* QMapKit.bundle */,
 				8909D4661BFF0E26002149C2 /* Icon-40.png */,
 			);
 			path = Resource;
@@ -268,6 +288,14 @@
 			path = WXAPI;
 			sourceTree = "<group>";
 		};
+		89FB50CD1C28F86B006E675D /* frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				89FB50CE1C28F884006E675D /* QMapKit.framework */,
+			);
+			name = frameworks;
+			sourceTree = "<group>";
+		};
 		DFE1CB5A8DC6DBAC48D3FF82 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -280,6 +308,8 @@
 		EEADE195FB60CCD3DB39F756 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				89FB50C71C28F521006E675D /* CoreLocation.framework */,
+				89FB50C51C28F519006E675D /* QuartzCore.framework */,
 				891F05541C1921BB00A4CDA1 /* SystemConfiguration.framework */,
 				8909D4591BFECBDA002149C2 /* libc++.tbd */,
 				380F0CE5BB3787FF4AD34F2B /* libPods.a */,
@@ -348,6 +378,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8909D4671BFF0E26002149C2 /* Icon-40.png in Resources */,
+				89FB50C31C28F4EF006E675D /* QMapKit.bundle in Resources */,
 				8968BE591C0EE58D0061D062 /* DeviceTableViewCell.xib in Resources */,
 				89B90CAC1C0DA108005E6631 /* MainScreen.storyboard in Resources */,
 				893192E91BF9F3F400FB219E /* Assets.xcassets in Resources */,
@@ -423,6 +454,7 @@
 				8909D4651BFF0A83002149C2 /* WXApiManager.m in Sources */,
 				8983822E1C16BCE8006CE610 /* CBUURotateView.m in Sources */,
 				8971D7401C0BF7AF00270294 /* UIView+EasyGet.m in Sources */,
+				89FB50E41C28FAE6006E675D /* IOIndicatorView.m in Sources */,
 				893192DE1BF9F3F400FB219E /* main.m in Sources */,
 				89DF795E1C1823BF007D0504 /* Utils.m in Sources */,
 				89F927E71C102C3400C53463 /* AntilossTableViewController.m in Sources */,
@@ -527,6 +559,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/AntiLoss/frameworks",
+				);
 				INFOPLIST_FILE = AntiLoss/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
@@ -545,6 +581,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/AntiLoss/frameworks",
+				);
 				INFOPLIST_FILE = AntiLoss/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (

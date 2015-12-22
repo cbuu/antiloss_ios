@@ -13,6 +13,7 @@
 #import "manager/BTManager.h"
 #import "manager/UserManager.h"
 #import "JSONParseUtil.h"
+#import <QMapKit/QMapKit.h>
 @interface AppDelegate ()<WXApiManagerDelegate>
 
 @end
@@ -31,6 +32,7 @@
 //    [self.window makeKeyAndVisible];
     
     //[Bmob registerWithAppKey:@"ffaadab477c3600e3cead7cc64d3173f"];
+    [QMapServices sharedServices].apiKey = @"V2MBZ-FD4KF-EKWJH-J7WM4-QSOF2-5PB57";
     [WXApi registerApp:@"wx99c248fdf022077c"];
     [WXApiManager sharedManager].delegate = self;
     [UserManager getInstance].mode = USER_MODE;
@@ -79,7 +81,7 @@
     NSString * deviceJson = obj.extInfo;
     NSDictionary * deviceInfo = [JSONParseUtil deviceFromJson:deviceJson];
     OpenCache * cache = [[OpenCache alloc]init];
-    cache.username = deviceInfo[@"deviceName"];
+    cache.deviceName = deviceInfo[@"deviceName"];
     cache.deviceMac = deviceInfo[@"deviceMac"];
     cache.imageID = deviceInfo[@"image"];
     [WXApiManager sharedManager].cache = cache;
