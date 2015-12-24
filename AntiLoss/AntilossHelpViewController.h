@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "AntiLossDevice.h"
 
+#import <QMapKit/QMapKit.h>
+
 
 @interface AntilossHelpViewController : UIViewController
 
@@ -18,5 +20,8 @@
 @property (strong, nonatomic) IBOutlet UILabel *deviceNameLabel;
 @property (strong, nonatomic) IBOutlet UILabel *stateLabel;
 @property (strong, nonatomic) IBOutlet UIButton *soundButton;
+
+@property (strong,nonatomic) QMapView * locationManager;
+@property (strong,nonatomic) CLLocation * location;
 
 @end

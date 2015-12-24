@@ -12,7 +12,7 @@
 #import "BTManager.h"
 #import "Utils.h"
 
-@interface AntilossHelpViewController ()<BTManagerDelegate,ImageLoaderDelegate>
+@interface AntilossHelpViewController ()<BTManagerDelegate,ImageLoaderDelegate,QMapViewDelegate>
 {
     CBUURotateView * rotateView;
     BOOL isFound;
@@ -38,12 +38,15 @@
 }
 
 -(void)dealloc{
+    [_locationManager setShowsUserLocation:NO];
     [[BTManager getInstance] disconnectAllDevices];
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [self setUpLocationManager];
+
     [BTManager getInstance].managerDelegate = self;
     
     [NetworkCenter getInstance].imageLoader.delegate = self;
@@ -58,6 +61,15 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)setUpLocationManager
+{
+    _locationManager = [[QMapView alloc] init];
+    [_locationManager setShowsUserLocation:YES];
+    _locationManager.delegate = self;
+    _locationManager.userTrackingMode = QUserTrackingModeFollowWithHeading;
+
 }
 
 - (void)initView
@@ -141,8 +153,9 @@
 {
     isFound = isSuccess;
     if (isSuccess) {
-        self.stateLabel.text = @"已找到";
+        self.stateLabel.text = [NSString stringWithFormat:@"已找到：%.2f  %.2f",_location.coordinate.latitude,_location.coordinate.longitude];
         [rotateView stopRotate];
+        [_locationManager setShowsUserLocation:NO];
     }
 }
 
@@ -164,6 +177,16 @@
     }
 }
 
+#pragma mark - map delegate
+
+- (void)mapView:(QMapView *)mapView didUpdateUserLocation:(QUserLocation *)userLocation updatingLocation:(BOOL)updatingLocation
+{
+    _location = userLocation.location;
+    
+    _stateLabel.text = [NSString stringWithFormat:@"搜索中：%.2f  %.2f",_location.coordinate.latitude,_location.coordinate.longitude];
+    [_stateLabel sizeToFit];
+}
+
 #pragma mark - action
 
 - (IBAction)soundButtonClick:(id)sender {
@@ -180,5 +203,7 @@
         [self.navigationController popViewControllerAnimated:YES];
     }
 }
+
+
 
 @end

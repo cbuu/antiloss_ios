@@ -14,6 +14,7 @@
 #import "NetworkCenter.h"
 #import "manager/UserManager.h"
 #import <UIKit/UIKit.h>
+#import "MapViewController.h"
 #import "IOIndicatorView.h"
 @interface AntilossViewController ()<
 BTManagerDelegate,

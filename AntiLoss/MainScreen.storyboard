@@ -34,20 +34,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RIH-G0-u9m">
-                                <rect key="frame" x="260" y="445" width="80" height="30"/>
-                                <color key="backgroundColor" red="0.06642570079" green="0.86630808250000002" blue="0.21335610799999999" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="80" id="qpW-zK-Kii"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <state key="normal" title="鸣笛">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="soundButtonClick:" destination="xUu-aY-t8Q" eventType="touchUpInside" id="4e4-8H-Ndc"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="搜索中" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mdN-42-bWh">
                                 <rect key="frame" x="192" y="369" width="217" height="47"/>
                                 <constraints>
@@ -71,9 +57,23 @@
                                     <constraint firstAttribute="height" constant="21" id="jJp-3H-NiB"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RIH-G0-u9m">
+                                <rect key="frame" x="235" y="493" width="130" height="65"/>
+                                <color key="backgroundColor" red="0.06642570079" green="0.86630808250000002" blue="0.21335610799999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="80" id="qpW-zK-Kii"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="鸣笛">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="soundButtonClick:" destination="xUu-aY-t8Q" eventType="touchUpInside" id="4e4-8H-Ndc"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -88,7 +88,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="帮助寻找" id="eiH-d2-rad">
-                        <barButtonItem key="leftBarButtonItem" title="Item" id="chM-Aq-xvA">
+                        <barButtonItem key="leftBarButtonItem" systemItem="reply" id="chM-Aq-xvA">
                             <connections>
                                 <action selector="backButtonClick:" destination="xUu-aY-t8Q" id="32s-km-GFq"/>
                             </connections>
@@ -387,6 +387,11 @@
                     </tableView>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="我的设备" id="5Y8-KN-0Fs">
+                        <barButtonItem key="leftBarButtonItem" title="消息" id="vj3-dg-WKb">
+                            <connections>
+                                <action selector="messageButtonClick:" destination="sdd-Yc-LF8" id="n6P-ih-VYn"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="gll-Uv-hZf">
                             <connections>
                                 <action selector="addButtonClick:" destination="sdd-Yc-LF8" id="gWc-fv-2uL"/>

@@ -12,6 +12,8 @@
 #import "AntiLossDevice.h"
 #import "AntilossSearchViewController.h"
 #import "AntilossViewController.h"
+#import "MessageTableViewController.h"
+#import <UIImageView+AFNetworking.h>
 
 @interface AntilossTableViewController ()<GetDevicesInfoDelegate,SearchDelegate,UnBoundDeviceDelegate>
 {
@@ -28,6 +30,8 @@
     [super viewDidLoad];
     
     self.navigationItem.hidesBackButton = YES;
+    
+    self.tableView.tableFooterView = [[UIView alloc] init];
     
     devices = [NSMutableArray array];
     
@@ -186,5 +190,13 @@
         [self.navigationController presentViewController:alertController animated:YES completion:nil];
     }
 }
+
+#pragma mark - action
+- (IBAction)messageButtonClick:(id)sender {
+    MessageTableViewController * mtvc = [[MessageTableViewController alloc] init];
+    
+    [self.navigationController showViewController:mtvc sender:self];
+}
+
 
 @end

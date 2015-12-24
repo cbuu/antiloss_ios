@@ -24,6 +24,10 @@
 		8968BE3F1C0EC9A80061D062 /* AntilossSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8968BE3E1C0EC9A80061D062 /* AntilossSearchViewController.m */; };
 		8968BE581C0EE58D0061D062 /* DeviceTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8968BE561C0EE58D0061D062 /* DeviceTableViewCell.m */; };
 		8968BE591C0EE58D0061D062 /* DeviceTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8968BE571C0EE58D0061D062 /* DeviceTableViewCell.xib */; };
+		8969780D1C2BA852009238E1 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8969780C1C2BA852009238E1 /* CoreGraphics.framework */; };
+		896978131C2BCA5C009238E1 /* MessageNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 896978121C2BCA5C009238E1 /* MessageNode.m */; };
+		896978161C2BD244009238E1 /* MessageTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 896978151C2BD244009238E1 /* MessageTableViewController.m */; };
+		896978191C2BD633009238E1 /* MessageTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 896978181C2BD633009238E1 /* MessageTableViewCell.m */; };
 		8971D7391C0BED5800270294 /* AntilLossListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8971D7381C0BED5800270294 /* AntilLossListViewController.m */; };
 		8971D73D1C0BF38200270294 /* AntiLossDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = 8971D73C1C0BF38200270294 /* AntiLossDevice.m */; };
 		8971D7401C0BF7AF00270294 /* UIView+EasyGet.m in Sources */ = {isa = PBXBuildFile; fileRef = 8971D73F1C0BF7AF00270294 /* UIView+EasyGet.m */; };
@@ -31,6 +35,7 @@
 		89772A301C1AC3E800BCE442 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 89772A2F1C1AC3E800BCE442 /* Constants.m */; };
 		8983029A1C1187F400701198 /* JSONParseUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 898302991C1187F400701198 /* JSONParseUtil.m */; };
 		8983822E1C16BCE8006CE610 /* CBUURotateView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8983822D1C16BCE8006CE610 /* CBUURotateView.m */; };
+		899F7C8A1C2A4DA300228D40 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 899F7C891C2A4DA300228D40 /* MapViewController.m */; };
 		89A4B9841BFE106A0009A573 /* NetworkCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 89A4B9831BFE106A0009A573 /* NetworkCenter.m */; };
 		89A4B98D1BFE3E020009A573 /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 89A4B98A1BFE3E020009A573 /* libWeChatSDK.a */; };
 		89B90CAC1C0DA108005E6631 /* MainScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 89B90CAB1C0DA108005E6631 /* MainScreen.storyboard */; };
@@ -79,6 +84,13 @@
 		8968BE551C0EE58D0061D062 /* DeviceTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DeviceTableViewCell.h; path = view/DeviceTableViewCell.h; sourceTree = "<group>"; };
 		8968BE561C0EE58D0061D062 /* DeviceTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DeviceTableViewCell.m; path = view/DeviceTableViewCell.m; sourceTree = "<group>"; };
 		8968BE571C0EE58D0061D062 /* DeviceTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DeviceTableViewCell.xib; path = view/DeviceTableViewCell.xib; sourceTree = "<group>"; };
+		8969780C1C2BA852009238E1 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		896978111C2BCA5C009238E1 /* MessageNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MessageNode.h; path = model/MessageNode.h; sourceTree = "<group>"; };
+		896978121C2BCA5C009238E1 /* MessageNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MessageNode.m; path = model/MessageNode.m; sourceTree = "<group>"; };
+		896978141C2BD244009238E1 /* MessageTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageTableViewController.h; sourceTree = "<group>"; };
+		896978151C2BD244009238E1 /* MessageTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageTableViewController.m; sourceTree = "<group>"; };
+		896978171C2BD633009238E1 /* MessageTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MessageTableViewCell.h; path = view/MessageTableViewCell.h; sourceTree = "<group>"; };
+		896978181C2BD633009238E1 /* MessageTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MessageTableViewCell.m; path = view/MessageTableViewCell.m; sourceTree = "<group>"; };
 		8971D7371C0BED5800270294 /* AntilLossListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AntilLossListViewController.h; sourceTree = "<group>"; };
 		8971D7381C0BED5800270294 /* AntilLossListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AntilLossListViewController.m; sourceTree = "<group>"; };
 		8971D73B1C0BF38200270294 /* AntiLossDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AntiLossDevice.h; path = common/AntiLossDevice.h; sourceTree = "<group>"; };
@@ -93,6 +105,8 @@
 		898302991C1187F400701198 /* JSONParseUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JSONParseUtil.m; path = common/JSONParseUtil.m; sourceTree = "<group>"; };
 		8983822C1C16BCE8006CE610 /* CBUURotateView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CBUURotateView.h; path = view/CBUURotateView.h; sourceTree = "<group>"; };
 		8983822D1C16BCE8006CE610 /* CBUURotateView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CBUURotateView.m; path = view/CBUURotateView.m; sourceTree = "<group>"; };
+		899F7C881C2A4DA300228D40 /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
+		899F7C891C2A4DA300228D40 /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
 		89A4B9821BFE106A0009A573 /* NetworkCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NetworkCenter.h; path = network/NetworkCenter.h; sourceTree = "<group>"; };
 		89A4B9831BFE106A0009A573 /* NetworkCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NetworkCenter.m; path = network/NetworkCenter.m; sourceTree = "<group>"; };
 		89A4B98A1BFE3E020009A573 /* libWeChatSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWeChatSDK.a; sourceTree = "<group>"; };
@@ -120,6 +134,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8969780D1C2BA852009238E1 /* CoreGraphics.framework in Frameworks */,
 				89FB50C91C28F52D006E675D /* SystemConfiguration.framework in Frameworks */,
 				89FB50C81C28F521006E675D /* CoreLocation.framework in Frameworks */,
 				89FB50C61C28F519006E675D /* QuartzCore.framework in Frameworks */,
@@ -150,6 +165,10 @@
 				89F927E61C102C3400C53463 /* AntilossTableViewController.m */,
 				895B58B91C27B22A008E1169 /* AntilossHelpViewController.h */,
 				895B58BA1C27B22A008E1169 /* AntilossHelpViewController.m */,
+				899F7C881C2A4DA300228D40 /* MapViewController.h */,
+				899F7C891C2A4DA300228D40 /* MapViewController.m */,
+				896978141C2BD244009238E1 /* MessageTableViewController.h */,
+				896978151C2BD244009238E1 /* MessageTableViewController.m */,
 			);
 			name = controller;
 			sourceTree = "<group>";
@@ -228,6 +247,8 @@
 				8968BE571C0EE58D0061D062 /* DeviceTableViewCell.xib */,
 				89FB50E21C28FAE6006E675D /* IOIndicatorView.h */,
 				89FB50E31C28FAE6006E675D /* IOIndicatorView.m */,
+				896978171C2BD633009238E1 /* MessageTableViewCell.h */,
+				896978181C2BD633009238E1 /* MessageTableViewCell.m */,
 			);
 			name = view;
 			sourceTree = "<group>";
@@ -235,6 +256,8 @@
 		8968BE521C0EE2FC0061D062 /* model */ = {
 			isa = PBXGroup;
 			children = (
+				896978111C2BCA5C009238E1 /* MessageNode.h */,
+				896978121C2BCA5C009238E1 /* MessageNode.m */,
 			);
 			name = model;
 			sourceTree = "<group>";
@@ -308,6 +331,7 @@
 		EEADE195FB60CCD3DB39F756 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8969780C1C2BA852009238E1 /* CoreGraphics.framework */,
 				89FB50C71C28F521006E675D /* CoreLocation.framework */,
 				89FB50C51C28F519006E675D /* QuartzCore.framework */,
 				891F05541C1921BB00A4CDA1 /* SystemConfiguration.framework */,
@@ -351,6 +375,11 @@
 				TargetAttributes = {
 					893192D81BF9F3F400FB219E = {
 						CreatedOnToolsVersion = 7.1.1;
+						SystemCapabilities = {
+							com.apple.Maps.iOS = {
+								enabled = 0;
+							};
+						};
 					};
 				};
 			};
@@ -443,12 +472,14 @@
 			files = (
 				8968BE3F1C0EC9A80061D062 /* AntilossSearchViewController.m in Sources */,
 				893192E41BF9F3F400FB219E /* LoginViewController.m in Sources */,
+				896978131C2BCA5C009238E1 /* MessageNode.m in Sources */,
 				89F927EA1C102DAF00C53463 /* UserManager.m in Sources */,
 				8909D46A1BFF8A15002149C2 /* RegisterViewController.m in Sources */,
 				89A4B9841BFE106A0009A573 /* NetworkCenter.m in Sources */,
 				89772A301C1AC3E800BCE442 /* Constants.m in Sources */,
 				895B58BB1C27B22A008E1169 /* AntilossHelpViewController.m in Sources */,
 				893192E11BF9F3F400FB219E /* AppDelegate.m in Sources */,
+				896978191C2BD633009238E1 /* MessageTableViewCell.m in Sources */,
 				89772A2D1C1ABA9500BCE442 /* ImageLoader.m in Sources */,
 				8971D73D1C0BF38200270294 /* AntiLossDevice.m in Sources */,
 				8909D4651BFF0A83002149C2 /* WXApiManager.m in Sources */,
@@ -457,12 +488,14 @@
 				89FB50E41C28FAE6006E675D /* IOIndicatorView.m in Sources */,
 				893192DE1BF9F3F400FB219E /* main.m in Sources */,
 				89DF795E1C1823BF007D0504 /* Utils.m in Sources */,
+				896978161C2BD244009238E1 /* MessageTableViewController.m in Sources */,
 				89F927E71C102C3400C53463 /* AntilossTableViewController.m in Sources */,
 				8968BE581C0EE58D0061D062 /* DeviceTableViewCell.m in Sources */,
 				8968BE3C1C0EC6D10061D062 /* User.m in Sources */,
 				8971D7391C0BED5800270294 /* AntilLossListViewController.m in Sources */,
 				895B58BE1C27E370008E1169 /* LocationManager.m in Sources */,
 				891994451C041B4D0071FA34 /* BTManager.m in Sources */,
+				899F7C8A1C2A4DA300228D40 /* MapViewController.m in Sources */,
 				8983029A1C1187F400701198 /* JSONParseUtil.m in Sources */,
 				89DC11C11C0595F1004264C8 /* AntilossViewController.m in Sources */,
 			);
