@@ -135,7 +135,6 @@
 
 - (void)mapView:(QMapView *)mapView didUpdateUserLocation:(QUserLocation *)userLocation updatingLocation:(BOOL)updatingLocation
 {
-    int a = 1;
 }
 
 @end

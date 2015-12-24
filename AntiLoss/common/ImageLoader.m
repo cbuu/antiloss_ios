@@ -9,7 +9,7 @@
 #import "ImageLoader.h"
 #import <AFNetworking.h>
 #import "Constants.h"
-
+#import "Utils.h"
 
 @interface ImageLoader()
 {
@@ -60,6 +60,19 @@
 
 - (void)downloadImage:(NSString *)urlStr
 {
+    NSURL *documentsDirectoryURL = [[NSFileManager defaultManager] URLForDirectory:NSDocumentDirectory inDomain:NSUserDomainMask appropriateForURL:nil create:NO error:nil];
+    NSString * cacheName = [Utils md5:urlStr];
+    NSURL * path = [documentsDirectoryURL URLByAppendingPathComponent:cacheName];
+    NSData* imageData = [NSData dataWithContentsOfURL:path]; //3
+    UIImage* image = [UIImage imageWithData:imageData];
+    if (!image) {
+        NSLog(@"unable to build image");
+    }else if (self.delegate) {
+        [self.delegate onDownloadImage:image];
+        return;
+    }
+    
+    
     NSString * downloadPath = [NETWORK_PATH stringByAppendingPathComponent:@"download"];
     
     downloadPath = [downloadPath stringByAppendingPathComponent:[NSString stringWithFormat:@"?imagePath=%@",urlStr]];
@@ -70,8 +83,9 @@
     NSURLSessionDownloadTask * downloadTask = [manager downloadTaskWithRequest:request progress:nil destination:^NSURL * _Nonnull(NSURL * _Nonnull targetPath, NSURLResponse * _Nonnull response) {
         NSURL *documentsDirectoryURL = [[NSFileManager defaultManager] URLForDirectory:NSDocumentDirectory inDomain:NSUserDomainMask appropriateForURL:nil create:NO error:nil];
         
-        NSURL * path = [documentsDirectoryURL URLByAppendingPathComponent:@"imagecache"];
-        [[NSFileManager defaultManager] removeItemAtURL:path error:nil];
+        NSString * cacheName = [Utils md5:urlStr];
+        
+        NSURL * path = [documentsDirectoryURL URLByAppendingPathComponent:cacheName];
         
         return path;
     } completionHandler:^(NSURLResponse * _Nonnull response, NSURL * _Nonnull filePath, NSError * _Nonnull error) {

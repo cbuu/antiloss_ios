@@ -12,4 +12,6 @@
 
 + (void) makeRoundButton:(UIButton *)button;
 + (UIImage*) getThumbImage:(UIImage*)oImage size:(CGSize)size;
+
++ (NSString *)md5:(NSString*)str;
 @end
