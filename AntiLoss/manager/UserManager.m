@@ -43,6 +43,7 @@
     if (data) {
         User * user = [User new];
         user.username = data[@"username"];
+        user.teleNum  = data[@"teleNum"];
         user.devicesMac = [self parseJsonWithData:data];
         self.user = user;
     }

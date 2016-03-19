@@ -10,6 +10,7 @@
 #import "network/NetworkCenter.h"
 #import "CBUURotateView.h"
 #import "BTManager.h"
+#import "manager/UserManager.h"
 #import "Utils.h"
 
 @interface AntilossHelpViewController ()<BTManagerDelegate,ImageLoaderDelegate,QMapViewDelegate>
@@ -90,6 +91,7 @@
 
 - (void)initButton{
     [Utils makeRoundButton:self.soundButton];
+    [Utils makeRoundButton:self.contactButton];
 }
 
 - (void)addRotateView{
@@ -197,13 +199,19 @@
 }
 
 - (IBAction)backButtonClick:(id)sender {
+    [UserManager getInstance].mode = USER_MODE;
     if (isFound) {
         [[BTManager getInstance] disconnectAllDevices];
-    }else{
-        [self.navigationController popViewControllerAnimated:YES];
     }
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
+- (IBAction)contactButtonClick:(id)sender {
+    NSMutableString * str =[[NSMutableString alloc] initWithFormat:@"tel:%@",self.teleNum];
+    UIWebView * callWebview = [[UIWebView alloc] init];
+    [callWebview loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:str]]];
+    [self.view addSubview:callWebview];
+}
 
 
 @end

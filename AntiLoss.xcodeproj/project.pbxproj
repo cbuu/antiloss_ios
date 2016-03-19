@@ -12,6 +12,7 @@
 		8909D4651BFF0A83002149C2 /* WXApiManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8909D4641BFF0A83002149C2 /* WXApiManager.m */; };
 		8909D4671BFF0E26002149C2 /* Icon-40.png in Resources */ = {isa = PBXBuildFile; fileRef = 8909D4661BFF0E26002149C2 /* Icon-40.png */; };
 		8909D46A1BFF8A15002149C2 /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8909D4691BFF8A15002149C2 /* RegisterViewController.m */; };
+		8916C8011C95E4CC00FA93E3 /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8916C8001C95E4CC00FA93E3 /* SettingViewController.m */; };
 		891994451C041B4D0071FA34 /* BTManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 891994441C041B4D0071FA34 /* BTManager.m */; };
 		893192DE1BF9F3F400FB219E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 893192DD1BF9F3F400FB219E /* main.m */; };
 		893192E11BF9F3F400FB219E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 893192E01BF9F3F400FB219E /* AppDelegate.m */; };
@@ -61,6 +62,8 @@
 		8909D4661BFF0E26002149C2 /* Icon-40.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-40.png"; sourceTree = "<group>"; };
 		8909D4681BFF8A15002149C2 /* RegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
 		8909D4691BFF8A15002149C2 /* RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
+		8916C7FF1C95E4CC00FA93E3 /* SettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingViewController.h; sourceTree = "<group>"; };
+		8916C8001C95E4CC00FA93E3 /* SettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingViewController.m; sourceTree = "<group>"; };
 		891994431C041B4D0071FA34 /* BTManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BTManager.h; sourceTree = "<group>"; };
 		891994441C041B4D0071FA34 /* BTManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BTManager.m; sourceTree = "<group>"; };
 		891F05541C1921BB00A4CDA1 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
@@ -169,6 +172,8 @@
 				899F7C891C2A4DA300228D40 /* MapViewController.m */,
 				896978141C2BD244009238E1 /* MessageTableViewController.h */,
 				896978151C2BD244009238E1 /* MessageTableViewController.m */,
+				8916C7FF1C95E4CC00FA93E3 /* SettingViewController.h */,
+				8916C8001C95E4CC00FA93E3 /* SettingViewController.m */,
 			);
 			name = controller;
 			sourceTree = "<group>";
@@ -477,6 +482,7 @@
 				8909D46A1BFF8A15002149C2 /* RegisterViewController.m in Sources */,
 				89A4B9841BFE106A0009A573 /* NetworkCenter.m in Sources */,
 				89772A301C1AC3E800BCE442 /* Constants.m in Sources */,
+				8916C8011C95E4CC00FA93E3 /* SettingViewController.m in Sources */,
 				895B58BB1C27B22A008E1169 /* AntilossHelpViewController.m in Sources */,
 				893192E11BF9F3F400FB219E /* AppDelegate.m in Sources */,
 				896978191C2BD633009238E1 /* MessageTableViewCell.m in Sources */,

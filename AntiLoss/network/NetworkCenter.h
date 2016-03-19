@@ -24,9 +24,23 @@
 
 @end
 
+@protocol SaveUserInfoDelegate <NSObject>
+
+@optional
+- (void)saveUserInfoResult:(BOOL)isSuccess;
+
+@end
+
 @protocol GetDevicesInfoDelegate <NSObject>
 
 - (void)getDevicesInfo:(NSArray*)infos;
+
+@end
+
+@protocol IsDeviceRegisteredDelegate <NSObject>
+
+@optional
+- (void)isRegistered:(BOOL)isRegistered;
 
 @end
 
@@ -53,9 +67,11 @@
 @property (nonatomic,weak) id<LoginDelegate> loginDelegate;
 @property (nonatomic,weak) id<SignUpDelegate> signUpDelegate;
 @property (nonatomic,weak) id<GetDevicesInfoDelegate> getDevicesInfoDelegate;
+@property (nonatomic,weak) id<IsDeviceRegisteredDelegate> isDeviceRegisteredDelegate;
 @property (nonatomic,weak) id<BoundDeviceDelegate> boundDeviceDelegate;
 @property (nonatomic,weak) id<UnBoundDeviceDelegate> unBoundDeviceDelegate;
 @property (nonatomic,weak) id<UpdateDeviceDelegate> updateDeviceDelegate;
+@property (nonatomic,weak) id<SaveUserInfoDelegate> saveUserInfoDelegate;
 
 @property (nonatomic,strong) ImageLoader* imageLoader;
 
@@ -63,9 +79,10 @@
 
 - (void)login:(NSString*)username password:(NSString*)password;
 - (void)signUp:(NSString*)username password:(NSString*)password;
-
+- (void)saveUserInfo;
 
 - (void)batchGetDevicesInfo:(NSArray*)devicesMac;
+- (void)isDeviceRegistered:(NSString*)mac;
 
 - (void)boundDeviceWithMac:(NSString *)mac;
 - (void)unBoundDeviceWithMac:(NSString*)mac;

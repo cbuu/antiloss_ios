@@ -17,6 +17,7 @@
 @property (nonatomic,copy) NSString * imageID;
 @property (nonatomic,copy) NSString * deviceName;
 @property (nonatomic,copy) NSString * username;
+@property (nonatomic,copy) NSString * teleNum;
 
 @end
 
@@ -45,7 +46,7 @@
 
 + (instancetype)sharedManager;
 
-- (BOOL)sendMessageWithTitle:(NSString*)title device:(AntiLossDevice*)device deviceImage:(UIImage*)image andDesciption:(NSString*)description;
+- (BOOL)sendMessageWithTitle:(NSString*)title device:(AntiLossDevice*)device deviceImage:(UIImage*)image Desciption:(NSString*)description andData:(NSData*)data;
 
 @end
 

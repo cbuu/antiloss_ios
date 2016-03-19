@@ -71,7 +71,7 @@
     }
 }
 
-- (BOOL)sendMessageWithTitle:(NSString*)title device:(AntiLossDevice*)device deviceImage:(UIImage*)image andDesciption:(NSString*)description{
+- (BOOL)sendMessageWithTitle:(NSString*)title device:(AntiLossDevice*)device deviceImage:(UIImage*)image Desciption:(NSString*)description andData:(NSData*)data{
     UIImage * thumbImage = nil;
     if (image) {
         thumbImage = [Utils getThumbImage:image size:CGSizeMake(50.0f, 50.0f)];
@@ -81,11 +81,16 @@
     
     WXAppExtendObject * obj = [WXAppExtendObject object];
     obj.extInfo = [device toJson];
+    obj.url = @"http://121.42.177.240:3000";
+    obj.fileData = data;
     
     WXMediaMessage *message = [WXMediaMessage message];
     message.title = title;
     message.mediaObject = obj;
     message.description = description;
+    //message.messageExt = @"这是第三方带的测试字段";
+    //message.messageAction = @"<action>dotaliTest</action>";
+    //message.mediaTagName = nil;
     
     [message setThumbImage:thumbImage];
     

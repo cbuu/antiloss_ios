@@ -40,6 +40,8 @@
     
     if (username.length>0&&password.length>0) {
         [[NetworkCenter getInstance] signUp:username password:password];
+    }else{
+        NSLog(@"username or password is empty,register failed");
     }
     
 }
@@ -71,7 +73,7 @@
 
     }
     else{
-        NSLog(@"fail");
+        NSLog(@"register failed");
     }
 }
 

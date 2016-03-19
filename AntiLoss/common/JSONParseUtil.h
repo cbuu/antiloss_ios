@@ -8,8 +8,12 @@
 
 #import <Foundation/Foundation.h>
 
+@class User;
+
 @interface JSONParseUtil : NSObject
 
++ (NSData*)userToJSON:(User*)user;
++ (NSDictionary*)userFromJSON:(NSData*)jsonData;
 + (NSData*)devicesMacToJSON:(NSArray*)devices;
 + (NSDictionary*)deviceFromJson:(NSString*)json;
 

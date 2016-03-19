@@ -81,11 +81,14 @@
     WXMediaMessage * message = request.message;
     WXAppExtendObject * obj = message.mediaObject;
     NSString * deviceJson = obj.extInfo;
+    NSData * data = obj.fileData;
+    NSDictionary * userInfo  = [JSONParseUtil userFromJSON:data];
     NSDictionary * deviceInfo = [JSONParseUtil deviceFromJson:deviceJson];
     OpenCache * cache = [[OpenCache alloc]init];
     cache.deviceName = deviceInfo[@"deviceName"];
     cache.deviceMac = deviceInfo[@"deviceMac"];
     cache.imageID = deviceInfo[@"image"];
+    cache.teleNum = userInfo[@"teleNum"];
     [WXApiManager sharedManager].cache = cache;
     [UserManager getInstance].mode = HELP_MODE;
 }

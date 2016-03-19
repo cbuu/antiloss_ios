@@ -13,7 +13,8 @@
 @interface User : NSObject
 
 @property (nonatomic,copy) NSString * username;
-@property (nonatomic,copy) NSMutableArray * devicesMac;
+@property (nonatomic,copy) NSString * teleNum;
+@property (nonatomic,strong) NSMutableArray * devicesMac;
 
 - (BOOL)isBounded:(NSString*)mac;
 - (BOOL)unBoundDevice:(NSString*)mac;

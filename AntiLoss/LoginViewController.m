@@ -35,7 +35,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [NetworkCenter getInstance].loginDelegate = self;
+    
     [[NetworkCenter getInstance] login:@"cbuu" password:@"123"];
+    
     if ([UserManager getInstance].mode == USER_MODE) {
         [WXApiManager sharedManager].delegate = self;
     }
@@ -45,7 +47,7 @@
 
 - (IBAction)loginClick:(id)sender {
     
-    NSLog(@"login");
+    NSLog(@"begin login");
     
     NSString * username = self.usernameTextField.text;
     NSString * password = self.passwordTextField.text;
@@ -53,11 +55,15 @@
     if (username.length>0&&password.length>0) {
         [[NetworkCenter getInstance] login:username password:password];
     }
+    else{
+        NSLog(@"username or password is empty!");
+    }
 }
 
 - (IBAction)registerClick:(id)sender {
-    [self performSegueWithIdentifier:@"logintoregister" sender:self];
+    NSLog(@"jump to Register");
     
+    [self performSegueWithIdentifier:@"logintoregister" sender:self];
 }
 
 
@@ -83,7 +89,8 @@
         [self.navigationController presentViewController:alertController animated:YES completion:nil];
     }
     else{
-        NSLog(@"fail");
+        NSLog(@"login fail");
+        //TODO
     }
 }
 
@@ -94,11 +101,14 @@
     WXMediaMessage * message = request.message;
     WXAppExtendObject * obj = message.mediaObject;
     NSString * deviceJson = obj.extInfo;
+    NSData * data = obj.fileData;
     NSDictionary * deviceInfo = [JSONParseUtil deviceFromJson:deviceJson];
+    NSDictionary * userInfo   = [JSONParseUtil userFromJSON:data];
     OpenCache * cache = [[OpenCache alloc]init];
     cache.deviceName = deviceInfo[@"deviceName"];
     cache.deviceMac = deviceInfo[@"deviceMac"];
     cache.imageID = deviceInfo[@"image"];
+    cache.teleNum = userInfo[@"teleNum"];
     [WXApiManager sharedManager].cache = cache;
     [UserManager getInstance].mode = HELP_MODE;
 
@@ -115,6 +125,7 @@
         device.imageID = cache.imageID;
         device.deviceName = cache.deviceName;
         avc.device = device;
+        avc.teleNum = cache.teleNum;
     }
 }
 

@@ -14,6 +14,7 @@
 - (instancetype)init{
     if (self=[super init]) {
         self.devicesMac = [NSMutableArray array];
+        self.teleNum    = @"";
     }
     return self;
 }

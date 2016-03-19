@@ -172,8 +172,12 @@
 
 - (void)succeedToBoundDevice:(AntiLossDevice *)device{
     if (device) {
-        [devices addObject:device];
-        [self.tableView reloadData];
+        NSMutableArray * array = [[UserManager getInstance] getDevices];
+        [array addObject:device.deviceMac];
+        NSArray * devicesMac = [NSArray arrayWithObject:device.deviceMac];
+        if (devicesMac.count > 0) {
+            [[NetworkCenter getInstance] batchGetDevicesInfo:devicesMac];
+        }
     }
 }
 

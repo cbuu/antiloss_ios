@@ -12,10 +12,10 @@
 #import "NetworkCenter.h"
 #import "UserManager.h"
 
-@interface AntilossSearchViewController ()<BTManagerDelegate,BoundDeviceDelegate>
+@interface AntilossSearchViewController ()<BTManagerDelegate,BoundDeviceDelegate,IsDeviceRegisteredDelegate>
 {
     UINib * deviceNib;
-    
+    AntiLossDevice * deviceToQuery;
     AntiLossDevice * deviceToBound;
     NSMutableArray * foundDevices;
 }
@@ -41,6 +41,7 @@
     
     [NetworkCenter getInstance].boundDeviceDelegate = self;
     [BTManager getInstance].managerDelegate = self;
+    [NetworkCenter getInstance].isDeviceRegisteredDelegate = self;
     [[BTManager getInstance] scan];
 }
 
@@ -71,7 +72,10 @@
     
     UITableViewCell * cell;
     if (indexPath.row == foundDevices.count) {
+        static int TagOfIndicatorView = 2;
         cell = [tableView dequeueReusableCellWithIdentifier:@"searchCell"];
+        UIActivityIndicatorView * view = [cell.contentView viewWithTag:TagOfIndicatorView];
+        [view startAnimating];
         //cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }else{
         cell = [tableView dequeueReusableCellWithIdentifier:@"deviceCell"];
@@ -158,23 +162,29 @@
 
 - (void)deviceFound:(AntiLossDevice *)device{
     if (device&&![[UserManager getInstance] isBounded:device.deviceMac]) {
-        
-        [foundDevices addObject:device];
-        
-        [self.tableView reloadData];
+        deviceToQuery = device;
+        [[NetworkCenter getInstance] isDeviceRegistered:deviceToQuery.deviceMac];
     }
 }
 
 - (void)boundDeviceResult:(BOOL)isSuccees{
     if (isSuccees) {
-        
-        
         [self.navigationController popViewControllerAnimated:YES];
         if (self.searchDelegate) {
             [self.searchDelegate succeedToBoundDevice:deviceToBound];
         }
     }
     
+}
+
+- (void)isRegistered:(BOOL)isRegistered
+{
+    if (isRegistered) {
+        
+        [foundDevices addObject:deviceToQuery];
+        
+        [self.tableView reloadData];
+    }
 }
 
 @end

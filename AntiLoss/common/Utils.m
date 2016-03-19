@@ -38,7 +38,10 @@
 
 + (NSString *)md5:(NSString *)str
 {
-        
+    if (str==nil||[str isEqualToString:@""]) {
+        return @"";
+    }
+    
     const char *cStr = [str UTF8String];
     
     unsigned char result[16];

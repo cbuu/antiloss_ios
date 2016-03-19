@@ -15,6 +15,8 @@
 #import "manager/UserManager.h"
 #import <UIKit/UIKit.h>
 #import "MapViewController.h"
+#import "manager/UserManager.h"
+#import "JSONParseUtil.h"
 #import "IOIndicatorView.h"
 @interface AntilossViewController ()<
 BTManagerDelegate,
@@ -74,7 +76,7 @@ WXApiManagerDelegate>
 - (void)initView{
     [self.view setBackgroundColor:[UIColor colorWithRed:0.95f green:0.95f blue:0.95f alpha:1.0f]];
     
-    self.searchStateLabel.text = @"搜索中";
+    self.searchStateLabel.text = @"搜索中...";
     
     self.deviceNameLabel.text = self.device.deviceName;
     
@@ -298,10 +300,13 @@ WXApiManagerDelegate>
             textField.placeholder = @"请输入寻物启事描述";
         }];
         
-        UIAlertAction * editView = [UIAlertAction actionWithTitle:@"发送" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        
+        UIAlertAction * editView = [UIAlertAction actionWithTitle:@"下一步" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
             UITextField * nameField = alertController.textFields.firstObject;
             if (nameField.text.length>0) {
-                [[WXApiManager sharedManager] sendMessageWithTitle:@"帮人家找找嘛～" device:self.device deviceImage:self.deviceImage.image andDesciption:nameField.text];
+                User * user = [UserManager getInstance].user;
+                NSData * data = [JSONParseUtil userToJSON:user];
+                [[WXApiManager sharedManager] sendMessageWithTitle:@"帮人家找找嘛～" device:self.device deviceImage:self.deviceImage.image Desciption:nameField.text andData:data];
             }
         }];
                                     

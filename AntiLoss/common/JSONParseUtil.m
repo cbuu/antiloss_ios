@@ -7,8 +7,36 @@
 //
 
 #import "JSONParseUtil.h"
+#import "User.h"
+
 
 @implementation JSONParseUtil
+
++ (NSData*)userToJSON:(User*)user{
+    NSMutableDictionary * dic  = [NSMutableDictionary dictionary];
+    dic[@"teleNum"] = user.teleNum;
+    dic[@"username"] = user.username;
+    
+    return [NSJSONSerialization dataWithJSONObject:dic options:0 error:nil];
+}
+
+
++ (NSDictionary*)userFromJSON:(NSData*)jsonData{
+    if (jsonData == nil) {
+        return nil;
+    }
+    
+    NSError *err;
+    
+    NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:jsonData
+                                                        options:NSJSONReadingMutableContainers
+                                                          error:&err];
+    if(err) {
+        NSLog(@"json解析失败：%@",err);
+        return nil;
+    }
+    return dic;
+}
 
 + (NSData*)devicesMacToJSON:(NSArray*)devices{
     

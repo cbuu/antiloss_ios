@@ -110,6 +110,33 @@
 //    }];
 }
 
+- (void)saveUserInfo{
+    NSString * saveUserInfo = [NETWORK_PATH stringByAppendingString:@"saveUserInfo"];
+    
+    NSURL * URL = [NSURL URLWithString:saveUserInfo];
+    NSMutableURLRequest * request = [NSMutableURLRequest requestWithURL:URL];
+    request.HTTPMethod = @"POST";
+    
+    User * user = [UserManager getInstance].user;
+    NSData * data = [JSONParseUtil userToJSON:user];
+    
+    request.HTTPBody = data;
+    
+    [request addValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    
+    NSURLSessionDataTask *datatask = [manager dataTaskWithRequest:request completionHandler:^(NSURLResponse * _Nonnull response, id  _Nonnull responseObject, NSError * _Nonnull error) {
+        if (self.saveUserInfoDelegate) {
+            if (error) {
+                [self.saveUserInfoDelegate saveUserInfoResult:NO];
+            }else{
+                [self.saveUserInfoDelegate saveUserInfoResult:[responseObject[@"isSuccess"] boolValue]];
+            }
+        }
+    }];
+    
+    [datatask resume];
+}
+
 
 - (void)batchGetDevicesInfo:(NSArray *)devicesMac{
     NSString * getInfoPath = [NETWORK_PATH stringByAppendingPathComponent:@"batchGetDevicesInfo"];
@@ -134,6 +161,30 @@
             if (self.getDevicesInfoDelegate) {
                 [self.getDevicesInfoDelegate getDevicesInfo:responseObject[@"devices"]];
             }
+        }
+    }];
+    
+    [dataTask resume];
+
+}
+
+- (void)isDeviceRegistered:(NSString*)mac
+{
+    NSString * queryStr = [NSString stringWithFormat:@"?mac=%@",mac];
+    
+    NSString * path = [[NETWORK_PATH stringByAppendingPathComponent:@"isDeviceRegistered"] stringByAppendingString:queryStr];
+
+    
+    NSURL *URL = [NSURL URLWithString:path];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:URL];
+    
+    NSURLSessionDataTask *dataTask = [manager dataTaskWithRequest:request completionHandler:^(NSURLResponse *response, id responseObject, NSError *error) {
+        if (error) {
+            NSLog(@"Error: %@", error);
+            [self.isDeviceRegisteredDelegate isRegistered:false];
+        } else {
+            BOOL isRegistered = [responseObject[@"isRegistered"] boolValue];
+            [self.isDeviceRegisteredDelegate isRegistered:isRegistered];
         }
     }];
     
